@@ -1,7 +1,5 @@
 use super::*;
-use crate::r#for::{
-    for_compress_sorted, for_compressed_size_sorted, for_uncompress,
-};
+use crate::r#for::{for_compress_sorted, for_compressed_size_sorted, for_uncompress};
 
 #[allow(unused_doc_comments)]
 extern "C" fn run(length: u32) -> () {
@@ -10,24 +8,20 @@ extern "C" fn run(length: u32) -> () {
     let mut s2: u32 = 0 as u32;
     let mut s3: u32 = 0 as u32;
     let out: *mut u8 =
-        unsafe {
-                malloc((length as
-                            u64).wrapping_mul(core::mem::size_of::<u32>() as u64))
-            } as *mut u8;
+        unsafe { malloc((length as u64).wrapping_mul(core::mem::size_of::<u32>() as u64)) }
+            as *mut u8;
     let in_: *mut u32 =
-        unsafe {
-                malloc((length as
-                            u64).wrapping_mul(core::mem::size_of::<u32>() as u64))
-            } as *mut u32;
+        unsafe { malloc((length as u64).wrapping_mul(core::mem::size_of::<u32>() as u64)) }
+            as *mut u32;
     let tmp: *mut u32 =
-        unsafe {
-                malloc((length as
-                            u64).wrapping_mul(core::mem::size_of::<u32>() as u64))
-            } as *mut u32;
+        unsafe { malloc((length as u64).wrapping_mul(core::mem::size_of::<u32>() as u64)) }
+            as *mut u32;
     {
         i = 0 as u32;
         '__b0: loop {
-            if !(i < length) { break '__b0; }
+            if !(i < length) {
+                break '__b0;
+            }
             '__c0: loop {
                 unsafe { *in_.add(i as usize) = (33 as u32).wrapping_add(i) };
                 break '__c0;
@@ -63,7 +57,9 @@ extern "C" fn run(length: u32) -> () {
     }
 
     /// VERIFY_ARRAY(in, tmp, length);
-    unsafe { free(in_ as *mut ()) };
+    unsafe {
+        free(in_ as *mut ())
+    };
     unsafe { free(out as *mut ()) };
     unsafe { free(tmp as *mut ()) };
 }
