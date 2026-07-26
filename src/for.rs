@@ -4,6 +4,8 @@ use crate::for_gen::{
     for_pack8, for_packx, for_unpack16, for_unpack32, for_unpack8, for_unpackx,
 };
 
+pub const METADATA: i32 = 5;
+
 ///Returns the size required to compress a sequence of |length| ints,
 ///each compressed with |bits| bits
 ///
@@ -116,7 +118,7 @@ pub(crate) extern "C" fn for_compressed_size_unsorted(in_: *const u32, length: u
         }
     }
     b = required_bits(m.wrapping_sub(m) as u32);
-    return 5 as u32 + for_compressed_size_bits(length, b);
+    return (METADATA as u32).wrapping_add(for_compressed_size_bits(length, b));
 }
 
 ///Returns the size required to compress a sorted sequence of |length| ints.
@@ -137,7 +139,7 @@ pub(crate) extern "C" fn for_compressed_size_sorted(in_: *const u32, length: u32
     m = unsafe { *in_.offset(0 as isize) } as u32;
     m = unsafe { *in_.add(length.wrapping_sub(1 as u32) as usize) } as u32;
     b = required_bits(m.wrapping_sub(m) as u32);
-    return 5 as u32 + for_compressed_size_bits(length, b);
+    return (METADATA as u32).wrapping_add(for_compressed_size_bits(length, b));
 }
 
 pub(crate) type ForPackfuncT = unsafe extern "C" fn(u32, *const u32, *mut u8) -> u32;
@@ -300,7 +302,13 @@ pub(crate) extern "C" fn for_compress_unsorted(in_: *const u32, out: *mut u8, le
     b = required_bits(m.wrapping_sub(m) as u32);
     unsafe { *(unsafe { out.offset(0 as isize) } as *mut u32) = m };
     unsafe { *(unsafe { out.offset(4 as isize) } as *mut u8) = b as u8 };
-    return 5 as u32 + for_compress_bits(in_, unsafe { out.offset(5 as isize) }, length, m, b);
+    return (METADATA as u32).wrapping_add(for_compress_bits(
+        in_,
+        unsafe { out.offset(METADATA as isize) },
+        length,
+        m,
+        b,
+    ));
 }
 
 ///Compresses a sorted sequence of |length| ints at |in| and stores the
@@ -322,7 +330,13 @@ pub(crate) extern "C" fn for_compress_sorted(in_: *const u32, out: *mut u8, leng
     b = required_bits(m.wrapping_sub(m) as u32);
     unsafe { *(unsafe { out.offset(0 as isize) } as *mut u32) = m };
     unsafe { *(unsafe { out.offset(4 as isize) } as *mut u8) = b as u8 };
-    return 5 as u32 + for_compress_bits(in_, unsafe { out.offset(5 as isize) }, length, m, b);
+    return (METADATA as u32).wrapping_add(for_compress_bits(
+        in_,
+        unsafe { out.offset(METADATA as isize) },
+        length,
+        m,
+        b,
+    ));
 }
 
 pub(crate) type ForUnpackfuncT = unsafe extern "C" fn(u32, *const u8, *mut u32) -> u32;
@@ -467,7 +481,13 @@ pub(crate) extern "C" fn for_uncompress(in_: *const u8, out: *mut u32, length: u
     ///The minimun value and the bits are stored as metadata in |out|.
     (m = unsafe { *(unsafe { in_.offset(0 as isize) } as *mut u32) });
     b = unsafe { *unsafe { in_.offset(4 as isize) } } as u32;
-    return 5 as u32 + for_uncompress_bits(unsafe { in_.offset(5 as isize) }, out, length, m, b);
+    return (METADATA as u32).wrapping_add(for_uncompress_bits(
+        unsafe { in_.offset(METADATA as isize) },
+        out,
+        length,
+        m,
+        b,
+    ));
 }
 
 pub(crate) type AppendImpl = unsafe extern "C" fn(*const u32, *mut u8, u32) -> u32;
@@ -636,7 +656,13 @@ extern "C" fn for_append_impl(
         unsafe { free(tmp as *mut ()) };
         return s;
     }
-    return 5 as u32 + for_append_bits(unsafe { in__1.offset(5 as isize) }, length, m, b, value);
+    return (METADATA as u32).wrapping_add(for_append_bits(
+        unsafe { in__1.offset(METADATA as isize) },
+        length,
+        m,
+        b,
+        value,
+    ));
 }
 
 ///Appends a |value| to a compressed sequence of unsorted integers.
@@ -763,7 +789,7 @@ pub(crate) extern "C" fn for_select_bits(
 pub(crate) extern "C" fn for_select(in_: *const u8, index: u32) -> u32 {
     let m: u32 = unsafe { *(unsafe { in_.offset(0 as isize) } as *mut u32) };
     let b: u32 = unsafe { *unsafe { in_.offset(4 as isize) } } as u32;
-    return for_select_bits(unsafe { in_.offset(5 as isize) }, m, b, index);
+    return for_select_bits(unsafe { in_.offset(METADATA as isize) }, m, b, index);
 }
 
 pub(crate) type ForLinsearchfuncT = unsafe extern "C" fn(u32, *const u8, u32, *mut i32) -> u32;
@@ -888,7 +914,13 @@ pub(crate) extern "C" fn for_linear_search_bits(
 pub(crate) extern "C" fn for_linear_search(in_: *const u8, length: u32, value: u32) -> u32 {
     let m: u32 = unsafe { *(unsafe { in_.offset(0 as isize) } as *mut u32) };
     let b: u32 = unsafe { *unsafe { in_.offset(4 as isize) } } as u32;
-    return for_linear_search_bits(unsafe { in_.offset(5 as isize) }, length, m, b, value);
+    return for_linear_search_bits(
+        unsafe { in_.offset(METADATA as isize) },
+        length,
+        m,
+        b,
+        value,
+    );
 }
 
 ///Performs lower bound binary search search for |value|.
@@ -972,7 +1004,7 @@ pub(crate) extern "C" fn for_lower_bound_search(
     ///expects metadata at the beginning of |in|. Use in combination with
     ///for_compress_sorted() and for_compress_unsorted().
     return for_lower_bound_search_bits(
-        unsafe { in_.offset(5 as isize) },
+        unsafe { in_.offset(METADATA as isize) },
         length,
         m,
         b,
