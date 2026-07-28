@@ -5919,9 +5919,9 @@ extern "C" fn pack20_16(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(9 as isize) } } - base >> 20 - 8;
-    tmp |= unsafe { *unsafe { in__1.offset(10 as isize) } } - base << 8;
-    tmp |= unsafe { *unsafe { in__1.offset(11 as isize) } } - base << 28;
+    tmp = unsafe { (*unsafe { in__1.offset(9 as isize) }).wrapping_sub(base) } >> 20 - 8;
+    tmp |= unsafe { (*unsafe { in__1.offset(10 as isize) }).wrapping_sub(base) } << 8;
+    tmp |= unsafe { (*unsafe { in__1.offset(11 as isize) }).wrapping_sub(base) } << 28;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
@@ -6088,25 +6088,25 @@ extern "C" fn pack22_16(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } >> 22 - 14;
-    tmp |= unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } << 14;
+    tmp = unsafe { *unsafe { in__1.offset(4 as isize) } } - base >> 22 - 14;
+    tmp |= unsafe { *unsafe { in__1.offset(5 as isize) } } - base << 14;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } >> 22 - 4;
-    tmp |= unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } << 4;
-    tmp |= unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } << 26;
+    tmp = unsafe { *unsafe { in__1.offset(5 as isize) } } - base >> 22 - 4;
+    tmp |= unsafe { *unsafe { in__1.offset(6 as isize) } } - base << 4;
+    tmp |= unsafe { *unsafe { in__1.offset(7 as isize) } } - base << 26;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } >> 22 - 16;
-    tmp |= unsafe { (*unsafe { in__1.offset(8 as isize) }).wrapping_sub(base) } << 16;
+    tmp = unsafe { *unsafe { in__1.offset(7 as isize) } } - base >> 22 - 16;
+    tmp |= unsafe { *unsafe { in__1.offset(8 as isize) } } - base << 16;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
@@ -6214,25 +6214,25 @@ extern "C" fn pack23_16(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(8 as isize) } } - base >> 23 - 15;
-    tmp |= unsafe { *unsafe { in__1.offset(9 as isize) } } - base << 15;
+    tmp = unsafe { (*unsafe { in__1.offset(8 as isize) }).wrapping_sub(base) } >> 23 - 15;
+    tmp |= unsafe { (*unsafe { in__1.offset(9 as isize) }).wrapping_sub(base) } << 15;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(9 as isize) } } - base >> 23 - 6;
-    tmp |= unsafe { *unsafe { in__1.offset(10 as isize) } } - base << 6;
-    tmp |= unsafe { *unsafe { in__1.offset(11 as isize) } } - base << 29;
+    tmp = unsafe { (*unsafe { in__1.offset(9 as isize) }).wrapping_sub(base) } >> 23 - 6;
+    tmp |= unsafe { (*unsafe { in__1.offset(10 as isize) }).wrapping_sub(base) } << 6;
+    tmp |= unsafe { (*unsafe { in__1.offset(11 as isize) }).wrapping_sub(base) } << 29;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(11 as isize) } } - base >> 23 - 20;
-    tmp |= unsafe { *unsafe { in__1.offset(12 as isize) } } - base << 20;
+    tmp = unsafe { (*unsafe { in__1.offset(11 as isize) }).wrapping_sub(base) } >> 23 - 20;
+    tmp |= unsafe { (*unsafe { in__1.offset(12 as isize) }).wrapping_sub(base) } << 20;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
@@ -6361,7 +6361,7 @@ extern "C" fn pack24_16(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
         *__p = unsafe { (*__p).add(__n as usize) };
     };
     tmp = unsafe { (*unsafe { in__1.offset(14 as isize) }).wrapping_sub(base) } >> 24 - 8;
-    tmp |= unsafe { (*unsafe { in__1.offset(15 as isize) }).wrapping_sub(base) } << 8;
+    tmp |= unsafe { *unsafe { in__1.offset(15 as isize) } } - base << 8;
     length = (32 / 8 - (32 - 32) / 8) as u32;
     unsafe {
         __builtin___memcpy_chk(
@@ -6443,33 +6443,33 @@ extern "C" fn pack25_16(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(10 as isize) } } - base >> 25 - 19;
-    tmp |= unsafe { *unsafe { in__1.offset(11 as isize) } } - base << 19;
+    tmp = unsafe { (*unsafe { in__1.offset(10 as isize) }).wrapping_sub(base) } >> 25 - 19;
+    tmp |= unsafe { (*unsafe { in__1.offset(11 as isize) }).wrapping_sub(base) } << 19;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(11 as isize) } } - base >> 25 - 12;
-    tmp |= unsafe { *unsafe { in__1.offset(12 as isize) } } - base << 12;
+    tmp = unsafe { (*unsafe { in__1.offset(11 as isize) }).wrapping_sub(base) } >> 25 - 12;
+    tmp |= unsafe { (*unsafe { in__1.offset(12 as isize) }).wrapping_sub(base) } << 12;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(12 as isize) } } - base >> 25 - 5;
-    tmp |= unsafe { *unsafe { in__1.offset(13 as isize) } } - base << 5;
-    tmp |= unsafe { *unsafe { in__1.offset(14 as isize) } } - base << 30;
+    tmp = unsafe { (*unsafe { in__1.offset(12 as isize) }).wrapping_sub(base) } >> 25 - 5;
+    tmp |= unsafe { (*unsafe { in__1.offset(13 as isize) }).wrapping_sub(base) } << 5;
+    tmp |= unsafe { (*unsafe { in__1.offset(14 as isize) }).wrapping_sub(base) } << 30;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(14 as isize) } } - base >> 25 - 23;
-    tmp |= unsafe { *unsafe { in__1.offset(15 as isize) } } - base << 23;
+    tmp = unsafe { (*unsafe { in__1.offset(14 as isize) }).wrapping_sub(base) } >> 25 - 23;
+    tmp |= unsafe { (*unsafe { in__1.offset(15 as isize) }).wrapping_sub(base) } << 23;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
@@ -6574,8 +6574,8 @@ extern "C" fn pack26_16(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(12 as isize) } } - base >> 26 - 18;
-    tmp |= unsafe { *unsafe { in__1.offset(13 as isize) } } - base << 18;
+    tmp = unsafe { (*unsafe { in__1.offset(12 as isize) }).wrapping_sub(base) } >> 26 - 18;
+    tmp |= unsafe { (*unsafe { in__1.offset(13 as isize) }).wrapping_sub(base) } << 18;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
@@ -6729,24 +6729,24 @@ extern "C" fn pack27_16(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
 extern "C" fn pack28_16(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
     let mut tmp: u32 = 0 as u32;
     let mut length: u32 = 0 as u32;
-    tmp = unsafe { (*unsafe { in__1.offset(0 as isize) }).wrapping_sub(base) } << 0;
-    tmp |= unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } << 28;
+    tmp = unsafe { *unsafe { in__1.offset(0 as isize) } } - base << 0;
+    tmp |= unsafe { *unsafe { in__1.offset(1 as isize) } } - base << 28;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } >> 28 - 24;
-    tmp |= unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } << 24;
+    tmp = unsafe { *unsafe { in__1.offset(1 as isize) } } - base >> 28 - 24;
+    tmp |= unsafe { *unsafe { in__1.offset(2 as isize) } } - base << 24;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } >> 28 - 20;
-    tmp |= unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } << 20;
+    tmp = unsafe { *unsafe { in__1.offset(2 as isize) } } - base >> 28 - 20;
+    tmp |= unsafe { *unsafe { in__1.offset(3 as isize) } } - base << 20;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
@@ -6793,31 +6793,31 @@ extern "C" fn pack28_16(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(9 as isize) } } - base >> 28 - 24;
-    tmp |= unsafe { *unsafe { in__1.offset(10 as isize) } } - base << 24;
+    tmp = unsafe { (*unsafe { in__1.offset(9 as isize) }).wrapping_sub(base) } >> 28 - 24;
+    tmp |= unsafe { (*unsafe { in__1.offset(10 as isize) }).wrapping_sub(base) } << 24;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(10 as isize) } } - base >> 28 - 20;
-    tmp |= unsafe { *unsafe { in__1.offset(11 as isize) } } - base << 20;
+    tmp = unsafe { (*unsafe { in__1.offset(10 as isize) }).wrapping_sub(base) } >> 28 - 20;
+    tmp |= unsafe { (*unsafe { in__1.offset(11 as isize) }).wrapping_sub(base) } << 20;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(11 as isize) } } - base >> 28 - 16;
-    tmp |= unsafe { *unsafe { in__1.offset(12 as isize) } } - base << 16;
+    tmp = unsafe { (*unsafe { in__1.offset(11 as isize) }).wrapping_sub(base) } >> 28 - 16;
+    tmp |= unsafe { (*unsafe { in__1.offset(12 as isize) }).wrapping_sub(base) } << 16;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(12 as isize) } } - base >> 28 - 12;
+    tmp = unsafe { (*unsafe { in__1.offset(12 as isize) }).wrapping_sub(base) } >> 28 - 12;
     tmp |= unsafe { (*unsafe { in__1.offset(13 as isize) }).wrapping_sub(base) } << 12;
     unsafe { *(out as *mut u32) = tmp };
     {
@@ -6859,15 +6859,15 @@ extern "C" fn pack29_16(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
         *__p = unsafe { (*__p).add(__n as usize) };
     };
     tmp = unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } >> 29 - 26;
-    tmp |= unsafe { *unsafe { in__1.offset(2 as isize) } } - base << 26;
+    tmp |= unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } << 26;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(2 as isize) } } - base >> 29 - 23;
-    tmp |= unsafe { *unsafe { in__1.offset(3 as isize) } } - base << 23;
+    tmp = unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } >> 29 - 23;
+    tmp |= unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } << 23;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
@@ -6931,39 +6931,39 @@ extern "C" fn pack29_16(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(11 as isize) }).wrapping_sub(base) } >> 29 - 28;
-    tmp |= unsafe { (*unsafe { in__1.offset(12 as isize) }).wrapping_sub(base) } << 28;
+    tmp = unsafe { *unsafe { in__1.offset(11 as isize) } } - base >> 29 - 28;
+    tmp |= unsafe { *unsafe { in__1.offset(12 as isize) } } - base << 28;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(12 as isize) }).wrapping_sub(base) } >> 29 - 25;
-    tmp |= unsafe { (*unsafe { in__1.offset(13 as isize) }).wrapping_sub(base) } << 25;
+    tmp = unsafe { *unsafe { in__1.offset(12 as isize) } } - base >> 29 - 25;
+    tmp |= unsafe { *unsafe { in__1.offset(13 as isize) } } - base << 25;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(13 as isize) }).wrapping_sub(base) } >> 29 - 22;
-    tmp |= unsafe { (*unsafe { in__1.offset(14 as isize) }).wrapping_sub(base) } << 22;
+    tmp = unsafe { *unsafe { in__1.offset(13 as isize) } } - base >> 29 - 22;
+    tmp |= unsafe { *unsafe { in__1.offset(14 as isize) } } - base << 22;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(14 as isize) }).wrapping_sub(base) } >> 29 - 19;
-    tmp |= unsafe { (*unsafe { in__1.offset(15 as isize) }).wrapping_sub(base) } << 19;
+    tmp = unsafe { *unsafe { in__1.offset(14 as isize) } } - base >> 29 - 19;
+    tmp |= unsafe { *unsafe { in__1.offset(15 as isize) } } - base << 19;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(15 as isize) } } - base >> 29 - 16;
+    tmp = unsafe { (*unsafe { in__1.offset(15 as isize) }).wrapping_sub(base) } >> 29 - 16;
     length = (32 / 8 - (32 - 16) / 8) as u32;
     unsafe {
         __builtin___memcpy_chk(
@@ -6995,16 +6995,16 @@ extern "C" fn pack30_16(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } >> 30 - 26;
-    tmp |= unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } << 26;
+    tmp = unsafe { *unsafe { in__1.offset(2 as isize) } } - base >> 30 - 26;
+    tmp |= unsafe { *unsafe { in__1.offset(3 as isize) } } - base << 26;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } >> 30 - 24;
-    tmp |= unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } << 24;
+    tmp = unsafe { *unsafe { in__1.offset(3 as isize) } } - base >> 30 - 24;
+    tmp |= unsafe { *unsafe { in__1.offset(4 as isize) } } - base << 24;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
@@ -7083,16 +7083,16 @@ extern "C" fn pack30_16(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(13 as isize) } } - base >> 30 - 4;
-    tmp |= unsafe { *unsafe { in__1.offset(14 as isize) } } - base << 4;
+    tmp = unsafe { (*unsafe { in__1.offset(13 as isize) }).wrapping_sub(base) } >> 30 - 4;
+    tmp |= unsafe { (*unsafe { in__1.offset(14 as isize) }).wrapping_sub(base) } << 4;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(14 as isize) } } - base >> 30 - 2;
-    tmp |= unsafe { *unsafe { in__1.offset(15 as isize) } } - base << 2;
+    tmp = unsafe { (*unsafe { in__1.offset(14 as isize) }).wrapping_sub(base) } >> 30 - 2;
+    tmp |= unsafe { (*unsafe { in__1.offset(15 as isize) }).wrapping_sub(base) } << 2;
     length = (32 / 8 - (32 - 32) / 8) as u32;
     unsafe {
         __builtin___memcpy_chk(
@@ -7197,23 +7197,23 @@ extern "C" fn pack31_16(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
         *__p = unsafe { (*__p).add(__n as usize) };
     };
     tmp = unsafe { (*unsafe { in__1.offset(11 as isize) }).wrapping_sub(base) } >> 31 - 20;
-    tmp |= unsafe { *unsafe { in__1.offset(12 as isize) } } - base << 20;
+    tmp |= unsafe { (*unsafe { in__1.offset(12 as isize) }).wrapping_sub(base) } << 20;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(12 as isize) } } - base >> 31 - 19;
-    tmp |= unsafe { *unsafe { in__1.offset(13 as isize) } } - base << 19;
+    tmp = unsafe { (*unsafe { in__1.offset(12 as isize) }).wrapping_sub(base) } >> 31 - 19;
+    tmp |= unsafe { (*unsafe { in__1.offset(13 as isize) }).wrapping_sub(base) } << 19;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(13 as isize) } } - base >> 31 - 18;
-    tmp |= unsafe { *unsafe { in__1.offset(14 as isize) } } - base << 18;
+    tmp = unsafe { (*unsafe { in__1.offset(13 as isize) }).wrapping_sub(base) } >> 31 - 18;
+    tmp |= unsafe { (*unsafe { in__1.offset(14 as isize) }).wrapping_sub(base) } << 18;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
@@ -7290,14 +7290,14 @@ extern "C" fn pack0_8(base: u32, in__1: *const u32, out: *mut u8) -> u32 {
 extern "C" fn pack1_8(base: u32, in__1: *const u32, out: *mut u8) -> u32 {
     let mut tmp: u32 = 0 as u32;
     let mut length: u32 = 0 as u32;
-    tmp = unsafe { (*unsafe { in__1.offset(0 as isize) }).wrapping_sub(base) } << 0;
-    tmp |= unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } << 1;
-    tmp |= unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } << 2;
-    tmp |= unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } << 3;
-    tmp |= unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } << 4;
-    tmp |= unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } << 5;
-    tmp |= unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } << 6;
-    tmp |= unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } << 7;
+    tmp = unsafe { *unsafe { in__1.offset(0 as isize) } } - base << 0;
+    tmp |= unsafe { *unsafe { in__1.offset(1 as isize) } } - base << 1;
+    tmp |= unsafe { *unsafe { in__1.offset(2 as isize) } } - base << 2;
+    tmp |= unsafe { *unsafe { in__1.offset(3 as isize) } } - base << 3;
+    tmp |= unsafe { *unsafe { in__1.offset(4 as isize) } } - base << 4;
+    tmp |= unsafe { *unsafe { in__1.offset(5 as isize) } } - base << 5;
+    tmp |= unsafe { *unsafe { in__1.offset(6 as isize) } } - base << 6;
+    tmp |= unsafe { *unsafe { in__1.offset(7 as isize) } } - base << 7;
     length = (32 / 8 - (32 - 8) / 8) as u32;
     unsafe {
         __builtin___memcpy_chk(
@@ -7313,14 +7313,14 @@ extern "C" fn pack1_8(base: u32, in__1: *const u32, out: *mut u8) -> u32 {
 extern "C" fn pack2_8(base: u32, in__1: *const u32, out: *mut u8) -> u32 {
     let mut tmp: u32 = 0 as u32;
     let mut length: u32 = 0 as u32;
-    tmp = unsafe { (*unsafe { in__1.offset(0 as isize) }).wrapping_sub(base) } << 0;
-    tmp |= unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } << 2;
-    tmp |= unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } << 4;
-    tmp |= unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } << 6;
-    tmp |= unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } << 8;
-    tmp |= unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } << 10;
-    tmp |= unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } << 12;
-    tmp |= unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } << 14;
+    tmp = unsafe { *unsafe { in__1.offset(0 as isize) } } - base << 0;
+    tmp |= unsafe { *unsafe { in__1.offset(1 as isize) } } - base << 2;
+    tmp |= unsafe { *unsafe { in__1.offset(2 as isize) } } - base << 4;
+    tmp |= unsafe { *unsafe { in__1.offset(3 as isize) } } - base << 6;
+    tmp |= unsafe { *unsafe { in__1.offset(4 as isize) } } - base << 8;
+    tmp |= unsafe { *unsafe { in__1.offset(5 as isize) } } - base << 10;
+    tmp |= unsafe { *unsafe { in__1.offset(6 as isize) } } - base << 12;
+    tmp |= unsafe { *unsafe { in__1.offset(7 as isize) } } - base << 14;
     length = (32 / 8 - (32 - 16) / 8) as u32;
     unsafe {
         __builtin___memcpy_chk(
@@ -7650,34 +7650,34 @@ extern "C" fn pack13_8(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
     let mut tmp: u32 = 0 as u32;
     let mut length: u32 = 0 as u32;
     tmp = unsafe { (*unsafe { in__1.offset(0 as isize) }).wrapping_sub(base) } << 0;
-    tmp |= unsafe { *unsafe { in__1.offset(1 as isize) } } - base << 13;
-    tmp |= unsafe { *unsafe { in__1.offset(2 as isize) } } - base << 26;
+    tmp |= unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } << 13;
+    tmp |= unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } << 26;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(2 as isize) } } - base >> 13 - 7;
-    tmp |= unsafe { *unsafe { in__1.offset(3 as isize) } } - base << 7;
-    tmp |= unsafe { *unsafe { in__1.offset(4 as isize) } } - base << 20;
+    tmp = unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } >> 13 - 7;
+    tmp |= unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } << 7;
+    tmp |= unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } << 20;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(4 as isize) } } - base >> 13 - 1;
-    tmp |= unsafe { *unsafe { in__1.offset(5 as isize) } } - base << 1;
-    tmp |= unsafe { *unsafe { in__1.offset(6 as isize) } } - base << 14;
-    tmp |= unsafe { *unsafe { in__1.offset(7 as isize) } } - base << 27;
+    tmp = unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } >> 13 - 1;
+    tmp |= unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } << 1;
+    tmp |= unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } << 14;
+    tmp |= unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } << 27;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(7 as isize) } } - base >> 13 - 8;
+    tmp = unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } >> 13 - 8;
     length = (32 / 8 - (32 - 8) / 8) as u32;
     unsafe {
         __builtin___memcpy_chk(
@@ -7781,32 +7781,32 @@ extern "C" fn pack15_8(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
 extern "C" fn pack16_8(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
     let mut tmp: u32 = 0 as u32;
     let mut length: u32 = 0 as u32;
-    tmp = unsafe { (*unsafe { in__1.offset(0 as isize) }).wrapping_sub(base) } << 0;
-    tmp |= unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } << 16;
+    tmp = unsafe { *unsafe { in__1.offset(0 as isize) } } - base << 0;
+    tmp |= unsafe { *unsafe { in__1.offset(1 as isize) } } - base << 16;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } << 0;
-    tmp |= unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } << 16;
+    tmp = unsafe { *unsafe { in__1.offset(2 as isize) } } - base << 0;
+    tmp |= unsafe { *unsafe { in__1.offset(3 as isize) } } - base << 16;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } << 0;
-    tmp |= unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } << 16;
+    tmp = unsafe { *unsafe { in__1.offset(4 as isize) } } - base << 0;
+    tmp |= unsafe { *unsafe { in__1.offset(5 as isize) } } - base << 16;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } << 0;
-    tmp |= unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } << 16;
+    tmp = unsafe { *unsafe { in__1.offset(6 as isize) } } - base << 0;
+    tmp |= unsafe { *unsafe { in__1.offset(7 as isize) } } - base << 16;
     length = (32 / 8 - (32 - 32) / 8) as u32;
     unsafe {
         __builtin___memcpy_chk(
@@ -7925,16 +7925,16 @@ extern "C" fn pack19_8(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
     let mut tmp: u32 = 0 as u32;
     let mut length: u32 = 0 as u32;
     tmp = unsafe { (*unsafe { in__1.offset(0 as isize) }).wrapping_sub(base) } << 0;
-    tmp |= unsafe { *unsafe { in__1.offset(1 as isize) } } - base << 19;
+    tmp |= unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } << 19;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(1 as isize) } } - base >> 19 - 6;
-    tmp |= unsafe { *unsafe { in__1.offset(2 as isize) } } - base << 6;
-    tmp |= unsafe { *unsafe { in__1.offset(3 as isize) } } - base << 25;
+    tmp = unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } >> 19 - 6;
+    tmp |= unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } << 6;
+    tmp |= unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } << 25;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
@@ -7950,16 +7950,16 @@ extern "C" fn pack19_8(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } >> 19 - 18;
-    tmp |= unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } << 18;
+    tmp = unsafe { *unsafe { in__1.offset(5 as isize) } } - base >> 19 - 18;
+    tmp |= unsafe { *unsafe { in__1.offset(6 as isize) } } - base << 18;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } >> 19 - 5;
-    tmp |= unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } << 5;
+    tmp = unsafe { *unsafe { in__1.offset(6 as isize) } } - base >> 19 - 5;
+    tmp |= unsafe { *unsafe { in__1.offset(7 as isize) } } - base << 5;
     length = (32 / 8 - (32 - 24) / 8) as u32;
     unsafe {
         __builtin___memcpy_chk(
@@ -8001,16 +8001,16 @@ extern "C" fn pack20_8(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
         *__p = unsafe { (*__p).add(__n as usize) };
     };
     tmp = unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } >> 20 - 4;
-    tmp |= unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } << 4;
-    tmp |= unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } << 24;
+    tmp |= unsafe { *unsafe { in__1.offset(5 as isize) } } - base << 4;
+    tmp |= unsafe { *unsafe { in__1.offset(6 as isize) } } - base << 24;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } >> 20 - 12;
-    tmp |= unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } << 12;
+    tmp = unsafe { *unsafe { in__1.offset(6 as isize) } } - base >> 20 - 12;
+    tmp |= unsafe { *unsafe { in__1.offset(7 as isize) } } - base << 12;
     length = (32 / 8 - (32 - 32) / 8) as u32;
     unsafe {
         __builtin___memcpy_chk(
@@ -8060,15 +8060,15 @@ extern "C" fn pack21_8(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(6 as isize) } } - base >> 21 - 19;
-    tmp |= unsafe { *unsafe { in__1.offset(7 as isize) } } - base << 19;
+    tmp = unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } >> 21 - 19;
+    tmp |= unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } << 19;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(7 as isize) } } - base >> 21 - 8;
+    tmp = unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } >> 21 - 8;
     length = (32 / 8 - (32 - 8) / 8) as u32;
     unsafe {
         __builtin___memcpy_chk(
@@ -8084,15 +8084,15 @@ extern "C" fn pack21_8(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
 extern "C" fn pack22_8(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
     let mut tmp: u32 = 0 as u32;
     let mut length: u32 = 0 as u32;
-    tmp = unsafe { *unsafe { in__1.offset(0 as isize) } } - base << 0;
-    tmp |= unsafe { *unsafe { in__1.offset(1 as isize) } } - base << 22;
+    tmp = unsafe { (*unsafe { in__1.offset(0 as isize) }).wrapping_sub(base) } << 0;
+    tmp |= unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } << 22;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(1 as isize) } } - base >> 22 - 12;
+    tmp = unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } >> 22 - 12;
     tmp |= unsafe { *unsafe { in__1.offset(2 as isize) } } - base << 12;
     unsafe { *(out as *mut u32) = tmp };
     {
@@ -8100,16 +8100,16 @@ extern "C" fn pack22_8(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } >> 22 - 2;
-    tmp |= unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } << 2;
-    tmp |= unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } << 24;
+    tmp = unsafe { *unsafe { in__1.offset(2 as isize) } } - base >> 22 - 2;
+    tmp |= unsafe { *unsafe { in__1.offset(3 as isize) } } - base << 2;
+    tmp |= unsafe { *unsafe { in__1.offset(4 as isize) } } - base << 24;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } >> 22 - 14;
+    tmp = unsafe { *unsafe { in__1.offset(4 as isize) } } - base >> 22 - 14;
     tmp |= unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } << 14;
     unsafe { *(out as *mut u32) = tmp };
     {
@@ -8142,7 +8142,7 @@ extern "C" fn pack22_8(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
 extern "C" fn pack23_8(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
     let mut tmp: u32 = 0 as u32;
     let mut length: u32 = 0 as u32;
-    tmp = unsafe { *unsafe { in__1.offset(0 as isize) } } - base << 0;
+    tmp = unsafe { (*unsafe { in__1.offset(0 as isize) }).wrapping_sub(base) } << 0;
     tmp |= unsafe { *unsafe { in__1.offset(1 as isize) } } - base << 23;
     unsafe { *(out as *mut u32) = tmp };
     {
@@ -8159,8 +8159,8 @@ extern "C" fn pack23_8(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
         *__p = unsafe { (*__p).add(__n as usize) };
     };
     tmp = unsafe { *unsafe { in__1.offset(2 as isize) } } - base >> 23 - 5;
-    tmp |= unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } << 5;
-    tmp |= unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } << 28;
+    tmp |= unsafe { *unsafe { in__1.offset(3 as isize) } } - base << 5;
+    tmp |= unsafe { *unsafe { in__1.offset(4 as isize) } } - base << 28;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
@@ -8200,15 +8200,15 @@ extern "C" fn pack23_8(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
 extern "C" fn pack24_8(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
     let mut tmp: u32 = 0 as u32;
     let mut length: u32 = 0 as u32;
-    tmp = unsafe { *unsafe { in__1.offset(0 as isize) } } - base << 0;
-    tmp |= unsafe { *unsafe { in__1.offset(1 as isize) } } - base << 24;
+    tmp = unsafe { (*unsafe { in__1.offset(0 as isize) }).wrapping_sub(base) } << 0;
+    tmp |= unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } << 24;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(1 as isize) } } - base >> 24 - 16;
+    tmp = unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } >> 24 - 16;
     tmp |= unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } << 16;
     unsafe { *(out as *mut u32) = tmp };
     {
@@ -8224,24 +8224,24 @@ extern "C" fn pack24_8(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } << 0;
-    tmp |= unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } << 24;
+    tmp = unsafe { *unsafe { in__1.offset(4 as isize) } } - base << 0;
+    tmp |= unsafe { *unsafe { in__1.offset(5 as isize) } } - base << 24;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } >> 24 - 16;
-    tmp |= unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } << 16;
+    tmp = unsafe { *unsafe { in__1.offset(5 as isize) } } - base >> 24 - 16;
+    tmp |= unsafe { *unsafe { in__1.offset(6 as isize) } } - base << 16;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } >> 24 - 8;
-    tmp |= unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } << 8;
+    tmp = unsafe { *unsafe { in__1.offset(6 as isize) } } - base >> 24 - 8;
+    tmp |= unsafe { *unsafe { in__1.offset(7 as isize) } } - base << 8;
     length = (32 / 8 - (32 - 32) / 8) as u32;
     unsafe {
         __builtin___memcpy_chk(
@@ -8257,33 +8257,33 @@ extern "C" fn pack24_8(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
 extern "C" fn pack25_8(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
     let mut tmp: u32 = 0 as u32;
     let mut length: u32 = 0 as u32;
-    tmp = unsafe { *unsafe { in__1.offset(0 as isize) } } - base << 0;
-    tmp |= unsafe { *unsafe { in__1.offset(1 as isize) } } - base << 25;
+    tmp = unsafe { (*unsafe { in__1.offset(0 as isize) }).wrapping_sub(base) } << 0;
+    tmp |= unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } << 25;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(1 as isize) } } - base >> 25 - 18;
-    tmp |= unsafe { *unsafe { in__1.offset(2 as isize) } } - base << 18;
+    tmp = unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } >> 25 - 18;
+    tmp |= unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } << 18;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(2 as isize) } } - base >> 25 - 11;
-    tmp |= unsafe { *unsafe { in__1.offset(3 as isize) } } - base << 11;
+    tmp = unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } >> 25 - 11;
+    tmp |= unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } << 11;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(3 as isize) } } - base >> 25 - 4;
-    tmp |= unsafe { *unsafe { in__1.offset(4 as isize) } } - base << 4;
-    tmp |= unsafe { *unsafe { in__1.offset(5 as isize) } } - base << 29;
+    tmp = unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } >> 25 - 4;
+    tmp |= unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } << 4;
+    tmp |= unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } << 29;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
@@ -8306,7 +8306,7 @@ extern "C" fn pack25_8(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } >> 25 - 8;
+    tmp = unsafe { *unsafe { in__1.offset(7 as isize) } } - base >> 25 - 8;
     length = (32 / 8 - (32 - 8) / 8) as u32;
     unsafe {
         __builtin___memcpy_chk(
@@ -8346,15 +8346,15 @@ extern "C" fn pack26_8(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } >> 26 - 8;
-    tmp |= unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } << 8;
+    tmp = unsafe { *unsafe { in__1.offset(3 as isize) } } - base >> 26 - 8;
+    tmp |= unsafe { *unsafe { in__1.offset(4 as isize) } } - base << 8;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } >> 26 - 2;
+    tmp = unsafe { *unsafe { in__1.offset(4 as isize) } } - base >> 26 - 2;
     tmp |= unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } << 2;
     tmp |= unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } << 28;
     unsafe { *(out as *mut u32) = tmp };
@@ -8363,15 +8363,15 @@ extern "C" fn pack26_8(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(6 as isize) } } - base >> 26 - 22;
-    tmp |= unsafe { *unsafe { in__1.offset(7 as isize) } } - base << 22;
+    tmp = unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } >> 26 - 22;
+    tmp |= unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } << 22;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(7 as isize) } } - base >> 26 - 16;
+    tmp = unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } >> 26 - 16;
     length = (32 / 8 - (32 - 16) / 8) as u32;
     unsafe {
         __builtin___memcpy_chk(
@@ -8427,16 +8427,16 @@ extern "C" fn pack27_8(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } >> 27 - 2;
-    tmp |= unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } << 2;
-    tmp |= unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } << 29;
+    tmp = unsafe { *unsafe { in__1.offset(5 as isize) } } - base >> 27 - 2;
+    tmp |= unsafe { *unsafe { in__1.offset(6 as isize) } } - base << 2;
+    tmp |= unsafe { *unsafe { in__1.offset(7 as isize) } } - base << 29;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } >> 27 - 24;
+    tmp = unsafe { *unsafe { in__1.offset(7 as isize) } } - base >> 27 - 24;
     length = (32 / 8 - (32 - 24) / 8) as u32;
     unsafe {
         __builtin___memcpy_chk(
@@ -8500,8 +8500,8 @@ extern "C" fn pack28_8(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } >> 28 - 4;
-    tmp |= unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } << 4;
+    tmp = unsafe { *unsafe { in__1.offset(6 as isize) } } - base >> 28 - 4;
+    tmp |= unsafe { *unsafe { in__1.offset(7 as isize) } } - base << 4;
     length = (32 / 8 - (32 - 32) / 8) as u32;
     unsafe {
         __builtin___memcpy_chk(
@@ -8565,15 +8565,15 @@ extern "C" fn pack29_8(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(6 as isize) } } - base >> 29 - 11;
-    tmp |= unsafe { *unsafe { in__1.offset(7 as isize) } } - base << 11;
+    tmp = unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } >> 29 - 11;
+    tmp |= unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } << 11;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(7 as isize) } } - base >> 29 - 8;
+    tmp = unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } >> 29 - 8;
     length = (32 / 8 - (32 - 8) / 8) as u32;
     unsafe {
         __builtin___memcpy_chk(
@@ -8605,39 +8605,39 @@ extern "C" fn pack30_8(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(2 as isize) } } - base >> 30 - 26;
-    tmp |= unsafe { *unsafe { in__1.offset(3 as isize) } } - base << 26;
+    tmp = unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } >> 30 - 26;
+    tmp |= unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } << 26;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(3 as isize) } } - base >> 30 - 24;
-    tmp |= unsafe { *unsafe { in__1.offset(4 as isize) } } - base << 24;
+    tmp = unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } >> 30 - 24;
+    tmp |= unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } << 24;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(4 as isize) } } - base >> 30 - 22;
-    tmp |= unsafe { *unsafe { in__1.offset(5 as isize) } } - base << 22;
+    tmp = unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } >> 30 - 22;
+    tmp |= unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } << 22;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(5 as isize) } } - base >> 30 - 20;
-    tmp |= unsafe { *unsafe { in__1.offset(6 as isize) } } - base << 20;
+    tmp = unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } >> 30 - 20;
+    tmp |= unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } << 20;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { *unsafe { in__1.offset(6 as isize) } } - base >> 30 - 18;
+    tmp = unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } >> 30 - 18;
     tmp |= unsafe { *unsafe { in__1.offset(7 as isize) } } - base << 18;
     unsafe { *(out as *mut u32) = tmp };
     {
@@ -8661,63 +8661,63 @@ extern "C" fn pack30_8(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
 extern "C" fn pack31_8(base: u32, in__1: *const u32, mut out: *mut u8) -> u32 {
     let mut tmp: u32 = 0 as u32;
     let mut length: u32 = 0 as u32;
-    tmp = unsafe { (*unsafe { in__1.offset(0 as isize) }).wrapping_sub(base) } << 0;
-    tmp |= unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } << 31;
+    tmp = unsafe { *unsafe { in__1.offset(0 as isize) } } - base << 0;
+    tmp |= unsafe { *unsafe { in__1.offset(1 as isize) } } - base << 31;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } >> 31 - 30;
-    tmp |= unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } << 30;
+    tmp = unsafe { *unsafe { in__1.offset(1 as isize) } } - base >> 31 - 30;
+    tmp |= unsafe { *unsafe { in__1.offset(2 as isize) } } - base << 30;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } >> 31 - 29;
-    tmp |= unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } << 29;
+    tmp = unsafe { *unsafe { in__1.offset(2 as isize) } } - base >> 31 - 29;
+    tmp |= unsafe { *unsafe { in__1.offset(3 as isize) } } - base << 29;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } >> 31 - 28;
-    tmp |= unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } << 28;
+    tmp = unsafe { *unsafe { in__1.offset(3 as isize) } } - base >> 31 - 28;
+    tmp |= unsafe { *unsafe { in__1.offset(4 as isize) } } - base << 28;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } >> 31 - 27;
-    tmp |= unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } << 27;
+    tmp = unsafe { *unsafe { in__1.offset(4 as isize) } } - base >> 31 - 27;
+    tmp |= unsafe { *unsafe { in__1.offset(5 as isize) } } - base << 27;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } >> 31 - 26;
-    tmp |= unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } << 26;
+    tmp = unsafe { *unsafe { in__1.offset(5 as isize) } } - base >> 31 - 26;
+    tmp |= unsafe { *unsafe { in__1.offset(6 as isize) } } - base << 26;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } >> 31 - 25;
-    tmp |= unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } << 25;
+    tmp = unsafe { *unsafe { in__1.offset(6 as isize) } } - base >> 31 - 25;
+    tmp |= unsafe { *unsafe { in__1.offset(7 as isize) } } - base << 25;
     unsafe { *(out as *mut u32) = tmp };
     {
         let __n = core::mem::size_of::<u32>();
         let __p = &mut out;
         *__p = unsafe { (*__p).add(__n as usize) };
     };
-    tmp = unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } >> 31 - 24;
+    tmp = unsafe { *unsafe { in__1.offset(7 as isize) } } - base >> 31 - 24;
     length = (32 / 8 - (32 - 24) / 8) as u32;
     unsafe {
         __builtin___memcpy_chk(
@@ -8785,35 +8785,35 @@ extern "C" fn pack1_x(base: u32, in__1: *const u32, out: *mut u8, length: u32) -
             if length == 0 as u32 {
                 return 0 as u32;
             }
-            tmp = unsafe { *unsafe { in__1.offset(0 as isize) } } - base << 0;
+            tmp = unsafe { (*unsafe { in__1.offset(0 as isize) }).wrapping_sub(base) } << 0;
             if length == 1 as u32 {
                 break '__b7;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(1 as isize) } } - base << 1;
+            tmp |= unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } << 1;
             if length == 2 as u32 {
                 break '__b7;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(2 as isize) } } - base << 2;
+            tmp |= unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } << 2;
             if length == 3 as u32 {
                 break '__b7;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(3 as isize) } } - base << 3;
+            tmp |= unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } << 3;
             if length == 4 as u32 {
                 break '__b7;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(4 as isize) } } - base << 4;
+            tmp |= unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } << 4;
             if length == 5 as u32 {
                 break '__b7;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(5 as isize) } } - base << 5;
+            tmp |= unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } << 5;
             if length == 6 as u32 {
                 break '__b7;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(6 as isize) } } - base << 6;
+            tmp |= unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } << 6;
             if length == 7 as u32 {
                 break '__b7;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(7 as isize) } } - base << 7;
+            tmp |= unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } << 7;
             if length == 8 as u32 {
                 break '__b7;
             }
@@ -8823,7 +8823,7 @@ extern "C" fn pack1_x(base: u32, in__1: *const u32, out: *mut u8, length: u32) -
             break '__b7;
         }
     }
-    remaining = (length * 1 as u32 + 7 as u32) / 8 as u32 % 4 as u32;
+    remaining = length.wrapping_mul(1 as u32).wrapping_add(7 as u32) / 8 as u32 % 4 as u32;
     if remaining == 0 as u32 {
         remaining = 4 as u32;
     }
@@ -8835,7 +8835,7 @@ extern "C" fn pack1_x(base: u32, in__1: *const u32, out: *mut u8, length: u32) -
             unsafe { __builtin_object_size(out as *const (), 0) },
         )
     };
-    return (length * 1 as u32 + 7 as u32) / 8 as u32;
+    return length.wrapping_mul(1 as u32).wrapping_add(7 as u32) / 8 as u32;
 }
 
 extern "C" fn pack2_x(base: u32, in__1: *const u32, out: *mut u8, length: u32) -> u32 {
@@ -8846,7 +8846,7 @@ extern "C" fn pack2_x(base: u32, in__1: *const u32, out: *mut u8, length: u32) -
             if length == 0 as u32 {
                 return 0 as u32;
             }
-            tmp = unsafe { *unsafe { in__1.offset(0 as isize) } } - base << 0;
+            tmp = unsafe { (*unsafe { in__1.offset(0 as isize) }).wrapping_sub(base) } << 0;
             if length == 1 as u32 {
                 break '__b8;
             }
@@ -8870,11 +8870,11 @@ extern "C" fn pack2_x(base: u32, in__1: *const u32, out: *mut u8, length: u32) -
             if length == 6 as u32 {
                 break '__b8;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } << 12;
+            tmp |= unsafe { *unsafe { in__1.offset(6 as isize) } } - base << 12;
             if length == 7 as u32 {
                 break '__b8;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } << 14;
+            tmp |= unsafe { *unsafe { in__1.offset(7 as isize) } } - base << 14;
             if length == 8 as u32 {
                 break '__b8;
             }
@@ -8884,7 +8884,7 @@ extern "C" fn pack2_x(base: u32, in__1: *const u32, out: *mut u8, length: u32) -
             break '__b8;
         }
     }
-    remaining = length.wrapping_mul(2 as u32).wrapping_add(7 as u32) / 8 as u32 % 4 as u32;
+    remaining = (length * 2 as u32 + 7 as u32) / 8 as u32 % 4 as u32;
     if remaining == 0 as u32 {
         remaining = 4 as u32;
     }
@@ -8896,7 +8896,7 @@ extern "C" fn pack2_x(base: u32, in__1: *const u32, out: *mut u8, length: u32) -
             unsafe { __builtin_object_size(out as *const (), 0) },
         )
     };
-    return length.wrapping_mul(2 as u32).wrapping_add(7 as u32) / 8 as u32;
+    return (length * 2 as u32 + 7 as u32) / 8 as u32;
 }
 
 extern "C" fn pack3_x(base: u32, in__1: *const u32, out: *mut u8, length: u32) -> u32 {
@@ -8907,19 +8907,19 @@ extern "C" fn pack3_x(base: u32, in__1: *const u32, out: *mut u8, length: u32) -
             if length == 0 as u32 {
                 return 0 as u32;
             }
-            tmp = unsafe { (*unsafe { in__1.offset(0 as isize) }).wrapping_sub(base) } << 0;
+            tmp = unsafe { *unsafe { in__1.offset(0 as isize) } } - base << 0;
             if length == 1 as u32 {
                 break '__b9;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } << 3;
+            tmp |= unsafe { *unsafe { in__1.offset(1 as isize) } } - base << 3;
             if length == 2 as u32 {
                 break '__b9;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } << 6;
+            tmp |= unsafe { *unsafe { in__1.offset(2 as isize) } } - base << 6;
             if length == 3 as u32 {
                 break '__b9;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } << 9;
+            tmp |= unsafe { *unsafe { in__1.offset(3 as isize) } } - base << 9;
             if length == 4 as u32 {
                 break '__b9;
             }
@@ -8996,7 +8996,7 @@ extern "C" fn pack4_x(base: u32, in__1: *const u32, out: *mut u8, length: u32) -
             if length == 7 as u32 {
                 break '__b10;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } << 28;
+            tmp |= unsafe { *unsafe { in__1.offset(7 as isize) } } - base << 28;
             if length == 8 as u32 {
                 break '__b10;
             }
@@ -9006,7 +9006,7 @@ extern "C" fn pack4_x(base: u32, in__1: *const u32, out: *mut u8, length: u32) -
             break '__b10;
         }
     }
-    remaining = length.wrapping_mul(4 as u32).wrapping_add(7 as u32) / 8 as u32 % 4 as u32;
+    remaining = (length * 4 as u32 + 7 as u32) / 8 as u32 % 4 as u32;
     if remaining == 0 as u32 {
         remaining = 4 as u32;
     }
@@ -9018,7 +9018,7 @@ extern "C" fn pack4_x(base: u32, in__1: *const u32, out: *mut u8, length: u32) -
             unsafe { __builtin_object_size(out as *const (), 0) },
         )
     };
-    return length.wrapping_mul(4 as u32).wrapping_add(7 as u32) / 8 as u32;
+    return (length * 4 as u32 + 7 as u32) / 8 as u32;
 }
 
 extern "C" fn pack5_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u32) -> u32 {
@@ -9029,11 +9029,11 @@ extern "C" fn pack5_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u3
             if length == 0 as u32 {
                 return 0 as u32;
             }
-            tmp = unsafe { (*unsafe { in__1.offset(0 as isize) }).wrapping_sub(base) } << 0;
+            tmp = unsafe { *unsafe { in__1.offset(0 as isize) } } - base << 0;
             if length == 1 as u32 {
                 break '__b11;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } << 5;
+            tmp |= unsafe { *unsafe { in__1.offset(1 as isize) } } - base << 5;
             if length == 2 as u32 {
                 break '__b11;
             }
@@ -9105,34 +9105,34 @@ extern "C" fn pack6_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u3
             if length == 2 as u32 {
                 break '__b12;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } << 12;
+            tmp |= unsafe { *unsafe { in__1.offset(2 as isize) } } - base << 12;
             if length == 3 as u32 {
                 break '__b12;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } << 18;
+            tmp |= unsafe { *unsafe { in__1.offset(3 as isize) } } - base << 18;
             if length == 4 as u32 {
                 break '__b12;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } << 24;
+            tmp |= unsafe { *unsafe { in__1.offset(4 as isize) } } - base << 24;
             if length == 5 as u32 {
                 break '__b12;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } << 30;
+            tmp |= unsafe { *unsafe { in__1.offset(5 as isize) } } - base << 30;
             unsafe { *(out as *mut u32) = tmp };
             {
                 let __n = core::mem::size_of::<u32>();
                 let __p = &mut out;
                 *__p = unsafe { (*__p).add(__n as usize) };
             };
-            tmp = unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } >> 6 - 4;
+            tmp = unsafe { *unsafe { in__1.offset(5 as isize) } } - base >> 6 - 4;
             if length == 6 as u32 {
                 break '__b12;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } << 4;
+            tmp |= unsafe { *unsafe { in__1.offset(6 as isize) } } - base << 4;
             if length == 7 as u32 {
                 break '__b12;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } << 10;
+            tmp |= unsafe { *unsafe { in__1.offset(7 as isize) } } - base << 10;
             if length == 8 as u32 {
                 break '__b12;
             }
@@ -9142,7 +9142,7 @@ extern "C" fn pack6_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u3
             break '__b12;
         }
     }
-    remaining = length.wrapping_mul(6 as u32).wrapping_add(7 as u32) / 8 as u32 % 4 as u32;
+    remaining = (length * 6 as u32 + 7 as u32) / 8 as u32 % 4 as u32;
     if remaining == 0 as u32 {
         remaining = 4 as u32;
     }
@@ -9154,7 +9154,7 @@ extern "C" fn pack6_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u3
             unsafe { __builtin_object_size(out as *const (), 0) },
         )
     };
-    return length.wrapping_mul(6 as u32).wrapping_add(7 as u32) / 8 as u32;
+    return (length * 6 as u32 + 7 as u32) / 8 as u32;
 }
 
 extern "C" fn pack7_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u32) -> u32 {
@@ -9165,11 +9165,11 @@ extern "C" fn pack7_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u3
             if length == 0 as u32 {
                 return 0 as u32;
             }
-            tmp = unsafe { (*unsafe { in__1.offset(0 as isize) }).wrapping_sub(base) } << 0;
+            tmp = unsafe { *unsafe { in__1.offset(0 as isize) } } - base << 0;
             if length == 1 as u32 {
                 break '__b13;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } << 7;
+            tmp |= unsafe { *unsafe { in__1.offset(1 as isize) } } - base << 7;
             if length == 2 as u32 {
                 break '__b13;
             }
@@ -9319,30 +9319,30 @@ extern "C" fn pack9_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u3
                 let __p = &mut out;
                 *__p = unsafe { (*__p).add(__n as usize) };
             };
-            tmp = unsafe { *unsafe { in__1.offset(3 as isize) } } - base >> 9 - 4;
+            tmp = unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } >> 9 - 4;
             if length == 4 as u32 {
                 break '__b15;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(4 as isize) } } - base << 4;
+            tmp |= unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } << 4;
             if length == 5 as u32 {
                 break '__b15;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(5 as isize) } } - base << 13;
+            tmp |= unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } << 13;
             if length == 6 as u32 {
                 break '__b15;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(6 as isize) } } - base << 22;
+            tmp |= unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } << 22;
             if length == 7 as u32 {
                 break '__b15;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(7 as isize) } } - base << 31;
+            tmp |= unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } << 31;
             unsafe { *(out as *mut u32) = tmp };
             {
                 let __n = core::mem::size_of::<u32>();
                 let __p = &mut out;
                 *__p = unsafe { (*__p).add(__n as usize) };
             };
-            tmp = unsafe { *unsafe { in__1.offset(7 as isize) } } - base >> 9 - 8;
+            tmp = unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } >> 9 - 8;
             if length == 8 as u32 {
                 break '__b15;
             }
@@ -9352,7 +9352,7 @@ extern "C" fn pack9_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u3
             break '__b15;
         }
     }
-    remaining = (length * 9 as u32 + 7 as u32) / 8 as u32 % 4 as u32;
+    remaining = length.wrapping_mul(9 as u32).wrapping_add(7 as u32) / 8 as u32 % 4 as u32;
     if remaining == 0 as u32 {
         remaining = 4 as u32;
     }
@@ -9364,7 +9364,7 @@ extern "C" fn pack9_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u3
             unsafe { __builtin_object_size(out as *const (), 0) },
         )
     };
-    return (length * 9 as u32 + 7 as u32) / 8 as u32;
+    return length.wrapping_mul(9 as u32).wrapping_add(7 as u32) / 8 as u32;
 }
 
 extern "C" fn pack10_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u32) -> u32 {
@@ -9375,49 +9375,49 @@ extern "C" fn pack10_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u
             if length == 0 as u32 {
                 return 0 as u32;
             }
-            tmp = unsafe { *unsafe { in__1.offset(0 as isize) } } - base << 0;
+            tmp = unsafe { (*unsafe { in__1.offset(0 as isize) }).wrapping_sub(base) } << 0;
             if length == 1 as u32 {
                 break '__b16;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(1 as isize) } } - base << 10;
+            tmp |= unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } << 10;
             if length == 2 as u32 {
                 break '__b16;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(2 as isize) } } - base << 20;
+            tmp |= unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } << 20;
             if length == 3 as u32 {
                 break '__b16;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(3 as isize) } } - base << 30;
+            tmp |= unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } << 30;
             unsafe { *(out as *mut u32) = tmp };
             {
                 let __n = core::mem::size_of::<u32>();
                 let __p = &mut out;
                 *__p = unsafe { (*__p).add(__n as usize) };
             };
-            tmp = unsafe { *unsafe { in__1.offset(3 as isize) } } - base >> 10 - 8;
+            tmp = unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } >> 10 - 8;
             if length == 4 as u32 {
                 break '__b16;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(4 as isize) } } - base << 8;
+            tmp |= unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } << 8;
             if length == 5 as u32 {
                 break '__b16;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(5 as isize) } } - base << 18;
+            tmp |= unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } << 18;
             if length == 6 as u32 {
                 break '__b16;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(6 as isize) } } - base << 28;
+            tmp |= unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } << 28;
             unsafe { *(out as *mut u32) = tmp };
             {
                 let __n = core::mem::size_of::<u32>();
                 let __p = &mut out;
                 *__p = unsafe { (*__p).add(__n as usize) };
             };
-            tmp = unsafe { *unsafe { in__1.offset(6 as isize) } } - base >> 10 - 6;
+            tmp = unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } >> 10 - 6;
             if length == 7 as u32 {
                 break '__b16;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(7 as isize) } } - base << 6;
+            tmp |= unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } << 6;
             if length == 8 as u32 {
                 break '__b16;
             }
@@ -9427,7 +9427,7 @@ extern "C" fn pack10_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u
             break '__b16;
         }
     }
-    remaining = (length * 10 as u32 + 7 as u32) / 8 as u32 % 4 as u32;
+    remaining = length.wrapping_mul(10 as u32).wrapping_add(7 as u32) / 8 as u32 % 4 as u32;
     if remaining == 0 as u32 {
         remaining = 4 as u32;
     }
@@ -9439,7 +9439,7 @@ extern "C" fn pack10_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u
             unsafe { __builtin_object_size(out as *const (), 0) },
         )
     };
-    return (length * 10 as u32 + 7 as u32) / 8 as u32;
+    return length.wrapping_mul(10 as u32).wrapping_add(7 as u32) / 8 as u32;
 }
 
 extern "C" fn pack11_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u32) -> u32 {
@@ -9525,49 +9525,49 @@ extern "C" fn pack12_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u
             if length == 0 as u32 {
                 return 0 as u32;
             }
-            tmp = unsafe { (*unsafe { in__1.offset(0 as isize) }).wrapping_sub(base) } << 0;
+            tmp = unsafe { *unsafe { in__1.offset(0 as isize) } } - base << 0;
             if length == 1 as u32 {
                 break '__b18;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } << 12;
+            tmp |= unsafe { *unsafe { in__1.offset(1 as isize) } } - base << 12;
             if length == 2 as u32 {
                 break '__b18;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } << 24;
+            tmp |= unsafe { *unsafe { in__1.offset(2 as isize) } } - base << 24;
             unsafe { *(out as *mut u32) = tmp };
             {
                 let __n = core::mem::size_of::<u32>();
                 let __p = &mut out;
                 *__p = unsafe { (*__p).add(__n as usize) };
             };
-            tmp = unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } >> 12 - 4;
+            tmp = unsafe { *unsafe { in__1.offset(2 as isize) } } - base >> 12 - 4;
             if length == 3 as u32 {
                 break '__b18;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } << 4;
+            tmp |= unsafe { *unsafe { in__1.offset(3 as isize) } } - base << 4;
             if length == 4 as u32 {
                 break '__b18;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } << 16;
+            tmp |= unsafe { *unsafe { in__1.offset(4 as isize) } } - base << 16;
             if length == 5 as u32 {
                 break '__b18;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } << 28;
+            tmp |= unsafe { *unsafe { in__1.offset(5 as isize) } } - base << 28;
             unsafe { *(out as *mut u32) = tmp };
             {
                 let __n = core::mem::size_of::<u32>();
                 let __p = &mut out;
                 *__p = unsafe { (*__p).add(__n as usize) };
             };
-            tmp = unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } >> 12 - 8;
+            tmp = unsafe { *unsafe { in__1.offset(5 as isize) } } - base >> 12 - 8;
             if length == 6 as u32 {
                 break '__b18;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } << 8;
+            tmp |= unsafe { *unsafe { in__1.offset(6 as isize) } } - base << 8;
             if length == 7 as u32 {
                 break '__b18;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } << 20;
+            tmp |= unsafe { *unsafe { in__1.offset(7 as isize) } } - base << 20;
             if length == 8 as u32 {
                 break '__b18;
             }
@@ -9577,7 +9577,7 @@ extern "C" fn pack12_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u
             break '__b18;
         }
     }
-    remaining = length.wrapping_mul(12 as u32).wrapping_add(7 as u32) / 8 as u32 % 4 as u32;
+    remaining = (length * 12 as u32 + 7 as u32) / 8 as u32 % 4 as u32;
     if remaining == 0 as u32 {
         remaining = 4 as u32;
     }
@@ -9589,7 +9589,7 @@ extern "C" fn pack12_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u
             unsafe { __builtin_object_size(out as *const (), 0) },
         )
     };
-    return length.wrapping_mul(12 as u32).wrapping_add(7 as u32) / 8 as u32;
+    return (length * 12 as u32 + 7 as u32) / 8 as u32;
 }
 
 extern "C" fn pack13_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u32) -> u32 {
@@ -9634,22 +9634,22 @@ extern "C" fn pack13_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u
             if length == 5 as u32 {
                 break '__b19;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(5 as isize) } } - base << 1;
+            tmp |= unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } << 1;
             if length == 6 as u32 {
                 break '__b19;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(6 as isize) } } - base << 14;
+            tmp |= unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } << 14;
             if length == 7 as u32 {
                 break '__b19;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(7 as isize) } } - base << 27;
+            tmp |= unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } << 27;
             unsafe { *(out as *mut u32) = tmp };
             {
                 let __n = core::mem::size_of::<u32>();
                 let __p = &mut out;
                 *__p = unsafe { (*__p).add(__n as usize) };
             };
-            tmp = unsafe { *unsafe { in__1.offset(7 as isize) } } - base >> 13 - 8;
+            tmp = unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } >> 13 - 8;
             if length == 8 as u32 {
                 break '__b19;
             }
@@ -9659,7 +9659,7 @@ extern "C" fn pack13_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u
             break '__b19;
         }
     }
-    remaining = (length * 13 as u32 + 7 as u32) / 8 as u32 % 4 as u32;
+    remaining = length.wrapping_mul(13 as u32).wrapping_add(7 as u32) / 8 as u32 % 4 as u32;
     if remaining == 0 as u32 {
         remaining = 4 as u32;
     }
@@ -9671,7 +9671,7 @@ extern "C" fn pack13_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u
             unsafe { __builtin_object_size(out as *const (), 0) },
         )
     };
-    return (length * 13 as u32 + 7 as u32) / 8 as u32;
+    return length.wrapping_mul(13 as u32).wrapping_add(7 as u32) / 8 as u32;
 }
 
 extern "C" fn pack14_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u32) -> u32 {
@@ -9682,56 +9682,56 @@ extern "C" fn pack14_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u
             if length == 0 as u32 {
                 return 0 as u32;
             }
-            tmp = unsafe { *unsafe { in__1.offset(0 as isize) } } - base << 0;
+            tmp = unsafe { (*unsafe { in__1.offset(0 as isize) }).wrapping_sub(base) } << 0;
             if length == 1 as u32 {
                 break '__b20;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(1 as isize) } } - base << 14;
+            tmp |= unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } << 14;
             if length == 2 as u32 {
                 break '__b20;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(2 as isize) } } - base << 28;
+            tmp |= unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } << 28;
             unsafe { *(out as *mut u32) = tmp };
             {
                 let __n = core::mem::size_of::<u32>();
                 let __p = &mut out;
                 *__p = unsafe { (*__p).add(__n as usize) };
             };
-            tmp = unsafe { *unsafe { in__1.offset(2 as isize) } } - base >> 14 - 10;
+            tmp = unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } >> 14 - 10;
             if length == 3 as u32 {
                 break '__b20;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(3 as isize) } } - base << 10;
+            tmp |= unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } << 10;
             if length == 4 as u32 {
                 break '__b20;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(4 as isize) } } - base << 24;
+            tmp |= unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } << 24;
             unsafe { *(out as *mut u32) = tmp };
             {
                 let __n = core::mem::size_of::<u32>();
                 let __p = &mut out;
                 *__p = unsafe { (*__p).add(__n as usize) };
             };
-            tmp = unsafe { *unsafe { in__1.offset(4 as isize) } } - base >> 14 - 6;
+            tmp = unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } >> 14 - 6;
             if length == 5 as u32 {
                 break '__b20;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(5 as isize) } } - base << 6;
+            tmp |= unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } << 6;
             if length == 6 as u32 {
                 break '__b20;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(6 as isize) } } - base << 20;
+            tmp |= unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } << 20;
             unsafe { *(out as *mut u32) = tmp };
             {
                 let __n = core::mem::size_of::<u32>();
                 let __p = &mut out;
                 *__p = unsafe { (*__p).add(__n as usize) };
             };
-            tmp = unsafe { *unsafe { in__1.offset(6 as isize) } } - base >> 14 - 2;
+            tmp = unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } >> 14 - 2;
             if length == 7 as u32 {
                 break '__b20;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(7 as isize) } } - base << 2;
+            tmp |= unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } << 2;
             if length == 8 as u32 {
                 break '__b20;
             }
@@ -9741,7 +9741,7 @@ extern "C" fn pack14_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u
             break '__b20;
         }
     }
-    remaining = (length * 14 as u32 + 7 as u32) / 8 as u32 % 4 as u32;
+    remaining = length.wrapping_mul(14 as u32).wrapping_add(7 as u32) / 8 as u32 % 4 as u32;
     if remaining == 0 as u32 {
         remaining = 4 as u32;
     }
@@ -9753,7 +9753,7 @@ extern "C" fn pack14_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u
             unsafe { __builtin_object_size(out as *const (), 0) },
         )
     };
-    return (length * 14 as u32 + 7 as u32) / 8 as u32;
+    return length.wrapping_mul(14 as u32).wrapping_add(7 as u32) / 8 as u32;
 }
 
 extern "C" fn pack15_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u32) -> u32 {
@@ -9764,37 +9764,37 @@ extern "C" fn pack15_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u
             if length == 0 as u32 {
                 return 0 as u32;
             }
-            tmp = unsafe { *unsafe { in__1.offset(0 as isize) } } - base << 0;
+            tmp = unsafe { (*unsafe { in__1.offset(0 as isize) }).wrapping_sub(base) } << 0;
             if length == 1 as u32 {
                 break '__b21;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(1 as isize) } } - base << 15;
+            tmp |= unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } << 15;
             if length == 2 as u32 {
                 break '__b21;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(2 as isize) } } - base << 30;
+            tmp |= unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } << 30;
             unsafe { *(out as *mut u32) = tmp };
             {
                 let __n = core::mem::size_of::<u32>();
                 let __p = &mut out;
                 *__p = unsafe { (*__p).add(__n as usize) };
             };
-            tmp = unsafe { *unsafe { in__1.offset(2 as isize) } } - base >> 15 - 13;
+            tmp = unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } >> 15 - 13;
             if length == 3 as u32 {
                 break '__b21;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(3 as isize) } } - base << 13;
+            tmp |= unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } << 13;
             if length == 4 as u32 {
                 break '__b21;
             }
-            tmp |= unsafe { *unsafe { in__1.offset(4 as isize) } } - base << 28;
+            tmp |= unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } << 28;
             unsafe { *(out as *mut u32) = tmp };
             {
                 let __n = core::mem::size_of::<u32>();
                 let __p = &mut out;
                 *__p = unsafe { (*__p).add(__n as usize) };
             };
-            tmp = unsafe { *unsafe { in__1.offset(4 as isize) } } - base >> 15 - 11;
+            tmp = unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } >> 15 - 11;
             if length == 5 as u32 {
                 break '__b21;
             }
@@ -10473,70 +10473,70 @@ extern "C" fn pack23_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u
             if length == 0 as u32 {
                 return 0 as u32;
             }
-            tmp = unsafe { (*unsafe { in__1.offset(0 as isize) }).wrapping_sub(base) } << 0;
+            tmp = unsafe { *unsafe { in__1.offset(0 as isize) } } - base << 0;
             if length == 1 as u32 {
                 break '__b29;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } << 23;
+            tmp |= unsafe { *unsafe { in__1.offset(1 as isize) } } - base << 23;
             unsafe { *(out as *mut u32) = tmp };
             {
                 let __n = core::mem::size_of::<u32>();
                 let __p = &mut out;
                 *__p = unsafe { (*__p).add(__n as usize) };
             };
-            tmp = unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } >> 23 - 14;
+            tmp = unsafe { *unsafe { in__1.offset(1 as isize) } } - base >> 23 - 14;
             if length == 2 as u32 {
                 break '__b29;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } << 14;
+            tmp |= unsafe { *unsafe { in__1.offset(2 as isize) } } - base << 14;
             unsafe { *(out as *mut u32) = tmp };
             {
                 let __n = core::mem::size_of::<u32>();
                 let __p = &mut out;
                 *__p = unsafe { (*__p).add(__n as usize) };
             };
-            tmp = unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } >> 23 - 5;
+            tmp = unsafe { *unsafe { in__1.offset(2 as isize) } } - base >> 23 - 5;
             if length == 3 as u32 {
                 break '__b29;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } << 5;
+            tmp |= unsafe { *unsafe { in__1.offset(3 as isize) } } - base << 5;
             if length == 4 as u32 {
                 break '__b29;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } << 28;
+            tmp |= unsafe { *unsafe { in__1.offset(4 as isize) } } - base << 28;
             unsafe { *(out as *mut u32) = tmp };
             {
                 let __n = core::mem::size_of::<u32>();
                 let __p = &mut out;
                 *__p = unsafe { (*__p).add(__n as usize) };
             };
-            tmp = unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } >> 23 - 19;
+            tmp = unsafe { *unsafe { in__1.offset(4 as isize) } } - base >> 23 - 19;
             if length == 5 as u32 {
                 break '__b29;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } << 19;
+            tmp |= unsafe { *unsafe { in__1.offset(5 as isize) } } - base << 19;
             unsafe { *(out as *mut u32) = tmp };
             {
                 let __n = core::mem::size_of::<u32>();
                 let __p = &mut out;
                 *__p = unsafe { (*__p).add(__n as usize) };
             };
-            tmp = unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } >> 23 - 10;
+            tmp = unsafe { *unsafe { in__1.offset(5 as isize) } } - base >> 23 - 10;
             if length == 6 as u32 {
                 break '__b29;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } << 10;
+            tmp |= unsafe { *unsafe { in__1.offset(6 as isize) } } - base << 10;
             unsafe { *(out as *mut u32) = tmp };
             {
                 let __n = core::mem::size_of::<u32>();
                 let __p = &mut out;
                 *__p = unsafe { (*__p).add(__n as usize) };
             };
-            tmp = unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } >> 23 - 1;
+            tmp = unsafe { *unsafe { in__1.offset(6 as isize) } } - base >> 23 - 1;
             if length == 7 as u32 {
                 break '__b29;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } << 1;
+            tmp |= unsafe { *unsafe { in__1.offset(7 as isize) } } - base << 1;
             if length == 8 as u32 {
                 break '__b29;
             }
@@ -10546,7 +10546,7 @@ extern "C" fn pack23_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u
             break '__b29;
         }
     }
-    remaining = length.wrapping_mul(23 as u32).wrapping_add(7 as u32) / 8 as u32 % 4 as u32;
+    remaining = (length * 23 as u32 + 7 as u32) / 8 as u32 % 4 as u32;
     if remaining == 0 as u32 {
         remaining = 4 as u32;
     }
@@ -10558,7 +10558,7 @@ extern "C" fn pack23_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u
             unsafe { __builtin_object_size(out as *const (), 0) },
         )
     };
-    return length.wrapping_mul(23 as u32).wrapping_add(7 as u32) / 8 as u32;
+    return (length * 23 as u32 + 7 as u32) / 8 as u32;
 }
 
 extern "C" fn pack24_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u32) -> u32 {
@@ -10569,33 +10569,33 @@ extern "C" fn pack24_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u
             if length == 0 as u32 {
                 return 0 as u32;
             }
-            tmp = unsafe { (*unsafe { in__1.offset(0 as isize) }).wrapping_sub(base) } << 0;
+            tmp = unsafe { *unsafe { in__1.offset(0 as isize) } } - base << 0;
             if length == 1 as u32 {
                 break '__b30;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } << 24;
+            tmp |= unsafe { *unsafe { in__1.offset(1 as isize) } } - base << 24;
             unsafe { *(out as *mut u32) = tmp };
             {
                 let __n = core::mem::size_of::<u32>();
                 let __p = &mut out;
                 *__p = unsafe { (*__p).add(__n as usize) };
             };
-            tmp = unsafe { (*unsafe { in__1.offset(1 as isize) }).wrapping_sub(base) } >> 24 - 16;
+            tmp = unsafe { *unsafe { in__1.offset(1 as isize) } } - base >> 24 - 16;
             if length == 2 as u32 {
                 break '__b30;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } << 16;
+            tmp |= unsafe { *unsafe { in__1.offset(2 as isize) } } - base << 16;
             unsafe { *(out as *mut u32) = tmp };
             {
                 let __n = core::mem::size_of::<u32>();
                 let __p = &mut out;
                 *__p = unsafe { (*__p).add(__n as usize) };
             };
-            tmp = unsafe { (*unsafe { in__1.offset(2 as isize) }).wrapping_sub(base) } >> 24 - 8;
+            tmp = unsafe { *unsafe { in__1.offset(2 as isize) } } - base >> 24 - 8;
             if length == 3 as u32 {
                 break '__b30;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(3 as isize) }).wrapping_sub(base) } << 8;
+            tmp |= unsafe { *unsafe { in__1.offset(3 as isize) } } - base << 8;
             if length == 4 as u32 {
                 break '__b30;
             }
@@ -10605,33 +10605,33 @@ extern "C" fn pack24_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u
                 let __p = &mut out;
                 *__p = unsafe { (*__p).add(__n as usize) };
             };
-            tmp = unsafe { (*unsafe { in__1.offset(4 as isize) }).wrapping_sub(base) } << 0;
+            tmp = unsafe { *unsafe { in__1.offset(4 as isize) } } - base << 0;
             if length == 5 as u32 {
                 break '__b30;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } << 24;
+            tmp |= unsafe { *unsafe { in__1.offset(5 as isize) } } - base << 24;
             unsafe { *(out as *mut u32) = tmp };
             {
                 let __n = core::mem::size_of::<u32>();
                 let __p = &mut out;
                 *__p = unsafe { (*__p).add(__n as usize) };
             };
-            tmp = unsafe { (*unsafe { in__1.offset(5 as isize) }).wrapping_sub(base) } >> 24 - 16;
+            tmp = unsafe { *unsafe { in__1.offset(5 as isize) } } - base >> 24 - 16;
             if length == 6 as u32 {
                 break '__b30;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } << 16;
+            tmp |= unsafe { *unsafe { in__1.offset(6 as isize) } } - base << 16;
             unsafe { *(out as *mut u32) = tmp };
             {
                 let __n = core::mem::size_of::<u32>();
                 let __p = &mut out;
                 *__p = unsafe { (*__p).add(__n as usize) };
             };
-            tmp = unsafe { (*unsafe { in__1.offset(6 as isize) }).wrapping_sub(base) } >> 24 - 8;
+            tmp = unsafe { *unsafe { in__1.offset(6 as isize) } } - base >> 24 - 8;
             if length == 7 as u32 {
                 break '__b30;
             }
-            tmp |= unsafe { (*unsafe { in__1.offset(7 as isize) }).wrapping_sub(base) } << 8;
+            tmp |= unsafe { *unsafe { in__1.offset(7 as isize) } } - base << 8;
             if length == 8 as u32 {
                 break '__b30;
             }
@@ -10641,7 +10641,7 @@ extern "C" fn pack24_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u
             break '__b30;
         }
     }
-    remaining = length.wrapping_mul(24 as u32).wrapping_add(7 as u32) / 8 as u32 % 4 as u32;
+    remaining = (length * 24 as u32 + 7 as u32) / 8 as u32 % 4 as u32;
     if remaining == 0 as u32 {
         remaining = 4 as u32;
     }
@@ -10653,7 +10653,7 @@ extern "C" fn pack24_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u
             unsafe { __builtin_object_size(out as *const (), 0) },
         )
     };
-    return length.wrapping_mul(24 as u32).wrapping_add(7 as u32) / 8 as u32;
+    return (length * 24 as u32 + 7 as u32) / 8 as u32;
 }
 
 extern "C" fn pack25_x(base: u32, in__1: *const u32, mut out: *mut u8, length: u32) -> u32 {
@@ -19618,7 +19618,7 @@ extern "C" fn unpack20_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 20 - 16;
-    unsafe { *unsafe { out.offset(11 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
         let __p = &mut in32;
@@ -19627,9 +19627,10 @@ extern "C" fn unpack20_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 20 - 4;
-    unsafe { *unsafe { out.offset(12 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
     unsafe {
-        *unsafe { out.offset(13 as isize) } = base + (unsafe { *in32 } >> 4 & 1048575 as u32)
+        *unsafe { out.offset(13 as isize) } =
+            base.wrapping_add(unsafe { *in32 } >> 4 & 1048575 as u32)
     };
     tmp = unsafe { *in32 } >> 24;
     {
@@ -19639,9 +19640,10 @@ extern "C" fn unpack20_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 20 - 12;
-    unsafe { *unsafe { out.offset(14 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
     unsafe {
-        *unsafe { out.offset(15 as isize) } = base + (unsafe { *in32 } >> 12 & 1048575 as u32)
+        *unsafe { out.offset(15 as isize) } =
+            base.wrapping_add(unsafe { *in32 } >> 12 & 1048575 as u32)
     };
     return 40 as u32;
 }
@@ -19664,10 +19666,9 @@ extern "C" fn unpack21_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 21 - 10;
-    unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
+    unsafe { *unsafe { out.offset(1 as isize) } = base + tmp };
     unsafe {
-        *unsafe { out.offset(2 as isize) } =
-            base.wrapping_add(unsafe { *in32 } >> 10 & 2097151 as u32)
+        *unsafe { out.offset(2 as isize) } = base + (unsafe { *in32 } >> 10 & 2097151 as u32)
     };
     tmp = unsafe { *in32 } >> 31;
     {
@@ -19677,7 +19678,7 @@ extern "C" fn unpack21_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 21 - 20;
-    unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
+    unsafe { *unsafe { out.offset(3 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 20;
     {
         let __p = &mut in32;
@@ -20027,8 +20028,7 @@ extern "C" fn unpack24_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         let _ = tmp;
     };
     unsafe {
-        *unsafe { out.offset(0 as isize) } =
-            base.wrapping_add(unsafe { *in32 } >> 0 & 16777215 as u32)
+        *unsafe { out.offset(0 as isize) } = base + (unsafe { *in32 } >> 0 & 16777215 as u32)
     };
     tmp = unsafe { *in32 } >> 24;
     {
@@ -20229,7 +20229,8 @@ extern "C" fn unpack25_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     tmp |= unsafe { *in32 } % (1 << 1) << 25 - 1;
     unsafe { *unsafe { out.offset(8 as isize) } = base.wrapping_add(tmp) };
     unsafe {
-        *unsafe { out.offset(9 as isize) } = base + (unsafe { *in32 } >> 1 & 33554431 as u32)
+        *unsafe { out.offset(9 as isize) } =
+            base.wrapping_add(unsafe { *in32 } >> 1 & 33554431 as u32)
     };
     tmp = unsafe { *in32 } >> 26;
     {
@@ -20239,7 +20240,7 @@ extern "C" fn unpack25_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 19) << 25 - 19;
-    unsafe { *unsafe { out.offset(10 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 19;
     {
         let __p = &mut in32;
@@ -20248,7 +20249,7 @@ extern "C" fn unpack25_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 25 - 12;
-    unsafe { *unsafe { out.offset(11 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 12;
     {
         let __p = &mut in32;
@@ -20300,7 +20301,7 @@ extern "C" fn unpack26_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 26 - 20;
-    unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
+    unsafe { *unsafe { out.offset(1 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 20;
     {
         let __p = &mut in32;
@@ -20389,7 +20390,7 @@ extern "C" fn unpack26_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 26 - 18;
-    unsafe { *unsafe { out.offset(12 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 18;
     {
         let __p = &mut in32;
@@ -20421,8 +20422,7 @@ extern "C" fn unpack27_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         let _ = tmp;
     };
     unsafe {
-        *unsafe { out.offset(0 as isize) } =
-            base.wrapping_add(unsafe { *in32 } >> 0 & 134217727 as u32)
+        *unsafe { out.offset(0 as isize) } = base + (unsafe { *in32 } >> 0 & 134217727 as u32)
     };
     tmp = unsafe { *in32 } >> 27;
     {
@@ -20432,7 +20432,7 @@ extern "C" fn unpack27_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 22) << 27 - 22;
-    unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
+    unsafe { *unsafe { out.offset(1 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 22;
     {
         let __p = &mut in32;
@@ -20441,7 +20441,7 @@ extern "C" fn unpack27_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 17) << 27 - 17;
-    unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
+    unsafe { *unsafe { out.offset(2 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 17;
     {
         let __p = &mut in32;
@@ -20450,7 +20450,7 @@ extern "C" fn unpack27_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 27 - 12;
-    unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
+    unsafe { *unsafe { out.offset(3 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 12;
     {
         let __p = &mut in32;
@@ -20548,7 +20548,7 @@ extern "C" fn unpack27_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 27 - 16;
-    unsafe { *unsafe { out.offset(15 as isize) } = base.wrapping_add(tmp) };
+    unsafe { *unsafe { out.offset(15 as isize) } = base + tmp };
     return 54 as u32;
 }
 
@@ -20570,7 +20570,7 @@ extern "C" fn unpack28_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 24) << 28 - 24;
-    unsafe { *unsafe { out.offset(1 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 24;
     {
         let __p = &mut in32;
@@ -20579,7 +20579,7 @@ extern "C" fn unpack28_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 28 - 20;
-    unsafe { *unsafe { out.offset(2 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 20;
     {
         let __p = &mut in32;
@@ -20727,7 +20727,7 @@ extern "C" fn unpack29_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 29 - 20;
-    unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
+    unsafe { *unsafe { out.offset(3 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 20;
     {
         let __p = &mut in32;
@@ -20736,7 +20736,7 @@ extern "C" fn unpack29_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 17) << 29 - 17;
-    unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
+    unsafe { *unsafe { out.offset(4 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 17;
     {
         let __p = &mut in32;
@@ -20745,7 +20745,7 @@ extern "C" fn unpack29_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 29 - 14;
-    unsafe { *unsafe { out.offset(5 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 14;
     {
         let __p = &mut in32;
@@ -20754,7 +20754,7 @@ extern "C" fn unpack29_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 11) << 29 - 11;
-    unsafe { *unsafe { out.offset(6 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 11;
     {
         let __p = &mut in32;
@@ -20841,8 +20841,7 @@ extern "C" fn unpack30_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         let _ = tmp;
     };
     unsafe {
-        *unsafe { out.offset(0 as isize) } =
-            base.wrapping_add(unsafe { *in32 } >> 0 & 1073741823 as u32)
+        *unsafe { out.offset(0 as isize) } = base + (unsafe { *in32 } >> 0 & 1073741823 as u32)
     };
     tmp = unsafe { *in32 } >> 30;
     {
@@ -20897,7 +20896,7 @@ extern "C" fn unpack30_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 30 - 18;
-    unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
+    unsafe { *unsafe { out.offset(6 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 18;
     {
         let __p = &mut in32;
@@ -20906,7 +20905,7 @@ extern "C" fn unpack30_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 30 - 16;
-    unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
+    unsafe { *unsafe { out.offset(7 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 16;
     {
         let __p = &mut in32;
@@ -20951,7 +20950,7 @@ extern "C" fn unpack30_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 30 - 6;
-    unsafe { *unsafe { out.offset(12 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 6;
     {
         let __p = &mut in32;
@@ -20960,7 +20959,7 @@ extern "C" fn unpack30_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 30 - 4;
-    unsafe { *unsafe { out.offset(13 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 4;
     {
         let __p = &mut in32;
@@ -20969,9 +20968,10 @@ extern "C" fn unpack30_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 30 - 2;
-    unsafe { *unsafe { out.offset(14 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
     unsafe {
-        *unsafe { out.offset(15 as isize) } = base + (unsafe { *in32 } >> 2 & 1073741823 as u32)
+        *unsafe { out.offset(15 as isize) } =
+            base.wrapping_add(unsafe { *in32 } >> 2 & 1073741823 as u32)
     };
     return 60 as u32;
 }
@@ -20983,7 +20983,8 @@ extern "C" fn unpack31_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         let _ = tmp;
     };
     unsafe {
-        *unsafe { out.offset(0 as isize) } = base + (unsafe { *in32 } >> 0 & 2147483647 as u32)
+        *unsafe { out.offset(0 as isize) } =
+            base.wrapping_add(unsafe { *in32 } >> 0 & 2147483647 as u32)
     };
     tmp = unsafe { *in32 } >> 31;
     {
@@ -20993,7 +20994,7 @@ extern "C" fn unpack31_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 30) << 31 - 30;
-    unsafe { *unsafe { out.offset(1 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 30;
     {
         let __p = &mut in32;
@@ -21002,7 +21003,7 @@ extern "C" fn unpack31_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 29) << 31 - 29;
-    unsafe { *unsafe { out.offset(2 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 29;
     {
         let __p = &mut in32;
@@ -21011,7 +21012,7 @@ extern "C" fn unpack31_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 28) << 31 - 28;
-    unsafe { *unsafe { out.offset(3 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 28;
     {
         let __p = &mut in32;
@@ -21020,7 +21021,7 @@ extern "C" fn unpack31_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 27) << 31 - 27;
-    unsafe { *unsafe { out.offset(4 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 27;
     {
         let __p = &mut in32;
@@ -21029,7 +21030,7 @@ extern "C" fn unpack31_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 26) << 31 - 26;
-    unsafe { *unsafe { out.offset(5 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 26;
     {
         let __p = &mut in32;
@@ -21038,7 +21039,7 @@ extern "C" fn unpack31_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 25) << 31 - 25;
-    unsafe { *unsafe { out.offset(6 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 25;
     {
         let __p = &mut in32;
@@ -21047,7 +21048,7 @@ extern "C" fn unpack31_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 24) << 31 - 24;
-    unsafe { *unsafe { out.offset(7 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 24;
     {
         let __p = &mut in32;
@@ -21056,7 +21057,7 @@ extern "C" fn unpack31_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 23) << 31 - 23;
-    unsafe { *unsafe { out.offset(8 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(8 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 23;
     {
         let __p = &mut in32;
@@ -21065,7 +21066,7 @@ extern "C" fn unpack31_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 22) << 31 - 22;
-    unsafe { *unsafe { out.offset(9 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 22;
     {
         let __p = &mut in32;
@@ -21092,7 +21093,7 @@ extern "C" fn unpack31_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 19) << 31 - 19;
-    unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
+    unsafe { *unsafe { out.offset(12 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 19;
     {
         let __p = &mut in32;
@@ -21101,7 +21102,7 @@ extern "C" fn unpack31_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 31 - 18;
-    unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
+    unsafe { *unsafe { out.offset(13 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 18;
     {
         let __p = &mut in32;
@@ -21110,7 +21111,7 @@ extern "C" fn unpack31_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 17) << 31 - 17;
-    unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
+    unsafe { *unsafe { out.offset(14 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 17;
     {
         let __p = &mut in32;
@@ -21119,7 +21120,7 @@ extern "C" fn unpack31_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 31 - 16;
-    unsafe { *unsafe { out.offset(15 as isize) } = base.wrapping_add(tmp) };
+    unsafe { *unsafe { out.offset(15 as isize) } = base + tmp };
     return 62 as u32;
 }
 
@@ -21216,30 +21217,14 @@ extern "C" fn unpack1_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     {
         let _ = tmp;
     };
-    unsafe {
-        *unsafe { out.offset(0 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 1 as u32)
-    };
-    unsafe {
-        *unsafe { out.offset(1 as isize) } = base.wrapping_add(unsafe { *in32 } >> 1 & 1 as u32)
-    };
-    unsafe {
-        *unsafe { out.offset(2 as isize) } = base.wrapping_add(unsafe { *in32 } >> 2 & 1 as u32)
-    };
-    unsafe {
-        *unsafe { out.offset(3 as isize) } = base.wrapping_add(unsafe { *in32 } >> 3 & 1 as u32)
-    };
-    unsafe {
-        *unsafe { out.offset(4 as isize) } = base.wrapping_add(unsafe { *in32 } >> 4 & 1 as u32)
-    };
-    unsafe {
-        *unsafe { out.offset(5 as isize) } = base.wrapping_add(unsafe { *in32 } >> 5 & 1 as u32)
-    };
-    unsafe {
-        *unsafe { out.offset(6 as isize) } = base.wrapping_add(unsafe { *in32 } >> 6 & 1 as u32)
-    };
-    unsafe {
-        *unsafe { out.offset(7 as isize) } = base.wrapping_add(unsafe { *in32 } >> 7 & 1 as u32)
-    };
+    unsafe { *unsafe { out.offset(0 as isize) } = base + (unsafe { *in32 } >> 0 & 1 as u32) };
+    unsafe { *unsafe { out.offset(1 as isize) } = base + (unsafe { *in32 } >> 1 & 1 as u32) };
+    unsafe { *unsafe { out.offset(2 as isize) } = base + (unsafe { *in32 } >> 2 & 1 as u32) };
+    unsafe { *unsafe { out.offset(3 as isize) } = base + (unsafe { *in32 } >> 3 & 1 as u32) };
+    unsafe { *unsafe { out.offset(4 as isize) } = base + (unsafe { *in32 } >> 4 & 1 as u32) };
+    unsafe { *unsafe { out.offset(5 as isize) } = base + (unsafe { *in32 } >> 5 & 1 as u32) };
+    unsafe { *unsafe { out.offset(6 as isize) } = base + (unsafe { *in32 } >> 6 & 1 as u32) };
+    unsafe { *unsafe { out.offset(7 as isize) } = base + (unsafe { *in32 } >> 7 & 1 as u32) };
     return 1 as u32;
 }
 
@@ -21684,8 +21669,12 @@ extern "C" fn unpack13_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     {
         let _ = tmp;
     };
-    unsafe { *unsafe { out.offset(0 as isize) } = base + (unsafe { *in32 } >> 0 & 8191 as u32) };
-    unsafe { *unsafe { out.offset(1 as isize) } = base + (unsafe { *in32 } >> 13 & 8191 as u32) };
+    unsafe {
+        *unsafe { out.offset(0 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 8191 as u32)
+    };
+    unsafe {
+        *unsafe { out.offset(1 as isize) } = base.wrapping_add(unsafe { *in32 } >> 13 & 8191 as u32)
+    };
     tmp = unsafe { *in32 } >> 26;
     {
         let __p = &mut in32;
@@ -21694,8 +21683,10 @@ extern "C" fn unpack13_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 7) << 13 - 7;
-    unsafe { *unsafe { out.offset(2 as isize) } = base + tmp };
-    unsafe { *unsafe { out.offset(3 as isize) } = base + (unsafe { *in32 } >> 7 & 8191 as u32) };
+    unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
+    unsafe {
+        *unsafe { out.offset(3 as isize) } = base.wrapping_add(unsafe { *in32 } >> 7 & 8191 as u32)
+    };
     tmp = unsafe { *in32 } >> 20;
     {
         let __p = &mut in32;
@@ -21704,8 +21695,10 @@ extern "C" fn unpack13_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 1) << 13 - 1;
-    unsafe { *unsafe { out.offset(4 as isize) } = base + tmp };
-    unsafe { *unsafe { out.offset(5 as isize) } = base + (unsafe { *in32 } >> 1 & 8191 as u32) };
+    unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
+    unsafe {
+        *unsafe { out.offset(5 as isize) } = base.wrapping_add(unsafe { *in32 } >> 1 & 8191 as u32)
+    };
     unsafe {
         *unsafe { out.offset(6 as isize) } = base.wrapping_add(unsafe { *in32 } >> 14 & 8191 as u32)
     };
@@ -21808,8 +21801,11 @@ extern "C" fn unpack15_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 11) << 15 - 11;
-    unsafe { *unsafe { out.offset(4 as isize) } = base + tmp };
-    unsafe { *unsafe { out.offset(5 as isize) } = base + (unsafe { *in32 } >> 11 & 32767 as u32) };
+    unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
+    unsafe {
+        *unsafe { out.offset(5 as isize) } =
+            base.wrapping_add(unsafe { *in32 } >> 11 & 32767 as u32)
+    };
     tmp = unsafe { *in32 } >> 26;
     {
         let __p = &mut in32;
@@ -21818,8 +21814,10 @@ extern "C" fn unpack15_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 9) << 15 - 9;
-    unsafe { *unsafe { out.offset(6 as isize) } = base + tmp };
-    unsafe { *unsafe { out.offset(7 as isize) } = base + (unsafe { *in32 } >> 9 & 32767 as u32) };
+    unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
+    unsafe {
+        *unsafe { out.offset(7 as isize) } = base.wrapping_add(unsafe { *in32 } >> 9 & 32767 as u32)
+    };
     return 15 as u32;
 }
 
@@ -21829,13 +21827,8 @@ extern "C" fn unpack16_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     {
         let _ = tmp;
     };
-    unsafe {
-        *unsafe { out.offset(0 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 65535 as u32)
-    };
-    unsafe {
-        *unsafe { out.offset(1 as isize) } =
-            base.wrapping_add(unsafe { *in32 } >> 16 & 65535 as u32)
-    };
+    unsafe { *unsafe { out.offset(0 as isize) } = base + (unsafe { *in32 } >> 0 & 65535 as u32) };
+    unsafe { *unsafe { out.offset(1 as isize) } = base + (unsafe { *in32 } >> 16 & 65535 as u32) };
     {
         let __p = &mut in32;
         let __t = *__p;
@@ -21858,8 +21851,13 @@ extern "C" fn unpack16_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         *__p = unsafe { (*__p).offset(1) };
         __t
     };
-    unsafe { *unsafe { out.offset(6 as isize) } = base + (unsafe { *in32 } >> 0 & 65535 as u32) };
-    unsafe { *unsafe { out.offset(7 as isize) } = base + (unsafe { *in32 } >> 16 & 65535 as u32) };
+    unsafe {
+        *unsafe { out.offset(6 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 65535 as u32)
+    };
+    unsafe {
+        *unsafe { out.offset(7 as isize) } =
+            base.wrapping_add(unsafe { *in32 } >> 16 & 65535 as u32)
+    };
     return 16 as u32;
 }
 
@@ -21894,8 +21892,11 @@ extern "C" fn unpack17_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 17 - 4;
-    unsafe { *unsafe { out.offset(3 as isize) } = base + tmp };
-    unsafe { *unsafe { out.offset(4 as isize) } = base + (unsafe { *in32 } >> 4 & 131071 as u32) };
+    unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
+    unsafe {
+        *unsafe { out.offset(4 as isize) } =
+            base.wrapping_add(unsafe { *in32 } >> 4 & 131071 as u32)
+    };
     tmp = unsafe { *in32 } >> 21;
     {
         let __p = &mut in32;
@@ -21904,8 +21905,11 @@ extern "C" fn unpack17_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 17 - 6;
-    unsafe { *unsafe { out.offset(5 as isize) } = base + tmp };
-    unsafe { *unsafe { out.offset(6 as isize) } = base + (unsafe { *in32 } >> 6 & 131071 as u32) };
+    unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
+    unsafe {
+        *unsafe { out.offset(6 as isize) } =
+            base.wrapping_add(unsafe { *in32 } >> 6 & 131071 as u32)
+    };
     tmp = unsafe { *in32 } >> 23;
     {
         let __p = &mut in32;
@@ -21936,11 +21940,8 @@ extern "C" fn unpack18_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 18 - 4;
-    unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
-    unsafe {
-        *unsafe { out.offset(2 as isize) } =
-            base.wrapping_add(unsafe { *in32 } >> 4 & 262143 as u32)
-    };
+    unsafe { *unsafe { out.offset(1 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(2 as isize) } = base + (unsafe { *in32 } >> 4 & 262143 as u32) };
     tmp = unsafe { *in32 } >> 22;
     {
         let __p = &mut in32;
@@ -21949,11 +21950,8 @@ extern "C" fn unpack18_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 18 - 8;
-    unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
-    unsafe {
-        *unsafe { out.offset(4 as isize) } =
-            base.wrapping_add(unsafe { *in32 } >> 8 & 262143 as u32)
-    };
+    unsafe { *unsafe { out.offset(3 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(4 as isize) } = base + (unsafe { *in32 } >> 8 & 262143 as u32) };
     tmp = unsafe { *in32 } >> 26;
     {
         let __p = &mut in32;
@@ -22010,8 +22008,11 @@ extern "C" fn unpack19_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 19 - 12;
-    unsafe { *unsafe { out.offset(3 as isize) } = base + tmp };
-    unsafe { *unsafe { out.offset(4 as isize) } = base + (unsafe { *in32 } >> 12 & 524287 as u32) };
+    unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
+    unsafe {
+        *unsafe { out.offset(4 as isize) } =
+            base.wrapping_add(unsafe { *in32 } >> 12 & 524287 as u32)
+    };
     tmp = unsafe { *in32 } >> 31;
     {
         let __p = &mut in32;
@@ -22020,7 +22021,7 @@ extern "C" fn unpack19_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 19 - 18;
-    unsafe { *unsafe { out.offset(5 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 18;
     {
         let __p = &mut in32;
@@ -22068,7 +22069,7 @@ extern "C" fn unpack20_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 20 - 16;
-    unsafe { *unsafe { out.offset(3 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
         let __p = &mut in32;
@@ -22077,8 +22078,11 @@ extern "C" fn unpack20_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 20 - 4;
-    unsafe { *unsafe { out.offset(4 as isize) } = base + tmp };
-    unsafe { *unsafe { out.offset(5 as isize) } = base + (unsafe { *in32 } >> 4 & 1048575 as u32) };
+    unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
+    unsafe {
+        *unsafe { out.offset(5 as isize) } =
+            base.wrapping_add(unsafe { *in32 } >> 4 & 1048575 as u32)
+    };
     tmp = unsafe { *in32 } >> 24;
     {
         let __p = &mut in32;
@@ -22101,10 +22105,7 @@ extern "C" fn unpack21_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     {
         let _ = tmp;
     };
-    unsafe {
-        *unsafe { out.offset(0 as isize) } =
-            base.wrapping_add(unsafe { *in32 } >> 0 & 2097151 as u32)
-    };
+    unsafe { *unsafe { out.offset(0 as isize) } = base + (unsafe { *in32 } >> 0 & 2097151 as u32) };
     tmp = unsafe { *in32 } >> 21;
     {
         let __p = &mut in32;
@@ -22113,10 +22114,9 @@ extern "C" fn unpack21_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 21 - 10;
-    unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
+    unsafe { *unsafe { out.offset(1 as isize) } = base + tmp };
     unsafe {
-        *unsafe { out.offset(2 as isize) } =
-            base.wrapping_add(unsafe { *in32 } >> 10 & 2097151 as u32)
+        *unsafe { out.offset(2 as isize) } = base + (unsafe { *in32 } >> 10 & 2097151 as u32)
     };
     tmp = unsafe { *in32 } >> 31;
     {
@@ -22245,7 +22245,7 @@ extern "C" fn unpack23_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 23 - 14;
-    unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
+    unsafe { *unsafe { out.offset(1 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 14;
     {
         let __p = &mut in32;
@@ -22254,11 +22254,8 @@ extern "C" fn unpack23_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 5) << 23 - 5;
-    unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
-    unsafe {
-        *unsafe { out.offset(3 as isize) } =
-            base.wrapping_add(unsafe { *in32 } >> 5 & 8388607 as u32)
-    };
+    unsafe { *unsafe { out.offset(2 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(3 as isize) } = base + (unsafe { *in32 } >> 5 & 8388607 as u32) };
     tmp = unsafe { *in32 } >> 28;
     {
         let __p = &mut in32;
@@ -22267,7 +22264,7 @@ extern "C" fn unpack23_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 19) << 23 - 19;
-    unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
+    unsafe { *unsafe { out.offset(4 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 19;
     {
         let __p = &mut in32;
@@ -22320,9 +22317,10 @@ extern "C" fn unpack24_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 24 - 8;
-    unsafe { *unsafe { out.offset(2 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
     unsafe {
-        *unsafe { out.offset(3 as isize) } = base + (unsafe { *in32 } >> 8 & 16777215 as u32)
+        *unsafe { out.offset(3 as isize) } =
+            base.wrapping_add(unsafe { *in32 } >> 8 & 16777215 as u32)
     };
     {
         let __p = &mut in32;
@@ -22331,7 +22329,8 @@ extern "C" fn unpack24_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     unsafe {
-        *unsafe { out.offset(4 as isize) } = base + (unsafe { *in32 } >> 0 & 16777215 as u32)
+        *unsafe { out.offset(4 as isize) } =
+            base.wrapping_add(unsafe { *in32 } >> 0 & 16777215 as u32)
     };
     tmp = unsafe { *in32 } >> 24;
     {
@@ -22341,7 +22340,7 @@ extern "C" fn unpack24_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 24 - 16;
-    unsafe { *unsafe { out.offset(5 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
         let __p = &mut in32;
@@ -22350,9 +22349,10 @@ extern "C" fn unpack24_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 24 - 8;
-    unsafe { *unsafe { out.offset(6 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
     unsafe {
-        *unsafe { out.offset(7 as isize) } = base + (unsafe { *in32 } >> 8 & 16777215 as u32)
+        *unsafe { out.offset(7 as isize) } =
+            base.wrapping_add(unsafe { *in32 } >> 8 & 16777215 as u32)
     };
     return 24 as u32;
 }
@@ -22435,7 +22435,8 @@ extern "C" fn unpack26_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         let _ = tmp;
     };
     unsafe {
-        *unsafe { out.offset(0 as isize) } = base + (unsafe { *in32 } >> 0 & 67108863 as u32)
+        *unsafe { out.offset(0 as isize) } =
+            base.wrapping_add(unsafe { *in32 } >> 0 & 67108863 as u32)
     };
     tmp = unsafe { *in32 } >> 26;
     {
@@ -22445,7 +22446,7 @@ extern "C" fn unpack26_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 26 - 20;
-    unsafe { *unsafe { out.offset(1 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 20;
     {
         let __p = &mut in32;
@@ -22454,7 +22455,7 @@ extern "C" fn unpack26_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 26 - 14;
-    unsafe { *unsafe { out.offset(2 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 14;
     {
         let __p = &mut in32;
@@ -22463,7 +22464,7 @@ extern "C" fn unpack26_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 26 - 8;
-    unsafe { *unsafe { out.offset(3 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 8;
     {
         let __p = &mut in32;
@@ -22533,7 +22534,7 @@ extern "C" fn unpack27_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 27 - 12;
-    unsafe { *unsafe { out.offset(3 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 12;
     {
         let __p = &mut in32;
@@ -22542,7 +22543,7 @@ extern "C" fn unpack27_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 7) << 27 - 7;
-    unsafe { *unsafe { out.offset(4 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 7;
     {
         let __p = &mut in32;
@@ -22551,9 +22552,10 @@ extern "C" fn unpack27_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 27 - 2;
-    unsafe { *unsafe { out.offset(5 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
     unsafe {
-        *unsafe { out.offset(6 as isize) } = base + (unsafe { *in32 } >> 2 & 134217727 as u32)
+        *unsafe { out.offset(6 as isize) } =
+            base.wrapping_add(unsafe { *in32 } >> 2 & 134217727 as u32)
     };
     tmp = unsafe { *in32 } >> 29;
     {
@@ -22643,7 +22645,8 @@ extern "C" fn unpack29_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         let _ = tmp;
     };
     unsafe {
-        *unsafe { out.offset(0 as isize) } = base + (unsafe { *in32 } >> 0 & 536870911 as u32)
+        *unsafe { out.offset(0 as isize) } =
+            base.wrapping_add(unsafe { *in32 } >> 0 & 536870911 as u32)
     };
     tmp = unsafe { *in32 } >> 29;
     {
@@ -22653,7 +22656,7 @@ extern "C" fn unpack29_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 26) << 29 - 26;
-    unsafe { *unsafe { out.offset(1 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 26;
     {
         let __p = &mut in32;
@@ -22671,7 +22674,7 @@ extern "C" fn unpack29_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 29 - 20;
-    unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
+    unsafe { *unsafe { out.offset(3 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 20;
     {
         let __p = &mut in32;
@@ -22680,7 +22683,7 @@ extern "C" fn unpack29_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 17) << 29 - 17;
-    unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
+    unsafe { *unsafe { out.offset(4 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 17;
     {
         let __p = &mut in32;
@@ -22689,7 +22692,7 @@ extern "C" fn unpack29_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 29 - 14;
-    unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
+    unsafe { *unsafe { out.offset(5 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 14;
     {
         let __p = &mut in32;
@@ -22746,7 +22749,7 @@ extern "C" fn unpack30_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 24) << 30 - 24;
-    unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
+    unsafe { *unsafe { out.offset(3 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 24;
     {
         let __p = &mut in32;
@@ -22755,7 +22758,7 @@ extern "C" fn unpack30_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 22) << 30 - 22;
-    unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
+    unsafe { *unsafe { out.offset(4 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 22;
     {
         let __p = &mut in32;
@@ -22764,7 +22767,7 @@ extern "C" fn unpack30_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 30 - 20;
-    unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
+    unsafe { *unsafe { out.offset(5 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 20;
     {
         let __p = &mut in32;
@@ -22773,7 +22776,7 @@ extern "C" fn unpack30_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 30 - 18;
-    unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
+    unsafe { *unsafe { out.offset(6 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 18;
     {
         let __p = &mut in32;
@@ -22782,7 +22785,7 @@ extern "C" fn unpack30_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 30 - 16;
-    unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
+    unsafe { *unsafe { out.offset(7 as isize) } = base + tmp };
     return 30 as u32;
 }
 
@@ -22858,7 +22861,7 @@ extern "C" fn unpack31_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         __t
     };
     tmp |= unsafe { *in32 } % (1 << 24) << 31 - 24;
-    unsafe { *unsafe { out.offset(7 as isize) } = base + tmp };
+    unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
     return 31 as u32;
 }
 
@@ -22965,7 +22968,7 @@ extern "C" fn unpack1_x(base: u32, in__1: *const u8, out: *mut u32, length: u32)
             break '__b50;
         }
     }
-    return (length * 1 as u32 + 7 as u32) / 8 as u32;
+    return length.wrapping_mul(1 as u32).wrapping_add(7 as u32) / 8 as u32;
 }
 
 extern "C" fn unpack2_x(base: u32, in__1: *const u8, out: *mut u32, length: u32) -> u32 {
@@ -22976,35 +22979,35 @@ extern "C" fn unpack2_x(base: u32, in__1: *const u8, out: *mut u32, length: u32)
                 return 0 as u32;
             }
             tmp = unsafe { *(in__1 as *mut u32) };
-            unsafe { *unsafe { out.offset(0 as isize) } = base.wrapping_add(tmp >> 0 & 3 as u32) };
+            unsafe { *unsafe { out.offset(0 as isize) } = base + (tmp >> 0 & 3 as u32) };
             if length == 1 as u32 {
                 break '__b51;
             }
-            unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp >> 2 & 3 as u32) };
+            unsafe { *unsafe { out.offset(1 as isize) } = base + (tmp >> 2 & 3 as u32) };
             if length == 2 as u32 {
                 break '__b51;
             }
-            unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp >> 4 & 3 as u32) };
+            unsafe { *unsafe { out.offset(2 as isize) } = base + (tmp >> 4 & 3 as u32) };
             if length == 3 as u32 {
                 break '__b51;
             }
-            unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp >> 6 & 3 as u32) };
+            unsafe { *unsafe { out.offset(3 as isize) } = base + (tmp >> 6 & 3 as u32) };
             if length == 4 as u32 {
                 break '__b51;
             }
-            unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp >> 8 & 3 as u32) };
+            unsafe { *unsafe { out.offset(4 as isize) } = base + (tmp >> 8 & 3 as u32) };
             if length == 5 as u32 {
                 break '__b51;
             }
-            unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp >> 10 & 3 as u32) };
+            unsafe { *unsafe { out.offset(5 as isize) } = base + (tmp >> 10 & 3 as u32) };
             if length == 6 as u32 {
                 break '__b51;
             }
-            unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp >> 12 & 3 as u32) };
+            unsafe { *unsafe { out.offset(6 as isize) } = base + (tmp >> 12 & 3 as u32) };
             if length == 7 as u32 {
                 break '__b51;
             }
-            unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp >> 14 & 3 as u32) };
+            unsafe { *unsafe { out.offset(7 as isize) } = base + (tmp >> 14 & 3 as u32) };
             if length == 8 as u32 {
                 break '__b51;
             }
@@ -23014,7 +23017,7 @@ extern "C" fn unpack2_x(base: u32, in__1: *const u8, out: *mut u32, length: u32)
             break '__b51;
         }
     }
-    return length.wrapping_mul(2 as u32).wrapping_add(7 as u32) / 8 as u32;
+    return (length * 2 as u32 + 7 as u32) / 8 as u32;
 }
 
 extern "C" fn unpack3_x(base: u32, in__1: *const u8, out: *mut u32, length: u32) -> u32 {
@@ -23198,29 +23201,23 @@ extern "C" fn unpack6_x(base: u32, mut in__1: *const u8, out: *mut u32, length: 
                 return 0 as u32;
             }
             tmp = unsafe { *(in__1 as *mut u32) };
-            unsafe { *unsafe { out.offset(0 as isize) } = base.wrapping_add(tmp >> 0 & 63 as u32) };
+            unsafe { *unsafe { out.offset(0 as isize) } = base + (tmp >> 0 & 63 as u32) };
             if length == 1 as u32 {
                 break '__b55;
             }
-            unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp >> 6 & 63 as u32) };
+            unsafe { *unsafe { out.offset(1 as isize) } = base + (tmp >> 6 & 63 as u32) };
             if length == 2 as u32 {
                 break '__b55;
             }
-            unsafe {
-                *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp >> 12 & 63 as u32)
-            };
+            unsafe { *unsafe { out.offset(2 as isize) } = base + (tmp >> 12 & 63 as u32) };
             if length == 3 as u32 {
                 break '__b55;
             }
-            unsafe {
-                *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp >> 18 & 63 as u32)
-            };
+            unsafe { *unsafe { out.offset(3 as isize) } = base + (tmp >> 18 & 63 as u32) };
             if length == 4 as u32 {
                 break '__b55;
             }
-            unsafe {
-                *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp >> 24 & 63 as u32)
-            };
+            unsafe { *unsafe { out.offset(4 as isize) } = base + (tmp >> 24 & 63 as u32) };
             if length == 5 as u32 {
                 break '__b55;
             }
@@ -23236,13 +23233,11 @@ extern "C" fn unpack6_x(base: u32, mut in__1: *const u8, out: *mut u32, length: 
             if length == 6 as u32 {
                 break '__b55;
             }
-            unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp >> 4 & 63 as u32) };
+            unsafe { *unsafe { out.offset(6 as isize) } = base + (tmp >> 4 & 63 as u32) };
             if length == 7 as u32 {
                 break '__b55;
             }
-            unsafe {
-                *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp >> 10 & 63 as u32)
-            };
+            unsafe { *unsafe { out.offset(7 as isize) } = base + (tmp >> 10 & 63 as u32) };
             if length == 8 as u32 {
                 break '__b55;
             }
@@ -23252,7 +23247,7 @@ extern "C" fn unpack6_x(base: u32, mut in__1: *const u8, out: *mut u32, length: 
             break '__b55;
         }
     }
-    return length.wrapping_mul(6 as u32).wrapping_add(7 as u32) / 8 as u32;
+    return (length * 6 as u32 + 7 as u32) / 8 as u32;
 }
 
 extern "C" fn unpack7_x(base: u32, mut in__1: *const u8, out: *mut u32, length: u32) -> u32 {
@@ -23405,15 +23400,21 @@ extern "C" fn unpack9_x(base: u32, mut in__1: *const u8, out: *mut u32, length: 
                 return 0 as u32;
             }
             tmp = unsafe { *(in__1 as *mut u32) };
-            unsafe { *unsafe { out.offset(0 as isize) } = base + (tmp >> 0 & 511 as u32) };
+            unsafe {
+                *unsafe { out.offset(0 as isize) } = base.wrapping_add(tmp >> 0 & 511 as u32)
+            };
             if length == 1 as u32 {
                 break '__b58;
             }
-            unsafe { *unsafe { out.offset(1 as isize) } = base + (tmp >> 9 & 511 as u32) };
+            unsafe {
+                *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp >> 9 & 511 as u32)
+            };
             if length == 2 as u32 {
                 break '__b58;
             }
-            unsafe { *unsafe { out.offset(2 as isize) } = base + (tmp >> 18 & 511 as u32) };
+            unsafe {
+                *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp >> 18 & 511 as u32)
+            };
             if length == 3 as u32 {
                 break '__b58;
             }
@@ -23429,15 +23430,21 @@ extern "C" fn unpack9_x(base: u32, mut in__1: *const u8, out: *mut u32, length: 
             if length == 4 as u32 {
                 break '__b58;
             }
-            unsafe { *unsafe { out.offset(4 as isize) } = base + (tmp >> 4 & 511 as u32) };
+            unsafe {
+                *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp >> 4 & 511 as u32)
+            };
             if length == 5 as u32 {
                 break '__b58;
             }
-            unsafe { *unsafe { out.offset(5 as isize) } = base + (tmp >> 13 & 511 as u32) };
+            unsafe {
+                *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp >> 13 & 511 as u32)
+            };
             if length == 6 as u32 {
                 break '__b58;
             }
-            unsafe { *unsafe { out.offset(6 as isize) } = base + (tmp >> 22 & 511 as u32) };
+            unsafe {
+                *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp >> 22 & 511 as u32)
+            };
             if length == 7 as u32 {
                 break '__b58;
             }
@@ -23459,7 +23466,7 @@ extern "C" fn unpack9_x(base: u32, mut in__1: *const u8, out: *mut u32, length: 
             break '__b58;
         }
     }
-    return (length * 9 as u32 + 7 as u32) / 8 as u32;
+    return length.wrapping_mul(9 as u32).wrapping_add(7 as u32) / 8 as u32;
 }
 
 extern "C" fn unpack10_x(base: u32, mut in__1: *const u8, out: *mut u32, length: u32) -> u32 {
@@ -23470,15 +23477,21 @@ extern "C" fn unpack10_x(base: u32, mut in__1: *const u8, out: *mut u32, length:
                 return 0 as u32;
             }
             tmp = unsafe { *(in__1 as *mut u32) };
-            unsafe { *unsafe { out.offset(0 as isize) } = base + (tmp >> 0 & 1023 as u32) };
+            unsafe {
+                *unsafe { out.offset(0 as isize) } = base.wrapping_add(tmp >> 0 & 1023 as u32)
+            };
             if length == 1 as u32 {
                 break '__b59;
             }
-            unsafe { *unsafe { out.offset(1 as isize) } = base + (tmp >> 10 & 1023 as u32) };
+            unsafe {
+                *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp >> 10 & 1023 as u32)
+            };
             if length == 2 as u32 {
                 break '__b59;
             }
-            unsafe { *unsafe { out.offset(2 as isize) } = base + (tmp >> 20 & 1023 as u32) };
+            unsafe {
+                *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp >> 20 & 1023 as u32)
+            };
             if length == 3 as u32 {
                 break '__b59;
             }
@@ -23494,11 +23507,15 @@ extern "C" fn unpack10_x(base: u32, mut in__1: *const u8, out: *mut u32, length:
             if length == 4 as u32 {
                 break '__b59;
             }
-            unsafe { *unsafe { out.offset(4 as isize) } = base + (tmp >> 8 & 1023 as u32) };
+            unsafe {
+                *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp >> 8 & 1023 as u32)
+            };
             if length == 5 as u32 {
                 break '__b59;
             }
-            unsafe { *unsafe { out.offset(5 as isize) } = base + (tmp >> 18 & 1023 as u32) };
+            unsafe {
+                *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp >> 18 & 1023 as u32)
+            };
             if length == 6 as u32 {
                 break '__b59;
             }
@@ -23561,15 +23578,11 @@ extern "C" fn unpack11_x(base: u32, mut in__1: *const u8, out: *mut u32, length:
             if length == 3 as u32 {
                 break '__b60;
             }
-            unsafe {
-                *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp >> 1 & 2047 as u32)
-            };
+            unsafe { *unsafe { out.offset(3 as isize) } = base + (tmp >> 1 & 2047 as u32) };
             if length == 4 as u32 {
                 break '__b60;
             }
-            unsafe {
-                *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp >> 12 & 2047 as u32)
-            };
+            unsafe { *unsafe { out.offset(4 as isize) } = base + (tmp >> 12 & 2047 as u32) };
             if length == 5 as u32 {
                 break '__b60;
             }
@@ -23585,15 +23598,11 @@ extern "C" fn unpack11_x(base: u32, mut in__1: *const u8, out: *mut u32, length:
             if length == 6 as u32 {
                 break '__b60;
             }
-            unsafe {
-                *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp >> 2 & 2047 as u32)
-            };
+            unsafe { *unsafe { out.offset(6 as isize) } = base + (tmp >> 2 & 2047 as u32) };
             if length == 7 as u32 {
                 break '__b60;
             }
-            unsafe {
-                *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp >> 13 & 2047 as u32)
-            };
+            unsafe { *unsafe { out.offset(7 as isize) } = base + (tmp >> 13 & 2047 as u32) };
             if length == 8 as u32 {
                 break '__b60;
             }
@@ -23603,7 +23612,7 @@ extern "C" fn unpack11_x(base: u32, mut in__1: *const u8, out: *mut u32, length:
             break '__b60;
         }
     }
-    return length.wrapping_mul(11 as u32).wrapping_add(7 as u32) / 8 as u32;
+    return (length * 11 as u32 + 7 as u32) / 8 as u32;
 }
 
 extern "C" fn unpack12_x(base: u32, mut in__1: *const u8, out: *mut u32, length: u32) -> u32 {
@@ -23634,15 +23643,11 @@ extern "C" fn unpack12_x(base: u32, mut in__1: *const u8, out: *mut u32, length:
             if length == 3 as u32 {
                 break '__b61;
             }
-            unsafe {
-                *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp >> 4 & 4095 as u32)
-            };
+            unsafe { *unsafe { out.offset(3 as isize) } = base + (tmp >> 4 & 4095 as u32) };
             if length == 4 as u32 {
                 break '__b61;
             }
-            unsafe {
-                *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp >> 16 & 4095 as u32)
-            };
+            unsafe { *unsafe { out.offset(4 as isize) } = base + (tmp >> 16 & 4095 as u32) };
             if length == 5 as u32 {
                 break '__b61;
             }
@@ -23658,15 +23663,11 @@ extern "C" fn unpack12_x(base: u32, mut in__1: *const u8, out: *mut u32, length:
             if length == 6 as u32 {
                 break '__b61;
             }
-            unsafe {
-                *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp >> 8 & 4095 as u32)
-            };
+            unsafe { *unsafe { out.offset(6 as isize) } = base + (tmp >> 8 & 4095 as u32) };
             if length == 7 as u32 {
                 break '__b61;
             }
-            unsafe {
-                *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp >> 20 & 4095 as u32)
-            };
+            unsafe { *unsafe { out.offset(7 as isize) } = base + (tmp >> 20 & 4095 as u32) };
             if length == 8 as u32 {
                 break '__b61;
             }
@@ -23676,7 +23677,7 @@ extern "C" fn unpack12_x(base: u32, mut in__1: *const u8, out: *mut u32, length:
             break '__b61;
         }
     }
-    return length.wrapping_mul(12 as u32).wrapping_add(7 as u32) / 8 as u32;
+    return (length * 12 as u32 + 7 as u32) / 8 as u32;
 }
 
 extern "C" fn unpack13_x(base: u32, mut in__1: *const u8, out: *mut u32, length: u32) -> u32 {
@@ -23687,11 +23688,15 @@ extern "C" fn unpack13_x(base: u32, mut in__1: *const u8, out: *mut u32, length:
                 return 0 as u32;
             }
             tmp = unsafe { *(in__1 as *mut u32) };
-            unsafe { *unsafe { out.offset(0 as isize) } = base + (tmp >> 0 & 8191 as u32) };
+            unsafe {
+                *unsafe { out.offset(0 as isize) } = base.wrapping_add(tmp >> 0 & 8191 as u32)
+            };
             if length == 1 as u32 {
                 break '__b62;
             }
-            unsafe { *unsafe { out.offset(1 as isize) } = base + (tmp >> 13 & 8191 as u32) };
+            unsafe {
+                *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp >> 13 & 8191 as u32)
+            };
             if length == 2 as u32 {
                 break '__b62;
             }
@@ -23707,7 +23712,9 @@ extern "C" fn unpack13_x(base: u32, mut in__1: *const u8, out: *mut u32, length:
             if length == 3 as u32 {
                 break '__b62;
             }
-            unsafe { *unsafe { out.offset(3 as isize) } = base + (tmp >> 7 & 8191 as u32) };
+            unsafe {
+                *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp >> 7 & 8191 as u32)
+            };
             if length == 4 as u32 {
                 break '__b62;
             }
@@ -23723,11 +23730,15 @@ extern "C" fn unpack13_x(base: u32, mut in__1: *const u8, out: *mut u32, length:
             if length == 5 as u32 {
                 break '__b62;
             }
-            unsafe { *unsafe { out.offset(5 as isize) } = base + (tmp >> 1 & 8191 as u32) };
+            unsafe {
+                *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp >> 1 & 8191 as u32)
+            };
             if length == 6 as u32 {
                 break '__b62;
             }
-            unsafe { *unsafe { out.offset(6 as isize) } = base + (tmp >> 14 & 8191 as u32) };
+            unsafe {
+                *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp >> 14 & 8191 as u32)
+            };
             if length == 7 as u32 {
                 break '__b62;
             }
@@ -23749,7 +23760,7 @@ extern "C" fn unpack13_x(base: u32, mut in__1: *const u8, out: *mut u32, length:
             break '__b62;
         }
     }
-    return (length * 13 as u32 + 7 as u32) / 8 as u32;
+    return length.wrapping_mul(13 as u32).wrapping_add(7 as u32) / 8 as u32;
 }
 
 extern "C" fn unpack14_x(base: u32, mut in__1: *const u8, out: *mut u32, length: u32) -> u32 {
@@ -23760,11 +23771,15 @@ extern "C" fn unpack14_x(base: u32, mut in__1: *const u8, out: *mut u32, length:
                 return 0 as u32;
             }
             tmp = unsafe { *(in__1 as *mut u32) };
-            unsafe { *unsafe { out.offset(0 as isize) } = base + (tmp >> 0 & 16383 as u32) };
+            unsafe {
+                *unsafe { out.offset(0 as isize) } = base.wrapping_add(tmp >> 0 & 16383 as u32)
+            };
             if length == 1 as u32 {
                 break '__b63;
             }
-            unsafe { *unsafe { out.offset(1 as isize) } = base + (tmp >> 14 & 16383 as u32) };
+            unsafe {
+                *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp >> 14 & 16383 as u32)
+            };
             if length == 2 as u32 {
                 break '__b63;
             }
@@ -23780,7 +23795,9 @@ extern "C" fn unpack14_x(base: u32, mut in__1: *const u8, out: *mut u32, length:
             if length == 3 as u32 {
                 break '__b63;
             }
-            unsafe { *unsafe { out.offset(3 as isize) } = base + (tmp >> 10 & 16383 as u32) };
+            unsafe {
+                *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp >> 10 & 16383 as u32)
+            };
             if length == 4 as u32 {
                 break '__b63;
             }
@@ -23812,7 +23829,9 @@ extern "C" fn unpack14_x(base: u32, mut in__1: *const u8, out: *mut u32, length:
             if length == 7 as u32 {
                 break '__b63;
             }
-            unsafe { *unsafe { out.offset(7 as isize) } = base + (tmp >> 2 & 16383 as u32) };
+            unsafe {
+                *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp >> 2 & 16383 as u32)
+            };
             if length == 8 as u32 {
                 break '__b63;
             }
@@ -23822,7 +23841,7 @@ extern "C" fn unpack14_x(base: u32, mut in__1: *const u8, out: *mut u32, length:
             break '__b63;
         }
     }
-    return (length * 14 as u32 + 7 as u32) / 8 as u32;
+    return length.wrapping_mul(14 as u32).wrapping_add(7 as u32) / 8 as u32;
 }
 
 extern "C" fn unpack15_x(base: u32, mut in__1: *const u8, out: *mut u32, length: u32) -> u32 {
@@ -24464,7 +24483,7 @@ extern "C" fn unpack22_x(base: u32, mut in__1: *const u8, out: *mut u32, length:
             break '__b71;
         }
     }
-    return length.wrapping_mul(22 as u32).wrapping_add(7 as u32) / 8 as u32;
+    return (length * 22 as u32 + 7 as u32) / 8 as u32;
 }
 
 extern "C" fn unpack23_x(base: u32, mut in__1: *const u8, out: *mut u32, length: u32) -> u32 {
@@ -24475,9 +24494,7 @@ extern "C" fn unpack23_x(base: u32, mut in__1: *const u8, out: *mut u32, length:
                 return 0 as u32;
             }
             tmp = unsafe { *(in__1 as *mut u32) };
-            unsafe {
-                *unsafe { out.offset(0 as isize) } = base.wrapping_add(tmp >> 0 & 8388607 as u32)
-            };
+            unsafe { *unsafe { out.offset(0 as isize) } = base + (tmp >> 0 & 8388607 as u32) };
             if length == 1 as u32 {
                 break '__b72;
             }
@@ -24505,9 +24522,7 @@ extern "C" fn unpack23_x(base: u32, mut in__1: *const u8, out: *mut u32, length:
             if length == 3 as u32 {
                 break '__b72;
             }
-            unsafe {
-                *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp >> 5 & 8388607 as u32)
-            };
+            unsafe { *unsafe { out.offset(3 as isize) } = base + (tmp >> 5 & 8388607 as u32) };
             if length == 4 as u32 {
                 break '__b72;
             }
@@ -24547,9 +24562,7 @@ extern "C" fn unpack23_x(base: u32, mut in__1: *const u8, out: *mut u32, length:
             if length == 7 as u32 {
                 break '__b72;
             }
-            unsafe {
-                *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp >> 1 & 8388607 as u32)
-            };
+            unsafe { *unsafe { out.offset(7 as isize) } = base + (tmp >> 1 & 8388607 as u32) };
             if length == 8 as u32 {
                 break '__b72;
             }
@@ -24559,7 +24572,7 @@ extern "C" fn unpack23_x(base: u32, mut in__1: *const u8, out: *mut u32, length:
             break '__b72;
         }
     }
-    return length.wrapping_mul(23 as u32).wrapping_add(7 as u32) / 8 as u32;
+    return (length * 23 as u32 + 7 as u32) / 8 as u32;
 }
 
 extern "C" fn unpack24_x(base: u32, mut in__1: *const u8, out: *mut u32, length: u32) -> u32 {
@@ -24570,9 +24583,7 @@ extern "C" fn unpack24_x(base: u32, mut in__1: *const u8, out: *mut u32, length:
                 return 0 as u32;
             }
             tmp = unsafe { *(in__1 as *mut u32) };
-            unsafe {
-                *unsafe { out.offset(0 as isize) } = base.wrapping_add(tmp >> 0 & 16777215 as u32)
-            };
+            unsafe { *unsafe { out.offset(0 as isize) } = base + (tmp >> 0 & 16777215 as u32) };
             if length == 1 as u32 {
                 break '__b73;
             }
@@ -24600,9 +24611,7 @@ extern "C" fn unpack24_x(base: u32, mut in__1: *const u8, out: *mut u32, length:
             if length == 3 as u32 {
                 break '__b73;
             }
-            unsafe {
-                *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp >> 8 & 16777215 as u32)
-            };
+            unsafe { *unsafe { out.offset(3 as isize) } = base + (tmp >> 8 & 16777215 as u32) };
             if length == 4 as u32 {
                 break '__b73;
             }
@@ -24612,9 +24621,7 @@ extern "C" fn unpack24_x(base: u32, mut in__1: *const u8, out: *mut u32, length:
                 *__p = unsafe { (*__p).add(__n as usize) };
             };
             tmp = unsafe { *(in__1 as *mut u32) };
-            unsafe {
-                *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp >> 0 & 16777215 as u32)
-            };
+            unsafe { *unsafe { out.offset(4 as isize) } = base + (tmp >> 0 & 16777215 as u32) };
             if length == 5 as u32 {
                 break '__b73;
             }
