@@ -109,12 +109,7 @@ pub(crate) extern "C" fn for_compressed_size_unsorted(in_: *const u32, length: u
                 }
                 break '__c3;
             }
-            {
-                let __p = &mut i;
-                let __t = *__p;
-                *__p = (*__p).wrapping_add(1);
-                __t
-            };
+            i = i.wrapping_add(1);
         }
     }
     b = required_bits(m.wrapping_sub(m) as u32);
@@ -291,12 +286,7 @@ pub(crate) extern "C" fn for_compress_unsorted(in_: *const u32, out: *mut u8, le
                 }
                 break '__c42;
             }
-            {
-                let __p = &mut i;
-                let __t = *__p;
-                *__p = (*__p).wrapping_add(1);
-                __t
-            };
+            i = i.wrapping_add(1);
         }
     }
     b = required_bits(m.wrapping_sub(m) as u32);

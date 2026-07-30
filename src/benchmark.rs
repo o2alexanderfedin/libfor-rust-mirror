@@ -26,12 +26,7 @@ extern "C" fn run(length: u32) -> () {
                 unsafe { *in_.add(i as usize) = (33 as u32).wrapping_add(i) };
                 break '__c0;
             }
-            {
-                let __p = &mut i;
-                let __t = *__p;
-                *__p = (*__p).wrapping_add(1);
-                __t
-            };
+            i = i.wrapping_add(1);
         }
     }
     s1 = for_compress_sorted(in_ as *const u32, out, length);

@@ -4691,12 +4691,7 @@ extern "C" fn pack32_32(base: u32, in__1: *const u32, out: *mut u8) -> u32 {
                 };
                 break '__c4;
             }
-            {
-                let __p = &mut i;
-                let __t = *__p;
-                *__p = (*__p).wrapping_add(1);
-                __t
-            };
+            i = i.wrapping_add(1);
         }
     }
     return (32 as u64).wrapping_mul(core::mem::size_of::<u32>() as u64) as u32;
@@ -7256,12 +7251,7 @@ extern "C" fn pack32_16(base: u32, in__1: *const u32, out: *mut u8) -> u32 {
                 };
                 break '__c5;
             }
-            {
-                let __p = &mut i;
-                let __t = *__p;
-                *__p = (*__p).wrapping_add(1);
-                __t
-            };
+            i = i.wrapping_add(1);
         }
     }
     return (16 as u64).wrapping_mul(core::mem::size_of::<u32>() as u64) as u32;
@@ -8743,12 +8733,7 @@ extern "C" fn pack32_8(base: u32, in__1: *const u32, out: *mut u8) -> u32 {
                 unsafe { *out32.add(i as usize) = unsafe { *in__1.add(i as usize) } - base };
                 break '__c6;
             }
-            {
-                let __p = &mut i;
-                let __t = *__p;
-                *__p += 1;
-                __t
-            };
+            i += 1;
         }
     }
     return (8 as u64 * core::mem::size_of::<u32>() as u64) as u32;
@@ -11523,11 +11508,7 @@ extern "C" fn unpack0_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
                 unsafe { *out.offset(k as isize) = base };
                 break '__c43;
             }
-            {
-                let __p = &mut k;
-                *__p += 1;
-                *__p
-            };
+            k += 1;
         }
     }
     return 0 as u32;
@@ -11693,10 +11674,9 @@ extern "C" fn unpack2_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         *unsafe { out.offset(15 as isize) } = base.wrapping_add(unsafe { *in32 } >> 30 & 3 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(16 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 3 as u32)
@@ -11787,10 +11767,9 @@ extern "C" fn unpack3_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 1) << 3 - 1;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
@@ -11826,10 +11805,9 @@ extern "C" fn unpack3_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 31;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 3 - 2;
     unsafe { *unsafe { out.offset(21 as isize) } = base.wrapping_add(tmp) };
@@ -11897,10 +11875,9 @@ extern "C" fn unpack4_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         *unsafe { out.offset(7 as isize) } = base.wrapping_add(unsafe { *in32 } >> 28 & 15 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(8 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 15 as u32)
@@ -11927,10 +11904,9 @@ extern "C" fn unpack4_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         *unsafe { out.offset(15 as isize) } = base.wrapping_add(unsafe { *in32 } >> 28 & 15 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(16 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 15 as u32)
@@ -11957,10 +11933,9 @@ extern "C" fn unpack4_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         *unsafe { out.offset(23 as isize) } = base.wrapping_add(unsafe { *in32 } >> 28 & 15 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(24 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 15 as u32)
@@ -12015,10 +11990,9 @@ extern "C" fn unpack5_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 3) << 5 - 3;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
@@ -12039,10 +12013,9 @@ extern "C" fn unpack5_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 1) << 5 - 1;
     unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
@@ -12066,10 +12039,9 @@ extern "C" fn unpack5_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 31;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 5 - 4;
     unsafe { *unsafe { out.offset(19 as isize) } = base.wrapping_add(tmp) };
@@ -12090,10 +12062,9 @@ extern "C" fn unpack5_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 29;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 5 - 2;
     unsafe { *unsafe { out.offset(25 as isize) } = base.wrapping_add(tmp) };
@@ -12141,10 +12112,9 @@ extern "C" fn unpack6_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 6 - 4;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
@@ -12162,10 +12132,9 @@ extern "C" fn unpack6_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 6 - 2;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
@@ -12185,10 +12154,9 @@ extern "C" fn unpack6_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         *unsafe { out.offset(15 as isize) } = base.wrapping_add(unsafe { *in32 } >> 26 & 63 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(16 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 63 as u32)
@@ -12207,10 +12175,9 @@ extern "C" fn unpack6_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 6 - 4;
     unsafe { *unsafe { out.offset(21 as isize) } = base.wrapping_add(tmp) };
@@ -12228,10 +12195,9 @@ extern "C" fn unpack6_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 6 - 2;
     unsafe { *unsafe { out.offset(26 as isize) } = base.wrapping_add(tmp) };
@@ -12273,10 +12239,9 @@ extern "C" fn unpack7_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 3) << 7 - 3;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
@@ -12294,10 +12259,9 @@ extern "C" fn unpack7_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 31;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 7 - 6;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
@@ -12312,10 +12276,9 @@ extern "C" fn unpack7_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 27;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 7 - 2;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
@@ -12333,10 +12296,9 @@ extern "C" fn unpack7_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 5) << 7 - 5;
     unsafe { *unsafe { out.offset(18 as isize) } = base.wrapping_add(tmp) };
@@ -12351,10 +12313,9 @@ extern "C" fn unpack7_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 1) << 7 - 1;
     unsafe { *unsafe { out.offset(22 as isize) } = base.wrapping_add(tmp) };
@@ -12372,10 +12333,9 @@ extern "C" fn unpack7_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 29;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 7 - 4;
     unsafe { *unsafe { out.offset(27 as isize) } = base.wrapping_add(tmp) };
@@ -12413,10 +12373,9 @@ extern "C" fn unpack8_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         *unsafe { out.offset(3 as isize) } = base.wrapping_add(unsafe { *in32 } >> 24 & 255 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(4 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 255 as u32)
@@ -12431,10 +12390,9 @@ extern "C" fn unpack8_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         *unsafe { out.offset(7 as isize) } = base.wrapping_add(unsafe { *in32 } >> 24 & 255 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(8 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 255 as u32)
@@ -12449,10 +12407,9 @@ extern "C" fn unpack8_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         *unsafe { out.offset(11 as isize) } = base.wrapping_add(unsafe { *in32 } >> 24 & 255 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(12 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 255 as u32)
@@ -12467,10 +12424,9 @@ extern "C" fn unpack8_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         *unsafe { out.offset(15 as isize) } = base.wrapping_add(unsafe { *in32 } >> 24 & 255 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(16 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 255 as u32)
@@ -12485,10 +12441,9 @@ extern "C" fn unpack8_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         *unsafe { out.offset(19 as isize) } = base.wrapping_add(unsafe { *in32 } >> 24 & 255 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(20 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 255 as u32)
@@ -12503,10 +12458,9 @@ extern "C" fn unpack8_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         *unsafe { out.offset(23 as isize) } = base.wrapping_add(unsafe { *in32 } >> 24 & 255 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(24 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 255 as u32)
@@ -12521,10 +12475,9 @@ extern "C" fn unpack8_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         *unsafe { out.offset(27 as isize) } = base.wrapping_add(unsafe { *in32 } >> 24 & 255 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(28 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 255 as u32)
@@ -12558,10 +12511,9 @@ extern "C" fn unpack9_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 27;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 9 - 4;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
@@ -12576,10 +12528,9 @@ extern "C" fn unpack9_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 31;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 9 - 8;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
@@ -12591,10 +12542,9 @@ extern "C" fn unpack9_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 3) << 9 - 3;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
@@ -12609,10 +12559,9 @@ extern "C" fn unpack9_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 7) << 9 - 7;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
@@ -12624,10 +12573,9 @@ extern "C" fn unpack9_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 25;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 9 - 2;
     unsafe { *unsafe { out.offset(17 as isize) } = base.wrapping_add(tmp) };
@@ -12642,10 +12590,9 @@ extern "C" fn unpack9_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 29;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 9 - 6;
     unsafe { *unsafe { out.offset(21 as isize) } = base.wrapping_add(tmp) };
@@ -12657,10 +12604,9 @@ extern "C" fn unpack9_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 1) << 9 - 1;
     unsafe { *unsafe { out.offset(24 as isize) } = base.wrapping_add(tmp) };
@@ -12675,10 +12621,9 @@ extern "C" fn unpack9_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 5) << 9 - 5;
     unsafe { *unsafe { out.offset(28 as isize) } = base.wrapping_add(tmp) };
@@ -12711,10 +12656,9 @@ extern "C" fn unpack10_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 10 - 8;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
@@ -12726,10 +12670,9 @@ extern "C" fn unpack10_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 10 - 6;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
@@ -12741,10 +12684,9 @@ extern "C" fn unpack10_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 10 - 4;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
@@ -12757,10 +12699,9 @@ extern "C" fn unpack10_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 10 - 2;
     unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
@@ -12776,10 +12717,9 @@ extern "C" fn unpack10_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 22 & 1023 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(16 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 1023 as u32)
@@ -12794,10 +12734,9 @@ extern "C" fn unpack10_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 10 - 8;
     unsafe { *unsafe { out.offset(19 as isize) } = base.wrapping_add(tmp) };
@@ -12810,10 +12749,9 @@ extern "C" fn unpack10_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 10 - 6;
     unsafe { *unsafe { out.offset(22 as isize) } = base.wrapping_add(tmp) };
@@ -12826,10 +12764,9 @@ extern "C" fn unpack10_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 10 - 4;
     unsafe { *unsafe { out.offset(25 as isize) } = base.wrapping_add(tmp) };
@@ -12842,10 +12779,9 @@ extern "C" fn unpack10_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 10 - 2;
     unsafe { *unsafe { out.offset(28 as isize) } = base.wrapping_add(tmp) };
@@ -12877,10 +12813,9 @@ extern "C" fn unpack11_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 1) << 11 - 1;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
@@ -12892,10 +12827,9 @@ extern "C" fn unpack11_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 23;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 11 - 2;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
@@ -12907,10 +12841,9 @@ extern "C" fn unpack11_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 3) << 11 - 3;
     unsafe { *unsafe { out.offset(8 as isize) } = base.wrapping_add(tmp) };
@@ -12923,10 +12856,9 @@ extern "C" fn unpack11_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 25;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 11 - 4;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
@@ -12939,10 +12871,9 @@ extern "C" fn unpack11_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 5) << 11 - 5;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
@@ -12955,10 +12886,9 @@ extern "C" fn unpack11_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 27;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 11 - 6;
     unsafe { *unsafe { out.offset(17 as isize) } = base.wrapping_add(tmp) };
@@ -12971,10 +12901,9 @@ extern "C" fn unpack11_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 7) << 11 - 7;
     unsafe { *unsafe { out.offset(20 as isize) } = base.wrapping_add(tmp) };
@@ -12987,10 +12916,9 @@ extern "C" fn unpack11_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 29;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 11 - 8;
     unsafe { *unsafe { out.offset(23 as isize) } = base.wrapping_add(tmp) };
@@ -13003,10 +12931,9 @@ extern "C" fn unpack11_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 9) << 11 - 9;
     unsafe { *unsafe { out.offset(26 as isize) } = base.wrapping_add(tmp) };
@@ -13019,10 +12946,9 @@ extern "C" fn unpack11_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 31;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 11 - 10;
     unsafe { *unsafe { out.offset(29 as isize) } = base.wrapping_add(tmp) };
@@ -13051,10 +12977,9 @@ extern "C" fn unpack12_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 12 - 4;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
@@ -13066,10 +12991,9 @@ extern "C" fn unpack12_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 12 - 8;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
@@ -13080,10 +13004,9 @@ extern "C" fn unpack12_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         *unsafe { out.offset(7 as isize) } = base.wrapping_add(unsafe { *in32 } >> 20 & 4095 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(8 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 4095 as u32)
@@ -13093,10 +13016,9 @@ extern "C" fn unpack12_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 12 - 4;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
@@ -13109,10 +13031,9 @@ extern "C" fn unpack12_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 12 - 8;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
@@ -13124,10 +13045,9 @@ extern "C" fn unpack12_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 20 & 4095 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(16 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 4095 as u32)
@@ -13138,10 +13058,9 @@ extern "C" fn unpack12_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 12 - 4;
     unsafe { *unsafe { out.offset(18 as isize) } = base.wrapping_add(tmp) };
@@ -13154,10 +13073,9 @@ extern "C" fn unpack12_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 12 - 8;
     unsafe { *unsafe { out.offset(21 as isize) } = base.wrapping_add(tmp) };
@@ -13169,10 +13087,9 @@ extern "C" fn unpack12_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 20 & 4095 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(24 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 4095 as u32)
@@ -13183,10 +13100,9 @@ extern "C" fn unpack12_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 12 - 4;
     unsafe { *unsafe { out.offset(26 as isize) } = base.wrapping_add(tmp) };
@@ -13199,10 +13115,9 @@ extern "C" fn unpack12_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 12 - 8;
     unsafe { *unsafe { out.offset(29 as isize) } = base.wrapping_add(tmp) };
@@ -13230,10 +13145,9 @@ extern "C" fn unpack13_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 7) << 13 - 7;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
@@ -13242,10 +13156,9 @@ extern "C" fn unpack13_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 1) << 13 - 1;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
@@ -13257,10 +13170,9 @@ extern "C" fn unpack13_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 27;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 13 - 8;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
@@ -13269,10 +13181,9 @@ extern "C" fn unpack13_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 21;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 13 - 2;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
@@ -13285,10 +13196,9 @@ extern "C" fn unpack13_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 9) << 13 - 9;
     unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
@@ -13297,10 +13207,9 @@ extern "C" fn unpack13_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 3) << 13 - 3;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
@@ -13313,10 +13222,9 @@ extern "C" fn unpack13_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 29;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 13 - 10;
     unsafe { *unsafe { out.offset(17 as isize) } = base.wrapping_add(tmp) };
@@ -13326,10 +13234,9 @@ extern "C" fn unpack13_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 23;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 13 - 4;
     unsafe { *unsafe { out.offset(19 as isize) } = base.wrapping_add(tmp) };
@@ -13342,10 +13249,9 @@ extern "C" fn unpack13_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 11) << 13 - 11;
     unsafe { *unsafe { out.offset(22 as isize) } = base.wrapping_add(tmp) };
@@ -13355,10 +13261,9 @@ extern "C" fn unpack13_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 5) << 13 - 5;
     unsafe { *unsafe { out.offset(24 as isize) } = base.wrapping_add(tmp) };
@@ -13371,10 +13276,9 @@ extern "C" fn unpack13_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 31;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 13 - 12;
     unsafe { *unsafe { out.offset(27 as isize) } = base.wrapping_add(tmp) };
@@ -13384,10 +13288,9 @@ extern "C" fn unpack13_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 25;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 13 - 6;
     unsafe { *unsafe { out.offset(29 as isize) } = base.wrapping_add(tmp) };
@@ -13416,10 +13319,9 @@ extern "C" fn unpack14_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 14 - 10;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
@@ -13429,10 +13331,9 @@ extern "C" fn unpack14_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 14 - 6;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
@@ -13441,10 +13342,9 @@ extern "C" fn unpack14_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 14 - 2;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
@@ -13457,10 +13357,9 @@ extern "C" fn unpack14_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 14 - 12;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
@@ -13470,10 +13369,9 @@ extern "C" fn unpack14_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 14 - 8;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
@@ -13483,10 +13381,9 @@ extern "C" fn unpack14_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 14 - 4;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
@@ -13499,10 +13396,9 @@ extern "C" fn unpack14_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 18 & 16383 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(16 as isize) } =
@@ -13514,10 +13410,9 @@ extern "C" fn unpack14_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 14 - 10;
     unsafe { *unsafe { out.offset(18 as isize) } = base.wrapping_add(tmp) };
@@ -13527,10 +13422,9 @@ extern "C" fn unpack14_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 14 - 6;
     unsafe { *unsafe { out.offset(20 as isize) } = base.wrapping_add(tmp) };
@@ -13540,10 +13434,9 @@ extern "C" fn unpack14_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 14 - 2;
     unsafe { *unsafe { out.offset(22 as isize) } = base.wrapping_add(tmp) };
@@ -13557,10 +13450,9 @@ extern "C" fn unpack14_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 14 - 12;
     unsafe { *unsafe { out.offset(25 as isize) } = base.wrapping_add(tmp) };
@@ -13570,10 +13462,9 @@ extern "C" fn unpack14_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 14 - 8;
     unsafe { *unsafe { out.offset(27 as isize) } = base.wrapping_add(tmp) };
@@ -13583,10 +13474,9 @@ extern "C" fn unpack14_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 14 - 4;
     unsafe { *unsafe { out.offset(29 as isize) } = base.wrapping_add(tmp) };
@@ -13616,10 +13506,9 @@ extern "C" fn unpack15_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 13) << 15 - 13;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
@@ -13629,10 +13518,9 @@ extern "C" fn unpack15_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 11) << 15 - 11;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
@@ -13642,10 +13530,9 @@ extern "C" fn unpack15_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 9) << 15 - 9;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
@@ -13654,10 +13541,9 @@ extern "C" fn unpack15_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 7) << 15 - 7;
     unsafe { *unsafe { out.offset(8 as isize) } = base.wrapping_add(tmp) };
@@ -13666,10 +13552,9 @@ extern "C" fn unpack15_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 5) << 15 - 5;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
@@ -13679,10 +13564,9 @@ extern "C" fn unpack15_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 3) << 15 - 3;
     unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
@@ -13692,10 +13576,9 @@ extern "C" fn unpack15_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 1) << 15 - 1;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
@@ -13709,10 +13592,9 @@ extern "C" fn unpack15_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 31;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 15 - 14;
     unsafe { *unsafe { out.offset(17 as isize) } = base.wrapping_add(tmp) };
@@ -13722,10 +13604,9 @@ extern "C" fn unpack15_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 29;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 15 - 12;
     unsafe { *unsafe { out.offset(19 as isize) } = base.wrapping_add(tmp) };
@@ -13735,10 +13616,9 @@ extern "C" fn unpack15_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 27;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 15 - 10;
     unsafe { *unsafe { out.offset(21 as isize) } = base.wrapping_add(tmp) };
@@ -13748,10 +13628,9 @@ extern "C" fn unpack15_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 25;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 15 - 8;
     unsafe { *unsafe { out.offset(23 as isize) } = base.wrapping_add(tmp) };
@@ -13761,10 +13640,9 @@ extern "C" fn unpack15_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 23;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 15 - 6;
     unsafe { *unsafe { out.offset(25 as isize) } = base.wrapping_add(tmp) };
@@ -13774,10 +13652,9 @@ extern "C" fn unpack15_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 21;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 15 - 4;
     unsafe { *unsafe { out.offset(27 as isize) } = base.wrapping_add(tmp) };
@@ -13787,10 +13664,9 @@ extern "C" fn unpack15_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 19;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 15 - 2;
     unsafe { *unsafe { out.offset(29 as isize) } = base.wrapping_add(tmp) };
@@ -13819,10 +13695,9 @@ extern "C" fn unpack16_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 16 & 65535 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(2 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 65535 as u32)
@@ -13832,10 +13707,9 @@ extern "C" fn unpack16_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 16 & 65535 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(4 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 65535 as u32)
@@ -13845,10 +13719,9 @@ extern "C" fn unpack16_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 16 & 65535 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(6 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 65535 as u32)
@@ -13858,10 +13731,9 @@ extern "C" fn unpack16_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 16 & 65535 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(8 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 65535 as u32)
@@ -13871,10 +13743,9 @@ extern "C" fn unpack16_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 16 & 65535 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(10 as isize) } =
@@ -13885,10 +13756,9 @@ extern "C" fn unpack16_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 16 & 65535 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(12 as isize) } =
@@ -13899,10 +13769,9 @@ extern "C" fn unpack16_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 16 & 65535 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(14 as isize) } =
@@ -13913,10 +13782,9 @@ extern "C" fn unpack16_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 16 & 65535 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(16 as isize) } =
@@ -13927,10 +13795,9 @@ extern "C" fn unpack16_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 16 & 65535 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(18 as isize) } =
@@ -13941,10 +13808,9 @@ extern "C" fn unpack16_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 16 & 65535 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(20 as isize) } =
@@ -13955,10 +13821,9 @@ extern "C" fn unpack16_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 16 & 65535 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(22 as isize) } =
@@ -13969,10 +13834,9 @@ extern "C" fn unpack16_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 16 & 65535 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(24 as isize) } =
@@ -13983,10 +13847,9 @@ extern "C" fn unpack16_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 16 & 65535 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(26 as isize) } =
@@ -13997,10 +13860,9 @@ extern "C" fn unpack16_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 16 & 65535 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(28 as isize) } =
@@ -14011,10 +13873,9 @@ extern "C" fn unpack16_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 16 & 65535 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(30 as isize) } =
@@ -14039,10 +13900,9 @@ extern "C" fn unpack17_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 17;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 17 - 2;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
@@ -14052,10 +13912,9 @@ extern "C" fn unpack17_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 19;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 17 - 4;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
@@ -14065,10 +13924,9 @@ extern "C" fn unpack17_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 21;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 17 - 6;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
@@ -14078,10 +13936,9 @@ extern "C" fn unpack17_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 23;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 17 - 8;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
@@ -14091,10 +13948,9 @@ extern "C" fn unpack17_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 25;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 17 - 10;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
@@ -14104,10 +13960,9 @@ extern "C" fn unpack17_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 27;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 17 - 12;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
@@ -14117,10 +13972,9 @@ extern "C" fn unpack17_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 29;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 17 - 14;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
@@ -14130,19 +13984,17 @@ extern "C" fn unpack17_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 31;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 17 - 16;
     unsafe { *unsafe { out.offset(15 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 1) << 17 - 1;
     unsafe { *unsafe { out.offset(16 as isize) } = base.wrapping_add(tmp) };
@@ -14152,10 +14004,9 @@ extern "C" fn unpack17_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 3) << 17 - 3;
     unsafe { *unsafe { out.offset(18 as isize) } = base.wrapping_add(tmp) };
@@ -14165,10 +14016,9 @@ extern "C" fn unpack17_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 5) << 17 - 5;
     unsafe { *unsafe { out.offset(20 as isize) } = base.wrapping_add(tmp) };
@@ -14178,10 +14028,9 @@ extern "C" fn unpack17_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 7) << 17 - 7;
     unsafe { *unsafe { out.offset(22 as isize) } = base.wrapping_add(tmp) };
@@ -14191,10 +14040,9 @@ extern "C" fn unpack17_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 9) << 17 - 9;
     unsafe { *unsafe { out.offset(24 as isize) } = base.wrapping_add(tmp) };
@@ -14204,10 +14052,9 @@ extern "C" fn unpack17_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 11) << 17 - 11;
     unsafe { *unsafe { out.offset(26 as isize) } = base.wrapping_add(tmp) };
@@ -14217,10 +14064,9 @@ extern "C" fn unpack17_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 13) << 17 - 13;
     unsafe { *unsafe { out.offset(28 as isize) } = base.wrapping_add(tmp) };
@@ -14230,10 +14076,9 @@ extern "C" fn unpack17_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 15) << 17 - 15;
     unsafe { *unsafe { out.offset(30 as isize) } = base.wrapping_add(tmp) };
@@ -14256,10 +14101,9 @@ extern "C" fn unpack18_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 18 - 4;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
@@ -14269,10 +14113,9 @@ extern "C" fn unpack18_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 18 - 8;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
@@ -14282,10 +14125,9 @@ extern "C" fn unpack18_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 18 - 12;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
@@ -14295,19 +14137,17 @@ extern "C" fn unpack18_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 18 - 16;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 18 - 2;
     unsafe { *unsafe { out.offset(8 as isize) } = base.wrapping_add(tmp) };
@@ -14317,10 +14157,9 @@ extern "C" fn unpack18_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 18 - 6;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
@@ -14330,10 +14169,9 @@ extern "C" fn unpack18_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 18 - 10;
     unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
@@ -14343,10 +14181,9 @@ extern "C" fn unpack18_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 18 - 14;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
@@ -14355,10 +14192,9 @@ extern "C" fn unpack18_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 14 & 262143 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(16 as isize) } =
@@ -14366,10 +14202,9 @@ extern "C" fn unpack18_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 18 - 4;
     unsafe { *unsafe { out.offset(17 as isize) } = base.wrapping_add(tmp) };
@@ -14379,10 +14214,9 @@ extern "C" fn unpack18_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 18 - 8;
     unsafe { *unsafe { out.offset(19 as isize) } = base.wrapping_add(tmp) };
@@ -14392,10 +14226,9 @@ extern "C" fn unpack18_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 18 - 12;
     unsafe { *unsafe { out.offset(21 as isize) } = base.wrapping_add(tmp) };
@@ -14405,19 +14238,17 @@ extern "C" fn unpack18_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 18 - 16;
     unsafe { *unsafe { out.offset(23 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 18 - 2;
     unsafe { *unsafe { out.offset(24 as isize) } = base.wrapping_add(tmp) };
@@ -14427,10 +14258,9 @@ extern "C" fn unpack18_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 18 - 6;
     unsafe { *unsafe { out.offset(26 as isize) } = base.wrapping_add(tmp) };
@@ -14440,10 +14270,9 @@ extern "C" fn unpack18_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 18 - 10;
     unsafe { *unsafe { out.offset(28 as isize) } = base.wrapping_add(tmp) };
@@ -14453,10 +14282,9 @@ extern "C" fn unpack18_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 18 - 14;
     unsafe { *unsafe { out.offset(30 as isize) } = base.wrapping_add(tmp) };
@@ -14479,10 +14307,9 @@ extern "C" fn unpack19_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 19;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 19 - 6;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
@@ -14492,10 +14319,9 @@ extern "C" fn unpack19_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 25;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 19 - 12;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
@@ -14505,19 +14331,17 @@ extern "C" fn unpack19_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 31;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 19 - 18;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 5) << 19 - 5;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
@@ -14527,10 +14351,9 @@ extern "C" fn unpack19_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 11) << 19 - 11;
     unsafe { *unsafe { out.offset(8 as isize) } = base.wrapping_add(tmp) };
@@ -14540,19 +14363,17 @@ extern "C" fn unpack19_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 17) << 19 - 17;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 17;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 19 - 4;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
@@ -14562,10 +14383,9 @@ extern "C" fn unpack19_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 23;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 19 - 10;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
@@ -14575,19 +14395,17 @@ extern "C" fn unpack19_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 29;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 19 - 16;
     unsafe { *unsafe { out.offset(15 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 3) << 19 - 3;
     unsafe { *unsafe { out.offset(16 as isize) } = base.wrapping_add(tmp) };
@@ -14597,10 +14415,9 @@ extern "C" fn unpack19_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 9) << 19 - 9;
     unsafe { *unsafe { out.offset(18 as isize) } = base.wrapping_add(tmp) };
@@ -14610,19 +14427,17 @@ extern "C" fn unpack19_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 15) << 19 - 15;
     unsafe { *unsafe { out.offset(20 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 15;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 19 - 2;
     unsafe { *unsafe { out.offset(21 as isize) } = base.wrapping_add(tmp) };
@@ -14632,10 +14447,9 @@ extern "C" fn unpack19_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 21;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 19 - 8;
     unsafe { *unsafe { out.offset(23 as isize) } = base.wrapping_add(tmp) };
@@ -14645,39 +14459,35 @@ extern "C" fn unpack19_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 27;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 19 - 14;
     unsafe { *unsafe { out.offset(25 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 14;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 1) << 19 - 1;
     unsafe { *unsafe { out.offset(26 as isize) } = base + tmp };
     unsafe { *unsafe { out.offset(27 as isize) } = base + (unsafe { *in32 } >> 1 & 524287 as u32) };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 7) << 19 - 7;
     unsafe { *unsafe { out.offset(28 as isize) } = base + tmp };
     unsafe { *unsafe { out.offset(29 as isize) } = base + (unsafe { *in32 } >> 7 & 524287 as u32) };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 13) << 19 - 13;
     unsafe { *unsafe { out.offset(30 as isize) } = base.wrapping_add(tmp) };
@@ -14700,10 +14510,9 @@ extern "C" fn unpack20_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 20 - 8;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
@@ -14713,19 +14522,17 @@ extern "C" fn unpack20_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 20 - 16;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 20 - 4;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
@@ -14735,10 +14542,9 @@ extern "C" fn unpack20_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 20 - 12;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
@@ -14747,10 +14553,9 @@ extern "C" fn unpack20_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 12 & 1048575 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(8 as isize) } =
@@ -14758,10 +14563,9 @@ extern "C" fn unpack20_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 20 - 8;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
@@ -14771,19 +14575,17 @@ extern "C" fn unpack20_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 20 - 16;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 20 - 4;
     unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
@@ -14793,10 +14595,9 @@ extern "C" fn unpack20_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 20 - 12;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
@@ -14805,10 +14606,9 @@ extern "C" fn unpack20_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 12 & 1048575 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(16 as isize) } =
@@ -14816,10 +14616,9 @@ extern "C" fn unpack20_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 20 - 8;
     unsafe { *unsafe { out.offset(17 as isize) } = base.wrapping_add(tmp) };
@@ -14829,19 +14628,17 @@ extern "C" fn unpack20_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 20 - 16;
     unsafe { *unsafe { out.offset(19 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 20 - 4;
     unsafe { *unsafe { out.offset(20 as isize) } = base.wrapping_add(tmp) };
@@ -14851,10 +14648,9 @@ extern "C" fn unpack20_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 20 - 12;
     unsafe { *unsafe { out.offset(22 as isize) } = base.wrapping_add(tmp) };
@@ -14863,10 +14659,9 @@ extern "C" fn unpack20_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 12 & 1048575 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(24 as isize) } =
@@ -14874,10 +14669,9 @@ extern "C" fn unpack20_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 20 - 8;
     unsafe { *unsafe { out.offset(25 as isize) } = base.wrapping_add(tmp) };
@@ -14887,19 +14681,17 @@ extern "C" fn unpack20_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 20 - 16;
     unsafe { *unsafe { out.offset(27 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 20 - 4;
     unsafe { *unsafe { out.offset(28 as isize) } = base.wrapping_add(tmp) };
@@ -14909,10 +14701,9 @@ extern "C" fn unpack20_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 20 - 12;
     unsafe { *unsafe { out.offset(30 as isize) } = base.wrapping_add(tmp) };
@@ -14935,10 +14726,9 @@ extern "C" fn unpack21_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 21;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 21 - 10;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
@@ -14948,19 +14738,17 @@ extern "C" fn unpack21_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 31;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 21 - 20;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 9) << 21 - 9;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
@@ -14970,19 +14758,17 @@ extern "C" fn unpack21_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 19) << 21 - 19;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 19;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 21 - 8;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
@@ -14992,19 +14778,17 @@ extern "C" fn unpack21_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 29;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 21 - 18;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 7) << 21 - 7;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
@@ -15014,19 +14798,17 @@ extern "C" fn unpack21_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 17) << 21 - 17;
     unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 17;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 21 - 6;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
@@ -15036,19 +14818,17 @@ extern "C" fn unpack21_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 27;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 21 - 16;
     unsafe { *unsafe { out.offset(15 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 5) << 21 - 5;
     unsafe { *unsafe { out.offset(16 as isize) } = base.wrapping_add(tmp) };
@@ -15058,19 +14838,17 @@ extern "C" fn unpack21_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 15) << 21 - 15;
     unsafe { *unsafe { out.offset(18 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 15;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 21 - 4;
     unsafe { *unsafe { out.offset(19 as isize) } = base.wrapping_add(tmp) };
@@ -15080,19 +14858,17 @@ extern "C" fn unpack21_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 25;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 21 - 14;
     unsafe { *unsafe { out.offset(21 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 14;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 3) << 21 - 3;
     unsafe { *unsafe { out.offset(22 as isize) } = base.wrapping_add(tmp) };
@@ -15102,19 +14878,17 @@ extern "C" fn unpack21_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 13) << 21 - 13;
     unsafe { *unsafe { out.offset(24 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 13;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 21 - 2;
     unsafe { *unsafe { out.offset(25 as isize) } = base.wrapping_add(tmp) };
@@ -15124,19 +14898,17 @@ extern "C" fn unpack21_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 23;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 21 - 12;
     unsafe { *unsafe { out.offset(27 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 12;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 1) << 21 - 1;
     unsafe { *unsafe { out.offset(28 as isize) } = base.wrapping_add(tmp) };
@@ -15146,10 +14918,9 @@ extern "C" fn unpack21_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 11) << 21 - 11;
     unsafe { *unsafe { out.offset(30 as isize) } = base.wrapping_add(tmp) };
@@ -15172,19 +14943,17 @@ extern "C" fn unpack22_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 22 - 12;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 12;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 22 - 2;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
@@ -15194,19 +14963,17 @@ extern "C" fn unpack22_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 22 - 14;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 14;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 22 - 4;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
@@ -15216,19 +14983,17 @@ extern "C" fn unpack22_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 22 - 16;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 22 - 6;
     unsafe { *unsafe { out.offset(8 as isize) } = base.wrapping_add(tmp) };
@@ -15238,19 +15003,17 @@ extern "C" fn unpack22_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 22 - 18;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 22 - 8;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
@@ -15260,19 +15023,17 @@ extern "C" fn unpack22_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 22 - 20;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 22 - 10;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
@@ -15281,10 +15042,9 @@ extern "C" fn unpack22_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 10 & 4194303 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(16 as isize) } =
@@ -15292,19 +15052,17 @@ extern "C" fn unpack22_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 22 - 12;
     unsafe { *unsafe { out.offset(17 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 12;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 22 - 2;
     unsafe { *unsafe { out.offset(18 as isize) } = base.wrapping_add(tmp) };
@@ -15314,19 +15072,17 @@ extern "C" fn unpack22_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 22 - 14;
     unsafe { *unsafe { out.offset(20 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 14;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 22 - 4;
     unsafe { *unsafe { out.offset(21 as isize) } = base.wrapping_add(tmp) };
@@ -15336,19 +15092,17 @@ extern "C" fn unpack22_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 22 - 16;
     unsafe { *unsafe { out.offset(23 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 22 - 6;
     unsafe { *unsafe { out.offset(24 as isize) } = base.wrapping_add(tmp) };
@@ -15358,19 +15112,17 @@ extern "C" fn unpack22_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 22 - 18;
     unsafe { *unsafe { out.offset(26 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 22 - 8;
     unsafe { *unsafe { out.offset(27 as isize) } = base.wrapping_add(tmp) };
@@ -15380,19 +15132,17 @@ extern "C" fn unpack22_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 22 - 20;
     unsafe { *unsafe { out.offset(29 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 22 - 10;
     unsafe { *unsafe { out.offset(30 as isize) } = base.wrapping_add(tmp) };
@@ -15415,19 +15165,17 @@ extern "C" fn unpack23_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 23;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 23 - 14;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 14;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 5) << 23 - 5;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
@@ -15437,28 +15185,25 @@ extern "C" fn unpack23_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 19) << 23 - 19;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 19;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 23 - 10;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 10;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 1) << 23 - 1;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
@@ -15468,19 +15213,17 @@ extern "C" fn unpack23_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 15) << 23 - 15;
     unsafe { *unsafe { out.offset(8 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 15;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 23 - 6;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
@@ -15490,28 +15233,25 @@ extern "C" fn unpack23_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 29;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 23 - 20;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 11) << 23 - 11;
     unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 11;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 23 - 2;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
@@ -15521,19 +15261,17 @@ extern "C" fn unpack23_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 25;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 23 - 16;
     unsafe { *unsafe { out.offset(15 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 7) << 23 - 7;
     unsafe { *unsafe { out.offset(16 as isize) } = base.wrapping_add(tmp) };
@@ -15543,28 +15281,25 @@ extern "C" fn unpack23_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 21) << 23 - 21;
     unsafe { *unsafe { out.offset(18 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 21;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 23 - 12;
     unsafe { *unsafe { out.offset(19 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 12;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 3) << 23 - 3;
     unsafe { *unsafe { out.offset(20 as isize) } = base.wrapping_add(tmp) };
@@ -15574,19 +15309,17 @@ extern "C" fn unpack23_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 17) << 23 - 17;
     unsafe { *unsafe { out.offset(22 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 17;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 23 - 8;
     unsafe { *unsafe { out.offset(23 as isize) } = base.wrapping_add(tmp) };
@@ -15596,28 +15329,25 @@ extern "C" fn unpack23_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 31;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 22) << 23 - 22;
     unsafe { *unsafe { out.offset(25 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 13) << 23 - 13;
     unsafe { *unsafe { out.offset(26 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 13;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 23 - 4;
     unsafe { *unsafe { out.offset(27 as isize) } = base.wrapping_add(tmp) };
@@ -15627,19 +15357,17 @@ extern "C" fn unpack23_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 27;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 23 - 18;
     unsafe { *unsafe { out.offset(29 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 9) << 23 - 9;
     unsafe { *unsafe { out.offset(30 as isize) } = base.wrapping_add(tmp) };
@@ -15662,19 +15390,17 @@ extern "C" fn unpack24_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 24 - 16;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 24 - 8;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
@@ -15683,10 +15409,9 @@ extern "C" fn unpack24_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 8 & 16777215 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(4 as isize) } =
@@ -15694,19 +15419,17 @@ extern "C" fn unpack24_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 24 - 16;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 24 - 8;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
@@ -15715,10 +15438,9 @@ extern "C" fn unpack24_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 8 & 16777215 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(8 as isize) } =
@@ -15726,19 +15448,17 @@ extern "C" fn unpack24_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 24 - 16;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 24 - 8;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
@@ -15747,10 +15467,9 @@ extern "C" fn unpack24_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 8 & 16777215 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(12 as isize) } =
@@ -15758,19 +15477,17 @@ extern "C" fn unpack24_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 24 - 16;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 24 - 8;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
@@ -15779,10 +15496,9 @@ extern "C" fn unpack24_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 8 & 16777215 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(16 as isize) } =
@@ -15790,19 +15506,17 @@ extern "C" fn unpack24_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 24 - 16;
     unsafe { *unsafe { out.offset(17 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 24 - 8;
     unsafe { *unsafe { out.offset(18 as isize) } = base.wrapping_add(tmp) };
@@ -15811,10 +15525,9 @@ extern "C" fn unpack24_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 8 & 16777215 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(20 as isize) } =
@@ -15822,19 +15535,17 @@ extern "C" fn unpack24_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 24 - 16;
     unsafe { *unsafe { out.offset(21 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 24 - 8;
     unsafe { *unsafe { out.offset(22 as isize) } = base.wrapping_add(tmp) };
@@ -15843,10 +15554,9 @@ extern "C" fn unpack24_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 8 & 16777215 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(24 as isize) } =
@@ -15854,19 +15564,17 @@ extern "C" fn unpack24_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 24 - 16;
     unsafe { *unsafe { out.offset(25 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 24 - 8;
     unsafe { *unsafe { out.offset(26 as isize) } = base.wrapping_add(tmp) };
@@ -15875,10 +15583,9 @@ extern "C" fn unpack24_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 8 & 16777215 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(28 as isize) } =
@@ -15886,19 +15593,17 @@ extern "C" fn unpack24_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 24 - 16;
     unsafe { *unsafe { out.offset(29 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 24 - 8;
     unsafe { *unsafe { out.offset(30 as isize) } = base.wrapping_add(tmp) };
@@ -15921,28 +15626,25 @@ extern "C" fn unpack25_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 25;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 25 - 18;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 11) << 25 - 11;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 11;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 25 - 4;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
@@ -15952,37 +15654,33 @@ extern "C" fn unpack25_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 29;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 22) << 25 - 22;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 15) << 25 - 15;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 15;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 25 - 8;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 8;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 1) << 25 - 1;
     unsafe { *unsafe { out.offset(8 as isize) } = base.wrapping_add(tmp) };
@@ -15992,28 +15690,25 @@ extern "C" fn unpack25_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 19) << 25 - 19;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 19;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 25 - 12;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 12;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 5) << 25 - 5;
     unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
@@ -16023,37 +15718,33 @@ extern "C" fn unpack25_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 23) << 25 - 23;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 23;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 25 - 16;
     unsafe { *unsafe { out.offset(15 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 9) << 25 - 9;
     unsafe { *unsafe { out.offset(16 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 9;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 25 - 2;
     unsafe { *unsafe { out.offset(17 as isize) } = base.wrapping_add(tmp) };
@@ -16063,28 +15754,25 @@ extern "C" fn unpack25_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 27;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 25 - 20;
     unsafe { *unsafe { out.offset(19 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 13) << 25 - 13;
     unsafe { *unsafe { out.offset(20 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 13;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 25 - 6;
     unsafe { *unsafe { out.offset(21 as isize) } = base.wrapping_add(tmp) };
@@ -16094,37 +15782,33 @@ extern "C" fn unpack25_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 31;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 24) << 25 - 24;
     unsafe { *unsafe { out.offset(23 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 17) << 25 - 17;
     unsafe { *unsafe { out.offset(24 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 17;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 25 - 10;
     unsafe { *unsafe { out.offset(25 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 10;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 3) << 25 - 3;
     unsafe { *unsafe { out.offset(26 as isize) } = base.wrapping_add(tmp) };
@@ -16134,28 +15818,25 @@ extern "C" fn unpack25_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 21) << 25 - 21;
     unsafe { *unsafe { out.offset(28 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 21;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 25 - 14;
     unsafe { *unsafe { out.offset(29 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 14;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 7) << 25 - 7;
     unsafe { *unsafe { out.offset(30 as isize) } = base.wrapping_add(tmp) };
@@ -16178,37 +15859,33 @@ extern "C" fn unpack26_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 26 - 20;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 26 - 14;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 14;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 26 - 8;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 8;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 26 - 2;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
@@ -16218,37 +15895,33 @@ extern "C" fn unpack26_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 22) << 26 - 22;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 26 - 16;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 26 - 10;
     unsafe { *unsafe { out.offset(8 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 10;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 26 - 4;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
@@ -16258,37 +15931,33 @@ extern "C" fn unpack26_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 24) << 26 - 24;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 26 - 18;
     unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 26 - 12;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 12;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 26 - 6;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
@@ -16297,10 +15966,9 @@ extern "C" fn unpack26_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 6 & 67108863 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(16 as isize) } =
@@ -16308,37 +15976,33 @@ extern "C" fn unpack26_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 26 - 20;
     unsafe { *unsafe { out.offset(17 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 26 - 14;
     unsafe { *unsafe { out.offset(18 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 14;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 26 - 8;
     unsafe { *unsafe { out.offset(19 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 8;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 26 - 2;
     unsafe { *unsafe { out.offset(20 as isize) } = base.wrapping_add(tmp) };
@@ -16348,37 +16012,33 @@ extern "C" fn unpack26_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 22) << 26 - 22;
     unsafe { *unsafe { out.offset(22 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 26 - 16;
     unsafe { *unsafe { out.offset(23 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 26 - 10;
     unsafe { *unsafe { out.offset(24 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 10;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 26 - 4;
     unsafe { *unsafe { out.offset(25 as isize) } = base.wrapping_add(tmp) };
@@ -16388,37 +16048,33 @@ extern "C" fn unpack26_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 24) << 26 - 24;
     unsafe { *unsafe { out.offset(27 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 26 - 18;
     unsafe { *unsafe { out.offset(28 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 26 - 12;
     unsafe { *unsafe { out.offset(29 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 12;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 26 - 6;
     unsafe { *unsafe { out.offset(30 as isize) } = base.wrapping_add(tmp) };
@@ -16441,46 +16097,41 @@ extern "C" fn unpack27_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 27;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 22) << 27 - 22;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 17) << 27 - 17;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 17;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 27 - 12;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 12;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 7) << 27 - 7;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 7;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 27 - 2;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
@@ -16490,46 +16141,41 @@ extern "C" fn unpack27_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 29;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 24) << 27 - 24;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 19) << 27 - 19;
     unsafe { *unsafe { out.offset(8 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 19;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 27 - 14;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 14;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 9) << 27 - 9;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 9;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 27 - 4;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
@@ -16539,55 +16185,49 @@ extern "C" fn unpack27_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 31;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 26) << 27 - 26;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 21) << 27 - 21;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 21;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 27 - 16;
     unsafe { *unsafe { out.offset(15 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 11) << 27 - 11;
     unsafe { *unsafe { out.offset(16 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 11;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 27 - 6;
     unsafe { *unsafe { out.offset(17 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 6;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 1) << 27 - 1;
     unsafe { *unsafe { out.offset(18 as isize) } = base.wrapping_add(tmp) };
@@ -16597,46 +16237,41 @@ extern "C" fn unpack27_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 23) << 27 - 23;
     unsafe { *unsafe { out.offset(20 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 23;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 27 - 18;
     unsafe { *unsafe { out.offset(21 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 13) << 27 - 13;
     unsafe { *unsafe { out.offset(22 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 13;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 27 - 8;
     unsafe { *unsafe { out.offset(23 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 8;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 3) << 27 - 3;
     unsafe { *unsafe { out.offset(24 as isize) } = base.wrapping_add(tmp) };
@@ -16646,46 +16281,41 @@ extern "C" fn unpack27_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 25) << 27 - 25;
     unsafe { *unsafe { out.offset(26 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 25;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 27 - 20;
     unsafe { *unsafe { out.offset(27 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 15) << 27 - 15;
     unsafe { *unsafe { out.offset(28 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 15;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 27 - 10;
     unsafe { *unsafe { out.offset(29 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 10;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 5) << 27 - 5;
     unsafe { *unsafe { out.offset(30 as isize) } = base.wrapping_add(tmp) };
@@ -16708,55 +16338,49 @@ extern "C" fn unpack28_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 24) << 28 - 24;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 28 - 20;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 28 - 16;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 28 - 12;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 12;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 28 - 8;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 8;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 28 - 4;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
@@ -16765,10 +16389,9 @@ extern "C" fn unpack28_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 4 & 268435455 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(8 as isize) } =
@@ -16776,55 +16399,49 @@ extern "C" fn unpack28_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 24) << 28 - 24;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 28 - 20;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 28 - 16;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 28 - 12;
     unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 12;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 28 - 8;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 8;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 28 - 4;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
@@ -16833,10 +16450,9 @@ extern "C" fn unpack28_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 4 & 268435455 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(16 as isize) } =
@@ -16844,55 +16460,49 @@ extern "C" fn unpack28_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 24) << 28 - 24;
     unsafe { *unsafe { out.offset(17 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 28 - 20;
     unsafe { *unsafe { out.offset(18 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 28 - 16;
     unsafe { *unsafe { out.offset(19 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 28 - 12;
     unsafe { *unsafe { out.offset(20 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 12;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 28 - 8;
     unsafe { *unsafe { out.offset(21 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 8;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 28 - 4;
     unsafe { *unsafe { out.offset(22 as isize) } = base.wrapping_add(tmp) };
@@ -16901,10 +16511,9 @@ extern "C" fn unpack28_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 4 & 268435455 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(24 as isize) } =
@@ -16912,55 +16521,49 @@ extern "C" fn unpack28_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 24) << 28 - 24;
     unsafe { *unsafe { out.offset(25 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 28 - 20;
     unsafe { *unsafe { out.offset(26 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 28 - 16;
     unsafe { *unsafe { out.offset(27 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 28 - 12;
     unsafe { *unsafe { out.offset(28 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 12;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 28 - 8;
     unsafe { *unsafe { out.offset(29 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 8;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 28 - 4;
     unsafe { *unsafe { out.offset(30 as isize) } = base.wrapping_add(tmp) };
@@ -16983,82 +16586,73 @@ extern "C" fn unpack29_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 29;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 26) << 29 - 26;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 23) << 29 - 23;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 23;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 29 - 20;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 17) << 29 - 17;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 17;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 29 - 14;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 14;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 11) << 29 - 11;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 11;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 29 - 8;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 8;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 5) << 29 - 5;
     unsafe { *unsafe { out.offset(8 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 5;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 29 - 2;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
@@ -17068,91 +16662,81 @@ extern "C" fn unpack29_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 31;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 28) << 29 - 28;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 25) << 29 - 25;
     unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 25;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 22) << 29 - 22;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 19) << 29 - 19;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 19;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 29 - 16;
     unsafe { *unsafe { out.offset(15 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 13) << 29 - 13;
     unsafe { *unsafe { out.offset(16 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 13;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 29 - 10;
     unsafe { *unsafe { out.offset(17 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 10;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 7) << 29 - 7;
     unsafe { *unsafe { out.offset(18 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 7;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 29 - 4;
     unsafe { *unsafe { out.offset(19 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 4;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 1) << 29 - 1;
     unsafe { *unsafe { out.offset(20 as isize) } = base.wrapping_add(tmp) };
@@ -17162,82 +16746,73 @@ extern "C" fn unpack29_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 27) << 29 - 27;
     unsafe { *unsafe { out.offset(22 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 27;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 24) << 29 - 24;
     unsafe { *unsafe { out.offset(23 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 21) << 29 - 21;
     unsafe { *unsafe { out.offset(24 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 21;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 29 - 18;
     unsafe { *unsafe { out.offset(25 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 15) << 29 - 15;
     unsafe { *unsafe { out.offset(26 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 15;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 29 - 12;
     unsafe { *unsafe { out.offset(27 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 12;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 9) << 29 - 9;
     unsafe { *unsafe { out.offset(28 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 9;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 29 - 6;
     unsafe { *unsafe { out.offset(29 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 6;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 3) << 29 - 3;
     unsafe { *unsafe { out.offset(30 as isize) } = base.wrapping_add(tmp) };
@@ -17260,127 +16835,113 @@ extern "C" fn unpack30_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 28) << 30 - 28;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 26) << 30 - 26;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 24) << 30 - 24;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 22) << 30 - 22;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 30 - 20;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 30 - 18;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 30 - 16;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 30 - 14;
     unsafe { *unsafe { out.offset(8 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 14;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 30 - 12;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 12;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 30 - 10;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 10;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 30 - 8;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 8;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 30 - 6;
     unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 6;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 30 - 4;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 4;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 30 - 2;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
@@ -17389,10 +16950,9 @@ extern "C" fn unpack30_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 2 & 1073741823 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(16 as isize) } =
@@ -17400,127 +16960,113 @@ extern "C" fn unpack30_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 28) << 30 - 28;
     unsafe { *unsafe { out.offset(17 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 26) << 30 - 26;
     unsafe { *unsafe { out.offset(18 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 24) << 30 - 24;
     unsafe { *unsafe { out.offset(19 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 22) << 30 - 22;
     unsafe { *unsafe { out.offset(20 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 30 - 20;
     unsafe { *unsafe { out.offset(21 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 30 - 18;
     unsafe { *unsafe { out.offset(22 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 30 - 16;
     unsafe { *unsafe { out.offset(23 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 30 - 14;
     unsafe { *unsafe { out.offset(24 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 14;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 30 - 12;
     unsafe { *unsafe { out.offset(25 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 12;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 30 - 10;
     unsafe { *unsafe { out.offset(26 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 10;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 30 - 8;
     unsafe { *unsafe { out.offset(27 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 8;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 30 - 6;
     unsafe { *unsafe { out.offset(28 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 6;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 30 - 4;
     unsafe { *unsafe { out.offset(29 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 4;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 30 - 2;
     unsafe { *unsafe { out.offset(30 as isize) } = base.wrapping_add(tmp) };
@@ -17543,271 +17089,241 @@ extern "C" fn unpack31_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 31;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 30) << 31 - 30;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 29) << 31 - 29;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 29;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 28) << 31 - 28;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 27) << 31 - 27;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 27;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 26) << 31 - 26;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 25) << 31 - 25;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 25;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 24) << 31 - 24;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 23) << 31 - 23;
     unsafe { *unsafe { out.offset(8 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 23;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 22) << 31 - 22;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 21) << 31 - 21;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 21;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 31 - 20;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 19) << 31 - 19;
     unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 19;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 31 - 18;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 17) << 31 - 17;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 17;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 31 - 16;
     unsafe { *unsafe { out.offset(15 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 15) << 31 - 15;
     unsafe { *unsafe { out.offset(16 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 15;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 31 - 14;
     unsafe { *unsafe { out.offset(17 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 14;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 13) << 31 - 13;
     unsafe { *unsafe { out.offset(18 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 13;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 31 - 12;
     unsafe { *unsafe { out.offset(19 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 12;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 11) << 31 - 11;
     unsafe { *unsafe { out.offset(20 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 11;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 31 - 10;
     unsafe { *unsafe { out.offset(21 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 10;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 9) << 31 - 9;
     unsafe { *unsafe { out.offset(22 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 9;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 31 - 8;
     unsafe { *unsafe { out.offset(23 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 8;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 7) << 31 - 7;
     unsafe { *unsafe { out.offset(24 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 7;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 31 - 6;
     unsafe { *unsafe { out.offset(25 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 6;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 5) << 31 - 5;
     unsafe { *unsafe { out.offset(26 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 5;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 31 - 4;
     unsafe { *unsafe { out.offset(27 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 4;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 3) << 31 - 3;
     unsafe { *unsafe { out.offset(28 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 3;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 31 - 2;
     unsafe { *unsafe { out.offset(29 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 2;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 1) << 31 - 1;
     unsafe { *unsafe { out.offset(30 as isize) } = base.wrapping_add(tmp) };
@@ -17833,12 +17349,7 @@ extern "C" fn unpack32_32(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
                 };
                 break '__c44;
             }
-            {
-                let __p = &mut i;
-                let __t = *__p;
-                *__p = (*__p).wrapping_add(1);
-                __t
-            };
+            i = i.wrapping_add(1);
         }
     }
     return (32 as u64).wrapping_mul(core::mem::size_of::<u32>() as u64) as u32;
@@ -17895,11 +17406,7 @@ extern "C" fn unpack0_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
                 unsafe { *out.offset(k as isize) = base };
                 break '__c45;
             }
-            {
-                let __p = &mut k;
-                *__p += 1;
-                *__p
-            };
+            k += 1;
         }
     }
     return 0 as u32;
@@ -18057,10 +17564,9 @@ extern "C" fn unpack3_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 1) << 3 - 1;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
@@ -18113,10 +17619,9 @@ extern "C" fn unpack4_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         *unsafe { out.offset(7 as isize) } = base.wrapping_add(unsafe { *in32 } >> 28 & 15 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(8 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 15 as u32)
@@ -18171,10 +17676,9 @@ extern "C" fn unpack5_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 3) << 5 - 3;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
@@ -18195,10 +17699,9 @@ extern "C" fn unpack5_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 1) << 5 - 1;
     unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
@@ -18237,10 +17740,9 @@ extern "C" fn unpack6_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 6 - 4;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
@@ -18258,10 +17760,9 @@ extern "C" fn unpack6_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 6 - 2;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
@@ -18303,10 +17804,9 @@ extern "C" fn unpack7_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 3) << 7 - 3;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
@@ -18324,10 +17824,9 @@ extern "C" fn unpack7_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 31;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 7 - 6;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
@@ -18342,10 +17841,9 @@ extern "C" fn unpack7_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 27;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 7 - 2;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
@@ -18377,10 +17875,9 @@ extern "C" fn unpack8_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         *unsafe { out.offset(3 as isize) } = base.wrapping_add(unsafe { *in32 } >> 24 & 255 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(4 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 255 as u32)
@@ -18395,10 +17892,9 @@ extern "C" fn unpack8_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         *unsafe { out.offset(7 as isize) } = base.wrapping_add(unsafe { *in32 } >> 24 & 255 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(8 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 255 as u32)
@@ -18413,10 +17909,9 @@ extern "C" fn unpack8_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         *unsafe { out.offset(11 as isize) } = base.wrapping_add(unsafe { *in32 } >> 24 & 255 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(12 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 255 as u32)
@@ -18450,10 +17945,9 @@ extern "C" fn unpack9_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 27;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 9 - 4;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
@@ -18468,10 +17962,9 @@ extern "C" fn unpack9_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 31;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 9 - 8;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
@@ -18483,10 +17976,9 @@ extern "C" fn unpack9_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 3) << 9 - 3;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
@@ -18501,10 +17993,9 @@ extern "C" fn unpack9_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 7) << 9 - 7;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
@@ -18531,10 +18022,9 @@ extern "C" fn unpack10_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 10 - 8;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
@@ -18546,10 +18036,9 @@ extern "C" fn unpack10_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 10 - 6;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
@@ -18561,10 +18050,9 @@ extern "C" fn unpack10_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 10 - 4;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
@@ -18577,10 +18065,9 @@ extern "C" fn unpack10_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 10 - 2;
     unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
@@ -18612,10 +18099,9 @@ extern "C" fn unpack11_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 1) << 11 - 1;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
@@ -18627,10 +18113,9 @@ extern "C" fn unpack11_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 23;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 11 - 2;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
@@ -18642,10 +18127,9 @@ extern "C" fn unpack11_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 3) << 11 - 3;
     unsafe { *unsafe { out.offset(8 as isize) } = base.wrapping_add(tmp) };
@@ -18658,10 +18142,9 @@ extern "C" fn unpack11_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 25;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 11 - 4;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
@@ -18674,10 +18157,9 @@ extern "C" fn unpack11_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 5) << 11 - 5;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
@@ -18701,10 +18183,9 @@ extern "C" fn unpack12_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 12 - 4;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
@@ -18716,10 +18197,9 @@ extern "C" fn unpack12_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 12 - 8;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
@@ -18730,10 +18210,9 @@ extern "C" fn unpack12_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         *unsafe { out.offset(7 as isize) } = base.wrapping_add(unsafe { *in32 } >> 20 & 4095 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(8 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 4095 as u32)
@@ -18743,10 +18222,9 @@ extern "C" fn unpack12_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 12 - 4;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
@@ -18759,10 +18237,9 @@ extern "C" fn unpack12_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 12 - 8;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
@@ -18790,10 +18267,9 @@ extern "C" fn unpack13_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 7) << 13 - 7;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
@@ -18802,10 +18278,9 @@ extern "C" fn unpack13_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 1) << 13 - 1;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
@@ -18817,10 +18292,9 @@ extern "C" fn unpack13_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 27;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 13 - 8;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
@@ -18829,10 +18303,9 @@ extern "C" fn unpack13_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 21;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 13 - 2;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
@@ -18845,10 +18318,9 @@ extern "C" fn unpack13_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 9) << 13 - 9;
     unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
@@ -18857,10 +18329,9 @@ extern "C" fn unpack13_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 3) << 13 - 3;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
@@ -18885,10 +18356,9 @@ extern "C" fn unpack14_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 14 - 10;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
@@ -18898,10 +18368,9 @@ extern "C" fn unpack14_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 14 - 6;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
@@ -18910,10 +18379,9 @@ extern "C" fn unpack14_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 14 - 2;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
@@ -18926,10 +18394,9 @@ extern "C" fn unpack14_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 14 - 12;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
@@ -18939,10 +18406,9 @@ extern "C" fn unpack14_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 14 - 8;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
@@ -18952,10 +18418,9 @@ extern "C" fn unpack14_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 14 - 4;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
@@ -18985,10 +18450,9 @@ extern "C" fn unpack15_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 13) << 15 - 13;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
@@ -18998,10 +18462,9 @@ extern "C" fn unpack15_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 11) << 15 - 11;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
@@ -19011,10 +18474,9 @@ extern "C" fn unpack15_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 9) << 15 - 9;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
@@ -19023,10 +18485,9 @@ extern "C" fn unpack15_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 7) << 15 - 7;
     unsafe { *unsafe { out.offset(8 as isize) } = base.wrapping_add(tmp) };
@@ -19035,10 +18496,9 @@ extern "C" fn unpack15_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 5) << 15 - 5;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
@@ -19048,10 +18508,9 @@ extern "C" fn unpack15_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 3) << 15 - 3;
     unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
@@ -19061,10 +18520,9 @@ extern "C" fn unpack15_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 1) << 15 - 1;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
@@ -19089,10 +18547,9 @@ extern "C" fn unpack16_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 16 & 65535 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(2 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 65535 as u32)
@@ -19102,10 +18559,9 @@ extern "C" fn unpack16_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 16 & 65535 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(4 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 65535 as u32)
@@ -19115,10 +18571,9 @@ extern "C" fn unpack16_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 16 & 65535 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(6 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 65535 as u32)
@@ -19128,10 +18583,9 @@ extern "C" fn unpack16_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 16 & 65535 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(8 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 65535 as u32)
@@ -19141,10 +18595,9 @@ extern "C" fn unpack16_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 16 & 65535 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(10 as isize) } =
@@ -19155,10 +18608,9 @@ extern "C" fn unpack16_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 16 & 65535 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(12 as isize) } =
@@ -19169,10 +18621,9 @@ extern "C" fn unpack16_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 16 & 65535 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(14 as isize) } =
@@ -19197,10 +18648,9 @@ extern "C" fn unpack17_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 17;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 17 - 2;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
@@ -19210,10 +18660,9 @@ extern "C" fn unpack17_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 19;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 17 - 4;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
@@ -19223,10 +18672,9 @@ extern "C" fn unpack17_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 21;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 17 - 6;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
@@ -19236,10 +18684,9 @@ extern "C" fn unpack17_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 23;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 17 - 8;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
@@ -19249,10 +18696,9 @@ extern "C" fn unpack17_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 25;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 17 - 10;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
@@ -19262,10 +18708,9 @@ extern "C" fn unpack17_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 27;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 17 - 12;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
@@ -19275,10 +18720,9 @@ extern "C" fn unpack17_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 29;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 17 - 14;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
@@ -19288,10 +18732,9 @@ extern "C" fn unpack17_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 31;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 17 - 16;
     unsafe { *unsafe { out.offset(15 as isize) } = base.wrapping_add(tmp) };
@@ -19310,10 +18753,9 @@ extern "C" fn unpack18_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 18 - 4;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
@@ -19323,10 +18765,9 @@ extern "C" fn unpack18_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 18 - 8;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
@@ -19336,10 +18777,9 @@ extern "C" fn unpack18_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 18 - 12;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
@@ -19349,19 +18789,17 @@ extern "C" fn unpack18_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 18 - 16;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 18 - 2;
     unsafe { *unsafe { out.offset(8 as isize) } = base.wrapping_add(tmp) };
@@ -19371,10 +18809,9 @@ extern "C" fn unpack18_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 18 - 6;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
@@ -19384,10 +18821,9 @@ extern "C" fn unpack18_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 18 - 10;
     unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
@@ -19397,10 +18833,9 @@ extern "C" fn unpack18_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 18 - 14;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
@@ -19423,10 +18858,9 @@ extern "C" fn unpack19_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 19;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 19 - 6;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
@@ -19436,10 +18870,9 @@ extern "C" fn unpack19_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 25;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 19 - 12;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
@@ -19449,19 +18882,17 @@ extern "C" fn unpack19_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 31;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 19 - 18;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 5) << 19 - 5;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
@@ -19471,10 +18902,9 @@ extern "C" fn unpack19_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 11) << 19 - 11;
     unsafe { *unsafe { out.offset(8 as isize) } = base.wrapping_add(tmp) };
@@ -19484,19 +18914,17 @@ extern "C" fn unpack19_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 17) << 19 - 17;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 17;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 19 - 4;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
@@ -19506,10 +18934,9 @@ extern "C" fn unpack19_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 23;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 19 - 10;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
@@ -19519,10 +18946,9 @@ extern "C" fn unpack19_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 29;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 19 - 16;
     unsafe { *unsafe { out.offset(15 as isize) } = base.wrapping_add(tmp) };
@@ -19541,10 +18967,9 @@ extern "C" fn unpack20_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 20 - 8;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
@@ -19554,19 +18979,17 @@ extern "C" fn unpack20_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 20 - 16;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 20 - 4;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
@@ -19576,10 +18999,9 @@ extern "C" fn unpack20_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 20 - 12;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
@@ -19588,10 +19010,9 @@ extern "C" fn unpack20_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 12 & 1048575 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(8 as isize) } =
@@ -19599,10 +19020,9 @@ extern "C" fn unpack20_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 20 - 8;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
@@ -19612,19 +19032,17 @@ extern "C" fn unpack20_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 20 - 16;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 20 - 4;
     unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
@@ -19634,10 +19052,9 @@ extern "C" fn unpack20_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 20 - 12;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
@@ -19660,10 +19077,9 @@ extern "C" fn unpack21_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 21;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 21 - 10;
     unsafe { *unsafe { out.offset(1 as isize) } = base + tmp };
@@ -19672,19 +19088,17 @@ extern "C" fn unpack21_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 31;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 21 - 20;
     unsafe { *unsafe { out.offset(3 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 9) << 21 - 9;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
@@ -19694,19 +19108,17 @@ extern "C" fn unpack21_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 19) << 21 - 19;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 19;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 21 - 8;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
@@ -19716,19 +19128,17 @@ extern "C" fn unpack21_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 29;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 21 - 18;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 7) << 21 - 7;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
@@ -19738,19 +19148,17 @@ extern "C" fn unpack21_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 17) << 21 - 17;
     unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 17;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 21 - 6;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
@@ -19760,10 +19168,9 @@ extern "C" fn unpack21_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 27;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 21 - 16;
     unsafe { *unsafe { out.offset(15 as isize) } = base.wrapping_add(tmp) };
@@ -19782,19 +19189,17 @@ extern "C" fn unpack22_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 22 - 12;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 12;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 22 - 2;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
@@ -19804,19 +19209,17 @@ extern "C" fn unpack22_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 22 - 14;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 14;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 22 - 4;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
@@ -19826,19 +19229,17 @@ extern "C" fn unpack22_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 22 - 16;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 22 - 6;
     unsafe { *unsafe { out.offset(8 as isize) } = base.wrapping_add(tmp) };
@@ -19848,19 +19249,17 @@ extern "C" fn unpack22_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 22 - 18;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 22 - 8;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
@@ -19870,19 +19269,17 @@ extern "C" fn unpack22_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 22 - 20;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 22 - 10;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
@@ -19905,19 +19302,17 @@ extern "C" fn unpack23_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 23;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 23 - 14;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 14;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 5) << 23 - 5;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
@@ -19927,28 +19322,25 @@ extern "C" fn unpack23_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 19) << 23 - 19;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 19;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 23 - 10;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 10;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 1) << 23 - 1;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
@@ -19958,19 +19350,17 @@ extern "C" fn unpack23_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 15) << 23 - 15;
     unsafe { *unsafe { out.offset(8 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 15;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 23 - 6;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
@@ -19980,28 +19370,25 @@ extern "C" fn unpack23_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 29;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 23 - 20;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 11) << 23 - 11;
     unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 11;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 23 - 2;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
@@ -20011,10 +19398,9 @@ extern "C" fn unpack23_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 25;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 23 - 16;
     unsafe { *unsafe { out.offset(15 as isize) } = base.wrapping_add(tmp) };
@@ -20032,19 +19418,17 @@ extern "C" fn unpack24_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 24 - 16;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 24 - 8;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
@@ -20053,10 +19437,9 @@ extern "C" fn unpack24_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 8 & 16777215 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(4 as isize) } =
@@ -20064,19 +19447,17 @@ extern "C" fn unpack24_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 24 - 16;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 24 - 8;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
@@ -20085,10 +19466,9 @@ extern "C" fn unpack24_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 8 & 16777215 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(8 as isize) } =
@@ -20096,19 +19476,17 @@ extern "C" fn unpack24_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 24 - 16;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 24 - 8;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
@@ -20117,10 +19495,9 @@ extern "C" fn unpack24_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 8 & 16777215 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(12 as isize) } =
@@ -20128,19 +19505,17 @@ extern "C" fn unpack24_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 24 - 16;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 24 - 8;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
@@ -20163,28 +19538,25 @@ extern "C" fn unpack25_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 25;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 25 - 18;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 11) << 25 - 11;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 11;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 25 - 4;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
@@ -20194,37 +19566,33 @@ extern "C" fn unpack25_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 29;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 22) << 25 - 22;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 15) << 25 - 15;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 15;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 25 - 8;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 8;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 1) << 25 - 1;
     unsafe { *unsafe { out.offset(8 as isize) } = base.wrapping_add(tmp) };
@@ -20234,28 +19602,25 @@ extern "C" fn unpack25_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 19) << 25 - 19;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 19;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 25 - 12;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 12;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 5) << 25 - 5;
     unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
@@ -20265,19 +19630,17 @@ extern "C" fn unpack25_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 23) << 25 - 23;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 23;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 25 - 16;
     unsafe { *unsafe { out.offset(15 as isize) } = base.wrapping_add(tmp) };
@@ -20295,37 +19658,33 @@ extern "C" fn unpack26_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 26 - 20;
     unsafe { *unsafe { out.offset(1 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 26 - 14;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 14;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 26 - 8;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 8;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 26 - 2;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
@@ -20335,37 +19694,33 @@ extern "C" fn unpack26_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 22) << 26 - 22;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 26 - 16;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 26 - 10;
     unsafe { *unsafe { out.offset(8 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 10;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 26 - 4;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
@@ -20375,37 +19730,33 @@ extern "C" fn unpack26_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 24) << 26 - 24;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 26 - 18;
     unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 26 - 12;
     unsafe { *unsafe { out.offset(13 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 12;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 26 - 6;
     unsafe { *unsafe { out.offset(14 as isize) } = base + tmp };
@@ -20426,46 +19777,41 @@ extern "C" fn unpack27_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 27;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 22) << 27 - 22;
     unsafe { *unsafe { out.offset(1 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 17) << 27 - 17;
     unsafe { *unsafe { out.offset(2 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 17;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 27 - 12;
     unsafe { *unsafe { out.offset(3 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 12;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 7) << 27 - 7;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 7;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 27 - 2;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
@@ -20475,46 +19821,41 @@ extern "C" fn unpack27_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 29;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 24) << 27 - 24;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 19) << 27 - 19;
     unsafe { *unsafe { out.offset(8 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 19;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 27 - 14;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 14;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 9) << 27 - 9;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 9;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 27 - 4;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
@@ -20524,28 +19865,25 @@ extern "C" fn unpack27_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 31;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 26) << 27 - 26;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 21) << 27 - 21;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 21;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 27 - 16;
     unsafe { *unsafe { out.offset(15 as isize) } = base + tmp };
@@ -20564,55 +19902,49 @@ extern "C" fn unpack28_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 24) << 28 - 24;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 28 - 20;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 28 - 16;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 28 - 12;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 12;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 28 - 8;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 8;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 28 - 4;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
@@ -20621,10 +19953,9 @@ extern "C" fn unpack28_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 4 & 268435455 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(8 as isize) } =
@@ -20632,55 +19963,49 @@ extern "C" fn unpack28_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 24) << 28 - 24;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 28 - 20;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 28 - 16;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 28 - 12;
     unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 12;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 28 - 8;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 8;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 28 - 4;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
@@ -20703,82 +20028,73 @@ extern "C" fn unpack29_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 29;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 26) << 29 - 26;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 23) << 29 - 23;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 23;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 29 - 20;
     unsafe { *unsafe { out.offset(3 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 17) << 29 - 17;
     unsafe { *unsafe { out.offset(4 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 17;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 29 - 14;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 14;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 11) << 29 - 11;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 11;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 29 - 8;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 8;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 5) << 29 - 5;
     unsafe { *unsafe { out.offset(8 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 5;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 29 - 2;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
@@ -20788,46 +20104,41 @@ extern "C" fn unpack29_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 31;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 28) << 29 - 28;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 25) << 29 - 25;
     unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 25;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 22) << 29 - 22;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 19) << 29 - 19;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 19;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 29 - 16;
     unsafe { *unsafe { out.offset(15 as isize) } = base.wrapping_add(tmp) };
@@ -20845,127 +20156,113 @@ extern "C" fn unpack30_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 28) << 30 - 28;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 26) << 30 - 26;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 24) << 30 - 24;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 22) << 30 - 22;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 30 - 20;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 30 - 18;
     unsafe { *unsafe { out.offset(6 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 30 - 16;
     unsafe { *unsafe { out.offset(7 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 30 - 14;
     unsafe { *unsafe { out.offset(8 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 14;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 30 - 12;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 12;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 30 - 10;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 10;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 30 - 8;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 8;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 30 - 6;
     unsafe { *unsafe { out.offset(12 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 6;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 30 - 4;
     unsafe { *unsafe { out.offset(13 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 4;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 30 - 2;
     unsafe { *unsafe { out.offset(14 as isize) } = base.wrapping_add(tmp) };
@@ -20988,136 +20285,121 @@ extern "C" fn unpack31_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 31;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 30) << 31 - 30;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 29) << 31 - 29;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 29;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 28) << 31 - 28;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 27) << 31 - 27;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 27;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 26) << 31 - 26;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 25) << 31 - 25;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 25;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 24) << 31 - 24;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 23) << 31 - 23;
     unsafe { *unsafe { out.offset(8 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 23;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 22) << 31 - 22;
     unsafe { *unsafe { out.offset(9 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 21) << 31 - 21;
     unsafe { *unsafe { out.offset(10 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 21;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 31 - 20;
     unsafe { *unsafe { out.offset(11 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 19) << 31 - 19;
     unsafe { *unsafe { out.offset(12 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 19;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 31 - 18;
     unsafe { *unsafe { out.offset(13 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 17) << 31 - 17;
     unsafe { *unsafe { out.offset(14 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 17;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 31 - 16;
     unsafe { *unsafe { out.offset(15 as isize) } = base + tmp };
@@ -21139,12 +20421,7 @@ extern "C" fn unpack32_16(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
                 };
                 break '__c46;
             }
-            {
-                let __p = &mut i;
-                let __t = *__p;
-                *__p = (*__p).wrapping_add(1);
-                __t
-            };
+            i = i.wrapping_add(1);
         }
     }
     return (16 as u64).wrapping_mul(core::mem::size_of::<u32>() as u64) as u32;
@@ -21201,11 +20478,7 @@ extern "C" fn unpack0_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
                 unsafe { *out.offset(k as isize) = base };
                 break '__c47;
             }
-            {
-                let __p = &mut k;
-                *__p += 1;
-                *__p
-            };
+            k += 1;
         }
     }
     return 0 as u32;
@@ -21353,10 +20626,9 @@ extern "C" fn unpack5_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 3) << 5 - 3;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
@@ -21389,10 +20661,9 @@ extern "C" fn unpack6_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 6 - 4;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
@@ -21425,10 +20696,9 @@ extern "C" fn unpack7_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 3) << 7 - 3;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
@@ -21463,10 +20733,9 @@ extern "C" fn unpack8_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
         *unsafe { out.offset(3 as isize) } = base.wrapping_add(unsafe { *in32 } >> 24 & 255 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(4 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 255 as u32)
@@ -21500,10 +20769,9 @@ extern "C" fn unpack9_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 27;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 9 - 4;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
@@ -21518,10 +20786,9 @@ extern "C" fn unpack9_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 31;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 9 - 8;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
@@ -21545,10 +20812,9 @@ extern "C" fn unpack10_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 10 - 8;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
@@ -21560,10 +20826,9 @@ extern "C" fn unpack10_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 10 - 6;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
@@ -21587,10 +20852,9 @@ extern "C" fn unpack11_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 1) << 11 - 1;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
@@ -21602,10 +20866,9 @@ extern "C" fn unpack11_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 23;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 11 - 2;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
@@ -21632,10 +20895,9 @@ extern "C" fn unpack12_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 12 - 4;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
@@ -21647,10 +20909,9 @@ extern "C" fn unpack12_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 12 - 8;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
@@ -21677,10 +20938,9 @@ extern "C" fn unpack13_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 7) << 13 - 7;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
@@ -21689,10 +20949,9 @@ extern "C" fn unpack13_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 1) << 13 - 1;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
@@ -21704,10 +20963,9 @@ extern "C" fn unpack13_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 27;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 13 - 8;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
@@ -21729,10 +20987,9 @@ extern "C" fn unpack14_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 14 - 10;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
@@ -21742,10 +20999,9 @@ extern "C" fn unpack14_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 14 - 6;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
@@ -21754,10 +21010,9 @@ extern "C" fn unpack14_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 14 - 2;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
@@ -21782,10 +21037,9 @@ extern "C" fn unpack15_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 13) << 15 - 13;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
@@ -21795,10 +21049,9 @@ extern "C" fn unpack15_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 11) << 15 - 11;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
@@ -21808,10 +21061,9 @@ extern "C" fn unpack15_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 9) << 15 - 9;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
@@ -21830,26 +21082,23 @@ extern "C" fn unpack16_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     unsafe { *unsafe { out.offset(0 as isize) } = base + (unsafe { *in32 } >> 0 & 65535 as u32) };
     unsafe { *unsafe { out.offset(1 as isize) } = base + (unsafe { *in32 } >> 16 & 65535 as u32) };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe { *unsafe { out.offset(2 as isize) } = base + (unsafe { *in32 } >> 0 & 65535 as u32) };
     unsafe { *unsafe { out.offset(3 as isize) } = base + (unsafe { *in32 } >> 16 & 65535 as u32) };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe { *unsafe { out.offset(4 as isize) } = base + (unsafe { *in32 } >> 0 & 65535 as u32) };
     unsafe { *unsafe { out.offset(5 as isize) } = base + (unsafe { *in32 } >> 16 & 65535 as u32) };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(6 as isize) } = base.wrapping_add(unsafe { *in32 } >> 0 & 65535 as u32)
@@ -21873,10 +21122,9 @@ extern "C" fn unpack17_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 17;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 17 - 2;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
@@ -21886,10 +21134,9 @@ extern "C" fn unpack17_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 19;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 17 - 4;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
@@ -21899,10 +21146,9 @@ extern "C" fn unpack17_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 21;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 17 - 6;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
@@ -21912,10 +21158,9 @@ extern "C" fn unpack17_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 23;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 17 - 8;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
@@ -21934,30 +21179,27 @@ extern "C" fn unpack18_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 18 - 4;
     unsafe { *unsafe { out.offset(1 as isize) } = base + tmp };
     unsafe { *unsafe { out.offset(2 as isize) } = base + (unsafe { *in32 } >> 4 & 262143 as u32) };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 18 - 8;
     unsafe { *unsafe { out.offset(3 as isize) } = base + tmp };
     unsafe { *unsafe { out.offset(4 as isize) } = base + (unsafe { *in32 } >> 8 & 262143 as u32) };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 18 - 12;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
@@ -21967,10 +21209,9 @@ extern "C" fn unpack18_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 18 - 16;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
@@ -21989,10 +21230,9 @@ extern "C" fn unpack19_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 19;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 6) << 19 - 6;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
@@ -22002,10 +21242,9 @@ extern "C" fn unpack19_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 25;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 19 - 12;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
@@ -22015,19 +21254,17 @@ extern "C" fn unpack19_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 31;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 19 - 18;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 5) << 19 - 5;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
@@ -22050,10 +21287,9 @@ extern "C" fn unpack20_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 20 - 8;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
@@ -22063,19 +21299,17 @@ extern "C" fn unpack20_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 20 - 16;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 20 - 4;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
@@ -22085,10 +21319,9 @@ extern "C" fn unpack20_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 20 - 12;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
@@ -22108,10 +21341,9 @@ extern "C" fn unpack21_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     unsafe { *unsafe { out.offset(0 as isize) } = base + (unsafe { *in32 } >> 0 & 2097151 as u32) };
     tmp = unsafe { *in32 } >> 21;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 21 - 10;
     unsafe { *unsafe { out.offset(1 as isize) } = base + tmp };
@@ -22120,19 +21352,17 @@ extern "C" fn unpack21_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 31;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 21 - 20;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 9) << 21 - 9;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
@@ -22142,19 +21372,17 @@ extern "C" fn unpack21_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 19) << 21 - 19;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 19;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 21 - 8;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
@@ -22173,19 +21401,17 @@ extern "C" fn unpack22_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 22 - 12;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 12;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 22 - 2;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
@@ -22195,19 +21421,17 @@ extern "C" fn unpack22_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 22 - 14;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 14;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 22 - 4;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
@@ -22217,10 +21441,9 @@ extern "C" fn unpack22_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 22 - 16;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
@@ -22239,47 +21462,42 @@ extern "C" fn unpack23_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 23;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 23 - 14;
     unsafe { *unsafe { out.offset(1 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 14;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 5) << 23 - 5;
     unsafe { *unsafe { out.offset(2 as isize) } = base + tmp };
     unsafe { *unsafe { out.offset(3 as isize) } = base + (unsafe { *in32 } >> 5 & 8388607 as u32) };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 19) << 23 - 19;
     unsafe { *unsafe { out.offset(4 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 19;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 10) << 23 - 10;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 10;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 1) << 23 - 1;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
@@ -22302,19 +21520,17 @@ extern "C" fn unpack24_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 24 - 16;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 24 - 8;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
@@ -22323,10 +21539,9 @@ extern "C" fn unpack24_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
             base.wrapping_add(unsafe { *in32 } >> 8 & 16777215 as u32)
     };
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     unsafe {
         *unsafe { out.offset(4 as isize) } =
@@ -22334,19 +21549,17 @@ extern "C" fn unpack24_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 24 - 16;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 24 - 8;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
@@ -22369,28 +21582,25 @@ extern "C" fn unpack25_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 25;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 25 - 18;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 11) << 25 - 11;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 11;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 25 - 4;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
@@ -22400,28 +21610,25 @@ extern "C" fn unpack25_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 29;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 22) << 25 - 22;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 15) << 25 - 15;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 15;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 25 - 8;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
@@ -22440,37 +21647,33 @@ extern "C" fn unpack26_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 26 - 20;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 26 - 14;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 14;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 26 - 8;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 8;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 26 - 2;
     unsafe { *unsafe { out.offset(4 as isize) } = base + tmp };
@@ -22479,19 +21682,17 @@ extern "C" fn unpack26_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 22) << 26 - 22;
     unsafe { *unsafe { out.offset(6 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 26 - 16;
     unsafe { *unsafe { out.offset(7 as isize) } = base + tmp };
@@ -22510,46 +21711,41 @@ extern "C" fn unpack27_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 27;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 22) << 27 - 22;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 17) << 27 - 17;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 17;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 27 - 12;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 12;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 7) << 27 - 7;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 7;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 2) << 27 - 2;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
@@ -22559,10 +21755,9 @@ extern "C" fn unpack27_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 29;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 24) << 27 - 24;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
@@ -22580,55 +21775,49 @@ extern "C" fn unpack28_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 24) << 28 - 24;
     unsafe { *unsafe { out.offset(1 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 28 - 20;
     unsafe { *unsafe { out.offset(2 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 28 - 16;
     unsafe { *unsafe { out.offset(3 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 16;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 12) << 28 - 12;
     unsafe { *unsafe { out.offset(4 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 12;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 28 - 8;
     unsafe { *unsafe { out.offset(5 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 8;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 4) << 28 - 4;
     unsafe { *unsafe { out.offset(6 as isize) } = base + tmp };
@@ -22650,64 +21839,57 @@ extern "C" fn unpack29_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 29;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 26) << 29 - 26;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 23) << 29 - 23;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 23;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 29 - 20;
     unsafe { *unsafe { out.offset(3 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 17) << 29 - 17;
     unsafe { *unsafe { out.offset(4 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 17;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 14) << 29 - 14;
     unsafe { *unsafe { out.offset(5 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 14;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 11) << 29 - 11;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 11;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 8) << 29 - 8;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
@@ -22725,64 +21907,57 @@ extern "C" fn unpack30_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 28) << 30 - 28;
     unsafe { *unsafe { out.offset(1 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 26) << 30 - 26;
     unsafe { *unsafe { out.offset(2 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 24) << 30 - 24;
     unsafe { *unsafe { out.offset(3 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 24;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 22) << 30 - 22;
     unsafe { *unsafe { out.offset(4 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 22;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 20) << 30 - 20;
     unsafe { *unsafe { out.offset(5 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 20;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 18) << 30 - 18;
     unsafe { *unsafe { out.offset(6 as isize) } = base + tmp };
     tmp = unsafe { *in32 } >> 18;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 16) << 30 - 16;
     unsafe { *unsafe { out.offset(7 as isize) } = base + tmp };
@@ -22801,64 +21976,57 @@ extern "C" fn unpack31_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
     };
     tmp = unsafe { *in32 } >> 31;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 30) << 31 - 30;
     unsafe { *unsafe { out.offset(1 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 30;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 29) << 31 - 29;
     unsafe { *unsafe { out.offset(2 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 29;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 28) << 31 - 28;
     unsafe { *unsafe { out.offset(3 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 28;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 27) << 31 - 27;
     unsafe { *unsafe { out.offset(4 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 27;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 26) << 31 - 26;
     unsafe { *unsafe { out.offset(5 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 26;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 25) << 31 - 25;
     unsafe { *unsafe { out.offset(6 as isize) } = base.wrapping_add(tmp) };
     tmp = unsafe { *in32 } >> 25;
     {
+        let __n = 1;
         let __p = &mut in32;
-        let __t = *__p;
-        *__p = unsafe { (*__p).offset(1) };
-        __t
+        *__p = unsafe { (*__p).offset(__n as isize) };
     };
     tmp |= unsafe { *in32 } % (1 << 24) << 31 - 24;
     unsafe { *unsafe { out.offset(7 as isize) } = base.wrapping_add(tmp) };
@@ -22878,12 +22046,7 @@ extern "C" fn unpack32_8(base: u32, in__1: *const u8, out: *mut u32) -> u32 {
                 unsafe { *out.add(i as usize) = base + unsafe { *in32.add(i as usize) } };
                 break '__c48;
             }
-            {
-                let __p = &mut i;
-                let __t = *__p;
-                *__p += 1;
-                __t
-            };
+            i += 1;
         }
     }
     return (8 as u64 * core::mem::size_of::<u32>() as u64) as u32;
@@ -22912,11 +22075,7 @@ extern "C" fn unpack0_x(base: u32, in__1: *const u8, out: *mut u32, length: u32)
                 unsafe { *out.add(k as usize) = base };
                 break '__c49;
             }
-            {
-                let __p = &mut k;
-                *__p = (*__p).wrapping_add(1);
-                *__p
-            };
+            k = k.wrapping_add(1);
         }
     }
     return 0 as u32;
@@ -33205,12 +32364,7 @@ extern "C" fn linsearch32_32(base: u32, in__1: *const u8, mut value: u32, found:
                 }
                 break '__c85;
             }
-            {
-                let __p = &mut i;
-                let __t = *__p;
-                *__p = (*__p).wrapping_add(1);
-                __t
-            };
+            i = i.wrapping_add(1);
         }
     }
     return (32 as u64).wrapping_mul(core::mem::size_of::<u32>() as u64) as u32;
@@ -37312,12 +36466,7 @@ extern "C" fn linsearch32_16(base: u32, in__1: *const u8, mut value: u32, found:
                 }
                 break '__c86;
             }
-            {
-                let __p = &mut i;
-                let __t = *__p;
-                *__p = (*__p).wrapping_add(1);
-                __t
-            };
+            i = i.wrapping_add(1);
         }
     }
     return (16 as u64).wrapping_mul(core::mem::size_of::<u32>() as u64) as u32;
@@ -39589,12 +38738,7 @@ extern "C" fn linsearch32_8(base: u32, in__1: *const u8, mut value: u32, found: 
                 }
                 break '__c87;
             }
-            {
-                let __p = &mut i;
-                let __t = *__p;
-                *__p = (*__p).wrapping_add(1);
-                __t
-            };
+            i = i.wrapping_add(1);
         }
     }
     return (8 as u64).wrapping_mul(core::mem::size_of::<u32>() as u64) as u32;

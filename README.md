@@ -1,4 +1,4 @@
 # libfor-rust-mirror
 
 Generated artifact — do NOT hand-edit. Safe (uplift) Rust transpiled from
-https://github.com/cruppstahl/libfor @ 49611808d08d4e47116aa2a3ddcabeb418f405f7 by clang2rust 0.10.0-3396-gd14c1214. Upstream license: LICENSE.
+https://github.com/cruppstahl/libfor @ 49611808d08d4e47116aa2a3ddcabeb418f405f7 by clang2rust 0.10.0-3435-ge7761ead. Upstream license: LICENSE.
